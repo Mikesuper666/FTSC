@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="onuse.com.br.ftsc.ListaExecoes"
+    android:background="@color/colorPrimary">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp">
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:alwaysDrawnWithCache="true"
+            android:checkedButton="@+id/radioNome"
+            android:clickable="false"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ordenar por: "/>
+
+            <RadioButton
+                android:id="@+id/radioNome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nome" />
+
+            <RadioButton
+                android:id="@+id/radioMatricula"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Matrícula" />
+
+            <RadioButton
+                android:id="@+id/radioExececao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Execeção" />
+        </RadioGroup>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Adicionar uma nova exeção : "
+                android:textAlignment="center"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnAdicionarExecao"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/d_adicionar" />
+        </LinearLayout>
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/listaExecoes"
+            android:dividerHeight="0dp"
+            android:layout_gravity="center_horizontal">
+        </ListView>
+        </LinearLayout>
+</LinearLayout>
