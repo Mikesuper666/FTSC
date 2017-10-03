@@ -4,22 +4,18 @@
     android:layout_height="match_parent"
     android:background="@android:color/transparent"
     android:orientation="vertical"
+    android:isScrollContainer="false"
+    android:gravity="center_vertical"
     tools:context="onuse.com.br.ftsc.Fragments.AdaptadoFragment">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="@android:color/transparent"
-        android:layout_weight="0.7">
 
-    </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="250dp"
         android:layout_margin="10dp"
         android:background="@drawable/border_layout"
-        android:orientation="vertical"
-        android:layout_weight="1">
+        android:orientation="vertical">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -46,7 +42,8 @@
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:maxLines="1"
-                android:maxLength="6"
+                android:maxLength="4"
+                android:textColor="@android:color/white"
                 android:id="@+id/fragAdaptadoCodigo"
                 android:hint="Digite o cógigo"/>
 
@@ -69,6 +66,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawSelectorOnTop="true"
+                android:textColor="@android:color/white"
                 android:entries="@array/tipos_carros"
                 android:id="@+id/fragAdaptadoTipoCarro"></Spinner>
         </LinearLayout>
@@ -89,6 +87,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawSelectorOnTop="true"
+                android:textColor="@android:color/white"
                 android:entries="@array/adaptado_sn"
                 android:id="@+id/fragAdaptadoAdaptadoSN"></Spinner>
         </LinearLayout>
@@ -110,12 +109,5 @@
                 android:src="@drawable/d_cancelar"
                 android:id="@+id/fragAdaptadoCancelar"/>
         </LinearLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="@android:color/transparent"
-        android:layout_weight="0.7">
-
     </LinearLayout>
 </LinearLayout>

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/conteudoFragmentExecoes"
     tools:context="onuse.com.br.ftsc.ListaExecoes"
     android:background="@color/colorPrimary">
     <LinearLayout
@@ -58,7 +59,7 @@
                 android:textStyle="bold" />
 
             <Button
-                android:id="@+id/btnAdicionarExecao"
+                android:id="@+id/btnAdicionarExecaoFragment"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@drawable/d_adicionar" />
@@ -71,4 +72,4 @@
             android:layout_gravity="center_horizontal">
         </ListView>
         </LinearLayout>
-</LinearLayout>
+</FrameLayout>

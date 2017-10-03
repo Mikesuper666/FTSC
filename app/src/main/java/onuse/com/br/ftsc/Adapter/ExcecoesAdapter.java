@@ -52,11 +52,15 @@ public class ExcecoesAdapter extends ArrayAdapter<Execoes> {
             textViewNome.setText("Nome: "+execao.getNome());
             textMatricula.setText("Matrícula: "+execao.getId());
             if(execao.getTipoExecao() == 0){
-                imageConversa.setImageResource(R.drawable.d_oculos);
-            }else if(execao.getTipoExecao() == 1){
                 imageConversa.setImageResource(R.drawable.d_barba);
-            }else if(execao.getTipoExecao() == 2){
+            }else if(execao.getTipoExecao() == 1){
                 imageConversa.setImageResource(R.drawable.d_bone);
+            }else if(execao.getTipoExecao() == 2){
+                imageConversa.setImageResource(R.drawable.d_oculos);
+            }else if(execao.getTipoExecao() == 3){
+                imageConversa.setImageResource(R.drawable.d_cabelo);
+            }else if(execao.getTipoExecao() == 4){
+                imageConversa.setImageResource(R.drawable.d_uniforme);
             }
         }
         return view;

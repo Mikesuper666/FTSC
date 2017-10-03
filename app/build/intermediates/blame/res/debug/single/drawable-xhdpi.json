@@ -1,11 +1,11 @@
 [
     {
-        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-xhdpi/d_adaptado.png",
-        "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-xhdpi/d_adaptado.png"
+        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-xhdpi/d_cabelo.png",
+        "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-xhdpi/d_cabelo.png"
     },
     {
-        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-xhdpi/d_execoes.png",
-        "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-xhdpi/d_execoes.png"
+        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-xhdpi/d_adaptado.png",
+        "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-xhdpi/d_adaptado.png"
     },
     {
         "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-xhdpi/d_settings.png",
@@ -20,20 +20,8 @@
         "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-xhdpi/d_adicionar.png"
     },
     {
-        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-xhdpi/d_cmt.png",
-        "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-xhdpi/d_cmt.png"
-    },
-    {
         "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-xhdpi/d_ordenarbaixo.png",
         "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-xhdpi/d_ordenarbaixo.png"
-    },
-    {
-        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-xhdpi/d_procurar.png",
-        "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-xhdpi/d_procurar.png"
-    },
-    {
-        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-xhdpi/d_atencao.png",
-        "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-xhdpi/d_atencao.png"
     },
     {
         "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-xhdpi/d_cadeirante.png",
@@ -52,14 +40,6 @@
         "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-xhdpi/d_loading.png"
     },
     {
-        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-xhdpi/d_articulado.png",
-        "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-xhdpi/d_articulado.png"
-    },
-    {
-        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-xhdpi/d_ordenarcima.png",
-        "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-xhdpi/d_ordenarcima.png"
-    },
-    {
         "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-xhdpi/d_compartilhar.png",
         "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-xhdpi/d_compartilhar.png"
     },
@@ -76,15 +56,43 @@
         "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-xhdpi/d_barba.png"
     },
     {
-        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-xhdpi/d_cancelar.png",
-        "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-xhdpi/d_cancelar.png"
-    },
-    {
         "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-xhdpi/d_icone.png",
         "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-xhdpi/d_icone.png"
     },
     {
         "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-xhdpi/d_oculos.png",
         "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-xhdpi/d_oculos.png"
+    },
+    {
+        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-xhdpi/d_execoes.png",
+        "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-xhdpi/d_execoes.png"
+    },
+    {
+        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-xhdpi/d_uniforme.png",
+        "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-xhdpi/d_uniforme.png"
+    },
+    {
+        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-xhdpi/d_cmt.png",
+        "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-xhdpi/d_cmt.png"
+    },
+    {
+        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-xhdpi/d_procurar.png",
+        "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-xhdpi/d_procurar.png"
+    },
+    {
+        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-xhdpi/d_atencao.png",
+        "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-xhdpi/d_atencao.png"
+    },
+    {
+        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-xhdpi/d_articulado.png",
+        "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-xhdpi/d_articulado.png"
+    },
+    {
+        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-xhdpi/d_ordenarcima.png",
+        "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-xhdpi/d_ordenarcima.png"
+    },
+    {
+        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-xhdpi/d_cancelar.png",
+        "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-xhdpi/d_cancelar.png"
     }
 ]

@@ -1,6 +1,5 @@
 package onuse.com.br.ftsc;
 
-import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.support.annotation.IdRes;
@@ -11,12 +10,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import java.text.Collator;
 import java.util.ArrayList;
@@ -25,7 +21,6 @@ import java.util.Comparator;
 import onuse.com.br.ftsc.Adapter.ExcecoesAdapter;
 import onuse.com.br.ftsc.BancoDados.BancoInterno;
 import onuse.com.br.ftsc.BancoDados.RepositorioAcoes;
-import onuse.com.br.ftsc.Fragments.AdaptadoFragment;
 import onuse.com.br.ftsc.Fragments.ExecaoFragment;
 import onuse.com.br.ftsc.Models.Execoes;
 
@@ -35,7 +30,7 @@ public class ListaExecoes extends AppCompatActivity {
     private ArrayList<Execoes> execoes;
     private RadioButton radioNome, radioMatricula, radioExececao;
     private RadioGroup radioGroup;
-    private Button btnAdicionarExecao;
+    private Button btnAdicionarExecaoFragment;
 
     //variaiveis do bando de dados
     private BancoInterno bancoInterno;
@@ -51,7 +46,7 @@ public class ListaExecoes extends AppCompatActivity {
         radioMatricula = (RadioButton)findViewById(R.id.radioMatricula);
         radioExececao = (RadioButton)findViewById(R.id.radioExececao);
         radioGroup = (RadioGroup)findViewById(R.id.radioGroup);
-        btnAdicionarExecao = (Button) findViewById(R.id.btnAdicionarExecao);
+        btnAdicionarExecaoFragment = (Button) findViewById(R.id.btnAdicionarExecaoFragment);
         /**************************************************
          * MONTA O LIST VIEW E ADAPTER
          **************************************************/
@@ -70,12 +65,12 @@ public class ListaExecoes extends AppCompatActivity {
 
         AdicionarDados();
 
-        btnAdicionarExecao.setOnClickListener(new View.OnClickListener() {
+        btnAdicionarExecaoFragment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.add(R.id.conteudoFragment, new ExecaoFragment(), "ExecaoFragment");
+                transaction.add(R.id.conteudoFragmentExecoes, new ExecaoFragment(), "ExecaoFragment");
                 transaction.addToBackStack(null); //Linha super importante para  o retorno do fragment
                 if(fragmentManager.findFragmentByTag("ExecaoFragment") == null) {
                     transaction.commit();

@@ -59,7 +59,7 @@ ADDED from /home/maico/AndroidStudioProjects/FTSC/app/src/main/AndroidManifest.x
 	android:name
 		ADDED from /home/maico/AndroidStudioProjects/FTSC/app/src/main/AndroidManifest.xml:17:27-74
 activity#onuse.com.br.ftsc.ListaAdaptados
-ADDED from /home/maico/AndroidStudioProjects/FTSC/app/src/main/AndroidManifest.xml:20:9-52
+ADDED from /home/maico/AndroidStudioProjects/FTSC/app/src/main/AndroidManifest.xml:20:9-61
 	android:name
 		ADDED from /home/maico/AndroidStudioProjects/FTSC/app/src/main/AndroidManifest.xml:20:19-49
 activity#onuse.com.br.ftsc.ListaExecoes

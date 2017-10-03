@@ -17,7 +17,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ListaAdaptados" />
+        <activity android:name=".ListaAdaptados"></activity>
         <activity android:name=".ListaExecoes"></activity>
     </application>
 

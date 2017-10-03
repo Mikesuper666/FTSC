@@ -1,15 +1,51 @@
 [
     {
-        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/d_articulado.xml",
-        "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-anydpi-v21/d_articulado.xml"
-    },
-    {
         "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/d_ordenarbaixo.xml",
         "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-anydpi-v21/d_ordenarbaixo.xml"
     },
     {
         "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/d_loading.xml",
         "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-anydpi-v21/d_loading.xml"
+    },
+    {
+        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/d_compartilhar.xml",
+        "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-anydpi-v21/d_compartilhar.xml"
+    },
+    {
+        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/d_cadeirante.xml",
+        "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-anydpi-v21/d_cadeirante.xml"
+    },
+    {
+        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/d_atencao.xml",
+        "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-anydpi-v21/d_atencao.xml"
+    },
+    {
+        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/d_oculos.xml",
+        "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-anydpi-v21/d_oculos.xml"
+    },
+    {
+        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/d_settings.xml",
+        "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-anydpi-v21/d_settings.xml"
+    },
+    {
+        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/d_atualizar.xml",
+        "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-anydpi-v21/d_atualizar.xml"
+    },
+    {
+        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/d_4portas.xml",
+        "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-anydpi-v21/d_4portas.xml"
+    },
+    {
+        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/d_cabelo.xml",
+        "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-anydpi-v21/d_cabelo.xml"
+    },
+    {
+        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/d_uniforme.xml",
+        "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-anydpi-v21/d_uniforme.xml"
+    },
+    {
+        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/d_articulado.xml",
+        "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-anydpi-v21/d_articulado.xml"
     },
     {
         "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/d_cmt.xml",
@@ -24,36 +60,16 @@
         "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-anydpi-v21/d_bone.xml"
     },
     {
-        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/d_compartilhar.xml",
-        "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-anydpi-v21/d_compartilhar.xml"
-    },
-    {
-        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/d_cadeirante.xml",
-        "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-anydpi-v21/d_cadeirante.xml"
-    },
-    {
         "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/d_adaptado.xml",
         "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-anydpi-v21/d_adaptado.xml"
-    },
-    {
-        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/d_atencao.xml",
-        "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-anydpi-v21/d_atencao.xml"
-    },
-    {
-        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/d_icone.xml",
-        "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-anydpi-v21/d_icone.xml"
     },
     {
         "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/d_barba.xml",
         "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-anydpi-v21/d_barba.xml"
     },
     {
-        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/d_oculos.xml",
-        "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-anydpi-v21/d_oculos.xml"
-    },
-    {
-        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/d_settings.xml",
-        "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-anydpi-v21/d_settings.xml"
+        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/d_icone.xml",
+        "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-anydpi-v21/d_icone.xml"
     },
     {
         "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/d_adicionar.xml",
@@ -66,14 +82,6 @@
     {
         "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/d_procurar.xml",
         "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-anydpi-v21/d_procurar.xml"
-    },
-    {
-        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/d_atualizar.xml",
-        "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-anydpi-v21/d_atualizar.xml"
-    },
-    {
-        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/d_4portas.xml",
-        "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-anydpi-v21/d_4portas.xml"
     },
     {
         "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/d_cancelar.xml",

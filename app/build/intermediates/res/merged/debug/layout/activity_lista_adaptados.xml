@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:alwaysDrawnWithCache="true"
-            android:checkedButton="@+id/radioNome"
+            android:checkedButton="@+id/radioTipoCarro"
             android:clickable="false"
             android:orientation="horizontal">
 

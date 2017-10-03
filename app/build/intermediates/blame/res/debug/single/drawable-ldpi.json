@@ -1,9 +1,5 @@
 [
     {
-        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-ldpi/d_ordenarcima.png",
-        "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-ldpi/d_ordenarcima.png"
-    },
-    {
         "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-ldpi/d_icone.png",
         "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-ldpi/d_icone.png"
     },
@@ -36,6 +32,10 @@
         "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-ldpi/d_atualizar.png"
     },
     {
+        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-ldpi/d_cabelo.png",
+        "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-ldpi/d_cabelo.png"
+    },
+    {
         "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-ldpi/d_barba.png",
         "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-ldpi/d_barba.png"
     },
@@ -48,12 +48,32 @@
         "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-ldpi/d_cancelar.png"
     },
     {
-        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-ldpi/d_oculos.png",
-        "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-ldpi/d_oculos.png"
-    },
-    {
         "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-ldpi/d_procurar.png",
         "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-ldpi/d_procurar.png"
+    },
+    {
+        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-ldpi/d_ncadeirante.png",
+        "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-ldpi/d_ncadeirante.png"
+    },
+    {
+        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-ldpi/d_cadeirante.png",
+        "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-ldpi/d_cadeirante.png"
+    },
+    {
+        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-ldpi/d_4portas.png",
+        "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-ldpi/d_4portas.png"
+    },
+    {
+        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-ldpi/d_ordenarcima.png",
+        "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-ldpi/d_ordenarcima.png"
+    },
+    {
+        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-ldpi/d_uniforme.png",
+        "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-ldpi/d_uniforme.png"
+    },
+    {
+        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-ldpi/d_oculos.png",
+        "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-ldpi/d_oculos.png"
     },
     {
         "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-ldpi/d_cmt.png",
@@ -62,14 +82,6 @@
     {
         "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-ldpi/d_compartilhar.png",
         "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-ldpi/d_compartilhar.png"
-    },
-    {
-        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-ldpi/d_cadeirante.png",
-        "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-ldpi/d_cadeirante.png"
-    },
-    {
-        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-ldpi/d_ncadeirante.png",
-        "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-ldpi/d_ncadeirante.png"
     },
     {
         "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-ldpi/d_bone.png",
@@ -82,9 +94,5 @@
     {
         "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-ldpi/d_toco.png",
         "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-ldpi/d_toco.png"
-    },
-    {
-        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable-ldpi/d_4portas.png",
-        "source": "/home/maico/AndroidStudioProjects/FTSC/app/build/generated/res/pngs/debug/drawable-ldpi/d_4portas.png"
     }
 ]

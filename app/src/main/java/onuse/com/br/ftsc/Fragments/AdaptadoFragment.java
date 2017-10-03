@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 import onuse.com.br.ftsc.BancoDados.BancoInterno;
 import onuse.com.br.ftsc.BancoDados.RepositorioAcoes;
+import onuse.com.br.ftsc.Models.Carros;
 import onuse.com.br.ftsc.R;
 
 
@@ -52,7 +53,8 @@ public class AdaptadoFragment extends Fragment {
                     SQLiteDatabase conn = bancoInterno.getWritableDatabase();
                     RepositorioAcoes repositorioAcoes = new RepositorioAcoes(conn);
                     repositorioAcoes.InserirNovoCarro(codigo, tipoCarro,adaptadoSN);
-                    Toast.makeText(getActivity(), "Gravando dados", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Gravado com sucesso!", Toast.LENGTH_LONG).show();
+                    getActivity().finish();
                 }
             }
         });
@@ -70,14 +72,32 @@ public class AdaptadoFragment extends Fragment {
     }
 
     private boolean ConfirmarCadastro(){
-        if(fragAdaptadoCodigo.length() == 6){
+        if(fragAdaptadoCodigo.length() == 4){
             codigo = Integer.parseInt(fragAdaptadoCodigo.getText().toString());
         }else{
-            fragAdaptadoCodigo.setError("Carros contém 6 números");
+            fragAdaptadoCodigo.setError("Carros contém 4 números");
             return false;
         }
-        tipoCarro = fragAdaptadoTipoCarro.getId();
-        adaptadoSN = fragAdaptadoAdaptadoSN.getId();
+
+        tipoCarro = fragAdaptadoTipoCarro.getSelectedItemPosition();
+        adaptadoSN = fragAdaptadoAdaptadoSN.getSelectedItemPosition();
+
+        BancoInterno bancoInterno = new BancoInterno(getActivity());
+        SQLiteDatabase conn;
+        conn = bancoInterno.getWritableDatabase();
+        RepositorioAcoes repositorioAcoes = new RepositorioAcoes(conn);
+        ArrayList<Carros> carrosRecebido = new ArrayList<>();
+        carrosRecebido = repositorioAcoes.TodosAdaptados();
+        for(int i = 0; i < carrosRecebido.size();){
+            if(codigo != carrosRecebido.get(i).getId()){
+                //não faz nada
+            }else{
+                Toast.makeText(getActivity(), "Este carro já foi cadastrado!", Toast.LENGTH_LONG).show();
+                return false;
+            }
+            i++;
+        }
+
 
         return true;
     }

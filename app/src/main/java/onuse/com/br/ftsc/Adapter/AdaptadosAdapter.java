@@ -65,6 +65,9 @@ public class AdaptadosAdapter extends ArrayAdapter<Carros> {
             }else if(carro.getTipoCarro() == 3){
                 imageAdaptado.setImageResource(R.drawable.d_articulado);
                 nomeAdaptado.setText("Tipo: Articulado");
+            }else if(carro.getTipoCarro() == 4){
+                imageAdaptado.setImageResource(R.drawable.d_toco);
+                nomeAdaptado.setText("Tipo: Lotação/Micro");
             }
 
             if(carro.getAdaptado() == 0){

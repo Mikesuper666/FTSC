@@ -3,6 +3,7 @@
 
     <string-array name="tipos_carros">
         <item>CMT</item>
+        <item>4 Portas</item>
         <item>Toco</item>
         <item>Articulado</item>
         <item>Lotação/Micro</item>
@@ -14,11 +15,12 @@
     </string-array>
 
     <string-array name="permissao_para">
-        <item>Óculos escuros</item>
         <item>Barba</item>
         <item>Boné</item>
+        <item>Óculos escuros</item>
         <item>Cabelo comprido</item>
         <item>Uniforme diferenciado</item>
     </string-array>
+
 
 </resources>

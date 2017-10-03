@@ -421,28 +421,30 @@ public class BancoInterno extends SQLiteOpenHelper {
         );
 
         db.execSQL( "INSERT INTO `d_execoes` (`_id`, `nome`, `tipo_execao`) VALUES" +
-                "(1111, 'Clicano Oculos', 0),"+
-                "(2222, 'Oculos Escuros', 0),"+
-                "(3333, 'Tio do Oculos', 0),"+
-                "(4185, 'João Fulano', 1),"+
-                "(5261, 'Fulano Cavalo', 1),"+
-                "(5265, 'Nome Sobrenome', 1),"+
-                "(5523, 'Nome Sobrenome', 1),"+
-                "(5736, 'Nome Sobrenome', 1),"+
-                "(5981, 'Nome Sobrenome', 1),"+
-                "(6363, 'Nome Sobrenome', 1),"+
-                "(6511, 'Nome Sobrenome', 1),"+
-                "(6591, 'Nome Sobrenome', 1),"+
-                "(7015, 'Nome Sobrenome', 1),"+
-                "(7639, 'Nome Sobrenome', 1),"+
-                "(7696, 'Nome Sobrenome', 1),"+
-                "(7817, 'Nome Sobrenome', 1),"+
-                "(7836, 'Nome Sobrenome', 1),"+
-                "(7878, 'Nome Sobrenome', 1),"+
-                "(4375, 'Nome Sobrenome', 2),"+
-                "(6956, 'Nome Sobrenome', 2),"+
-                "(7897, 'Nome Sobrenome', 2),"+
-                "(26864, 'Nome Sobrenome', 2);"
+                "(0000, 'Teste barba', 0),"+
+                "(1111, 'Teste boné', 1),"+
+                "(2222, 'Oculos Escuros', 2),"+
+                "(3333, 'Cabelo comprido', 3),"+
+                "(4444, 'Uniforme', 4),"+
+                "(4185, 'João Fulano', 0),"+
+                "(5261, 'Fulano Cavalo', 0),"+
+                "(5265, 'Nome Sobrenome', 0),"+
+                "(5523, 'Nome Sobrenome', 0),"+
+                "(5736, 'Nome Sobrenome', 0),"+
+                "(5981, 'Nome Sobrenome', 0),"+
+                "(6363, 'Nome Sobrenome', 0),"+
+                "(6511, 'Nome Sobrenome', 0),"+
+                "(6591, 'Nome Sobrenome', 0),"+
+                "(7015, 'Nome Sobrenome', 0),"+
+                "(7639, 'Nome Sobrenome', 0),"+
+                "(7696, 'Nome Sobrenome', 0),"+
+                "(7817, 'Nome Sobrenome', 0),"+
+                "(7836, 'Nome Sobrenome', 0),"+
+                "(7878, 'Nome Sobrenome', 0),"+
+                "(4375, 'Nome Sobrenome', 1),"+
+                "(6956, 'Nome Sobrenome', 1),"+
+                "(7897, 'Nome Sobrenome', 1),"+
+                "(26864, 'Nome Sobrenome', 1);"
         );
 
         db.execSQL(
