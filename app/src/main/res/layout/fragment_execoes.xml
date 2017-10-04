@@ -55,7 +55,7 @@
                 android:textAlignment="center"
                 android:textStyle="bold"
                 android:textColor="@android:color/white"
-                android:text="Código: " />
+                android:text="Matrícula: " />
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

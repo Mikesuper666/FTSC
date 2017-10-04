@@ -1,18 +1,26 @@
 package onuse.com.br.ftsc;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.support.annotation.IdRes;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import java.text.Collator;
 import java.util.ArrayList;
@@ -21,7 +29,10 @@ import java.util.Comparator;
 import onuse.com.br.ftsc.Adapter.ExcecoesAdapter;
 import onuse.com.br.ftsc.BancoDados.BancoInterno;
 import onuse.com.br.ftsc.BancoDados.RepositorioAcoes;
+import onuse.com.br.ftsc.Fragments.AdaptadoAlteracaoFragment;
+import onuse.com.br.ftsc.Fragments.ExcecaoAlteracaoFragment;
 import onuse.com.br.ftsc.Fragments.ExecaoFragment;
+import onuse.com.br.ftsc.Models.Carros;
 import onuse.com.br.ftsc.Models.Execoes;
 
 public class ListaExecoes extends AppCompatActivity {
@@ -55,6 +66,7 @@ public class ListaExecoes extends AppCompatActivity {
         );
         arrayAdapter = new ExcecoesAdapter(this, execoes);
         listaExecoes.setAdapter(arrayAdapter);
+        registerForContextMenu(listaExecoes);
         if(Build.VERSION.SDK_INT >= 21){
             listaExecoes.setNestedScrollingEnabled(true);
         }
@@ -134,5 +146,65 @@ public class ListaExecoes extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v,
+                                    ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_alterar, menu);
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        final Execoes execoesParaEnviar = (Execoes) listaExecoes.getItemAtPosition(info.position);
+        switch (item.getItemId()) {
+            case R.id.alterar:
+
+                /*
+                Metodo que faz a busta do fragment pega os dados da liste view
+                passa os dados para o fragment de alteração
+                * */
+
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                Fragment excecaoAlteracaoFragment = new ExcecaoAlteracaoFragment();
+                transaction.add(R.id.conteudoFragmentExecoes, excecaoAlteracaoFragment, "excecaoAlteracaoFragment");
+                transaction.addToBackStack(null); //Linha super importante para  o retorno do fragment
+                if(fragmentManager.findFragmentByTag("excecaoAlteracaoFragment") == null) {
+                    transaction.commit();
+
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("CODIGO", Integer.parseInt(""+execoesParaEnviar.getId()));
+                    bundle.putInt("EXECAO", execoesParaEnviar.getTipoExecao());
+                    bundle.putString("NOME", execoesParaEnviar.getNome());
+                    excecaoAlteracaoFragment.setArguments(bundle);
+                }
+
+
+                return true;
+            case R.id.delete:
+                AlertDialog.Builder alerta = new AlertDialog.Builder(this);
+                alerta.setTitle("Deletar execão");
+                alerta.setMessage("Você tem certeza que deseja deletar esta exeção?");
+                alerta.setPositiveButton("Deletar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                });
+                alerta.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        repositorioAcoes.DeletarCarrro(execoesParaEnviar.getId());
+                    }
+                });
+                alerta.show();
+                return true;
+            default:
+                return super.onContextItemSelected(item);
+        }
     }
 }

@@ -170,4 +170,32 @@ public class RepositorioAcoes{
 
         conn.insertOrThrow("d_execoes",null , values);
     }
+
+    public void AtualizarNovoCarro(int id, int tipoCarro, int adaptadoSn)
+    {
+        ContentValues values = new ContentValues();
+        values.put("tipoCarro", tipoCarro );
+        values.put("d_adaptado", adaptadoSn );
+
+        conn.update("tipo_carro", values, "_id= ?",new String[]{""+id});
+    }
+
+    public void AtualizarExecao(int id, String nome, int tipoExecao)
+    {
+        ContentValues values = new ContentValues();
+        values.put("nome", nome );
+        values.put("tipo_execao", tipoExecao );
+
+        conn.update("d_execoes", values, "_id= ?",new String[]{""+id});
+    }
+
+    public void DeletarCarrro(long id)
+    {
+        conn.delete("tipo_carro", "_id= ?",new String[]{String.valueOf(id)});
+    }
+
+    public void DeletarExecao(long id)
+    {
+        conn.delete("d_execoes", "_id= ?",new String[]{String.valueOf(id)});
+    }
 }

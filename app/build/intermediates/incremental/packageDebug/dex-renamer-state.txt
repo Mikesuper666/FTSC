@@ -1,4 +1,4 @@
-#Mon Oct 02 23:50:24 BRT 2017
+#Tue Oct 03 15:31:45 BRT 2017
 base.0=/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_eb48de376dd74cd6949b073b89dcbcd085a87074
 renamed.1=classes2.dex
 renamed.0=classes.dex
