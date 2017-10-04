@@ -38,10 +38,9 @@ import onuse.com.br.ftsc.Helper.Permissoes;
 import onuse.com.br.ftsc.Models.Linha;
 
 public class PrincipalActivity extends AppCompatActivity {
-    private EditText edtCodigoLinha;
     private Button btnNomeLinha, btnCodigoLinha;
     private TextView txtCodigoLinha, txtNomeLinha;
-    private AutoCompleteTextView textView;
+    private AutoCompleteTextView edtNomeLinha, edtCodigoLinha;
     private ImageView imagemRota, btnAdaptados, btnExcecoes, btnCompartilhar;
     private TypedArray img;
     private int numeroImagem = 0;
@@ -63,7 +62,6 @@ public class PrincipalActivity extends AppCompatActivity {
         setContentView(R.layout.activity_principal);
         //Valida as permissoes na classe estatica
         Permissoes.validaPermissoes(1, this, permissoesNecessarias);
-        edtCodigoLinha = (EditText)findViewById(R.id.edtCodigoLinha);
 
         txtCodigoLinha = (TextView)findViewById(R.id.txtCodigoLinha);
         txtNomeLinha = (TextView)findViewById(R.id.txtNomeLinha);
@@ -81,16 +79,23 @@ public class PrincipalActivity extends AppCompatActivity {
 
         img = getResources().obtainTypedArray(R.array.images_rotas);
 
+        //Configuração do autoCompleteText
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_dropdown_item_1line, repositorioAcoes.TodosNomes());
-        textView = (AutoCompleteTextView)
+                android.R.layout.simple_dropdown_item_1line, repositorioAcoes.TodasRequisicoes(1,"nome_linha"));
+        edtNomeLinha = (AutoCompleteTextView)
                 findViewById(R.id.edtNomeLinha);
-        textView.setAdapter(adapter);
+        edtNomeLinha.setAdapter(adapter);
+
+        ArrayAdapter<String> adapterCodigo = new ArrayAdapter<String>(this,
+                android.R.layout.simple_dropdown_item_1line, repositorioAcoes.TodasRequisicoes(0,"nome_linha"));
+        edtCodigoLinha = (AutoCompleteTextView)
+                findViewById(R.id.edtCodigoLinha);
+        edtCodigoLinha.setAdapter(adapterCodigo);
 
         btnNomeLinha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                linha = repositorioAcoes.ResultadoNome(textView.getText().toString());
+                linha = repositorioAcoes.ResultadoNome(edtNomeLinha.getText().toString());
 
                 if(linha.getNome_linha() !=null) {
                     txtCodigoLinha.setText(linha.getNome_linha());

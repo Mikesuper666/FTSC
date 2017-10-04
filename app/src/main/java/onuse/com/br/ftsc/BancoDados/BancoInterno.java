@@ -35,9 +35,10 @@ public class BancoInterno extends SQLiteOpenHelper {
                 "(10, 'FORMOSA', 35),"+
                 "(12, 'MARINGA-FORMOSA', 36),"+
                 "(14, 'P.FIGUEIRA-IPIRANGA-PUC', 1),"+//**************************************
-                "(15, 'ALVORADA FREEWAY', 1),"+//**************************************
+                "(15, 'EXECUTIVO ALVORADA FREEWAY', 1),"+//**************************************
                 "(16, 'ALVORADA EXECUTIVO ASSIS BRASIL', 1),"+
                 "(17, 'STELLA MARIS-BIG', 81),"+
+                "(18, 'EXECUTIVO-ALVORADA-SERTÓRIO', 14),"+
                 "(19, 'TAIMBÉ-DUQUE DE CAXIAS', 90),"+
                 "(20, 'UMBU-IPIRANGA', 1),"+//**************************************
                 "(21, 'ALVORADA PROTASIO', 12),"+
@@ -83,19 +84,20 @@ public class BancoInterno extends SQLiteOpenHelper {
                 "(67, 'VILA ELZA-PROTÁSIO ALVES', 1),"+//**************************************
                 "(68, 'VILA ELZA-IPIRANGA', 1),"+//**************************************
                 "(69, 'VILA ELZA-FREE WAY', 100),"+//**************************************
-                "(70, 'AMERICANA', 15),"+
+                "(70, 'EXECUTIVO-J.ALGARVE-J.POA-J.PORTO VERDE', 55),"+
                 "(71, 'VILA ELZA-AMERICANA', 100),"+
                 "(72, 'AMERICANA CAIRU', 1),"+//**************************************
                 "(73, 'SUMARÉ', 87),"+
                 "(74, 'AMERICANA CEE', 16),"+
-                "(75, 'AMERICANA FREEWAY', 1),"+//**************************************
+                "(75, 'EXECUTIVO-AMERICANA', 1),"+//**************************************
                 "(76, 'P.FIGUEIRA-VIDA NOVA', 68),"+
                 "(79, 'AMERICANA ANCHIETA', 1),"+//**************************************
                 "(80, 'ALGARVE', 51),"+
                 "(81, 'PORTO VERDE', 70),"+
                 "(82, 'ALGARVE CAIRU', 1),"+//**************************************
                 "(83, 'ALGARVE SERTORIO', 1),"+//**************************************
-                "(84, 'ALGARVE FREEWAY', 1),"+//**************************************
+                "(84, 'EXECUTIVO-J.ALGARVE-FREE WAY', 51),"+//**************************************
+                "(85, 'EXECUTIVO-J.ALGARVE-ASSIS BRASIL', 51),"+
                 "(87, 'J.POA-J.ALG-STELLA M-J.APARECIDA', 56),"+
                 "(88, 'ALGARVE J.POA', 1),"+//**************************************
                 "(90, 'J.PORTO ALEGRE', 52),"+
@@ -113,8 +115,8 @@ public class BancoInterno extends SQLiteOpenHelper {
                 "(105, 'TIJUCA', 91),"+
                 "(106, 'TIJUCA', 91),"+
                 "(107, 'UMBU-SERTÓRIO-CAIRU', 1),"+//**************************************
-                "(109, 'UMBU-ANCHIETA-BALTAZAR', 1),"+//**************************************
-                "(110, 'UMBU-ANCHIETA-BALTAZAR', 1),"+//**************************************
+                "(109, 'UMBU-ANCHIETA-BALTAZAR', 97),"+
+                "(110, 'UMBU-ANCHIETA-BALTAZAR', 97),"+//**************************************
                 "(111, 'J.POA-ANDRADE NEVES', 53),"+
                 "(112, 'J.POA-ANDRADE NEVES', 53),"+
                 "(115, 'PORTO VERDE-JALGARVE-JPOA', 1),"+//**************************************
@@ -134,14 +136,17 @@ public class BancoInterno extends SQLiteOpenHelper {
                 "(135, 'PORTO VERDE-JALGARVE-JPOA-CASTELO BCO', 1),"+//**************************************
                 "(136, 'PORTO VERDE-JALGARVE-JPOA-CASTELO BCO', 1),"+//**************************************
                 "(137, 'PORTO VERDE-JALGARVE-JPOA-CASTELO BCO', 1),"+//**************************************
-                "(138, 'ALVORADA IATARE', 12),"+
+                "(138, 'ALVORADA-ITARARÉ', 11),"+
+                "(139, 'ALVORADA-IPIRANGA-PUC-VILA ELZA', 10),"+
                 "(140, 'SÃO PEDRO -RUI RAMOS', 1),"+//**************************************
                 "(142, 'NOVA AMERICANA', 1),"+//**************************************
+                "(143, 'ALVORADA-PROTÁSIO-IPA-VILA ELZA', 9),"+//**************************************
                 "(146, 'TAIMBÉ-AMERICANA-P.ALVES', 1),"+//**************************************
                 "(148, 'J.APARECIDA-FREE WAY', 1),"+//**************************************
                 "(150, 'SÃO PEDRO -RUI RAMOS', 1),"+//**************************************
                 "(151, 'ALVORADA SAO BORJA', 13),"+
                 "(152, 'J.APARECIDA-PDA 40', 1),"+//**************************************
+                "(155, 'ALVORADA-PROTÁSIO-JPOA', 1),"+//**************************************
                 "(158, 'SÃO PEDRO-FERRARI-PROTÁSIO ALVES', 1),"+//**************************************
                 "(159, 'FERNANDO FERRARI PROTASIO ALVES', 1),"+//**************************************
                 "(160, 'P.FIGUEIRA-NOVA ALVORADA-PAR', 64),"+
@@ -179,8 +184,8 @@ public class BancoInterno extends SQLiteOpenHelper {
                 "(217, 'STELLA MARIS-J.APARECIDA', 1),"+//**************************************
                 "(218, 'STELLA MARIS-J.APARECIDA-CAIRU', 1),"+//**************************************
                 "(219, 'J.APARECIDA-IPIRANGA', 48),"+
-                "(221, 'ALVORADA GRAVATAI/ULBRA', 2),"+
-                "(223, 'ALVORADA GRAVATAI/ULBRA', 2),"+
+                "(221, 'ALVORADA GRAVATAI/ULBRA', 8),"+
+                "(223, 'ALVORADA GRAVATAI/ULBRA', 8),"+
                 "(230, 'ESTANCIA GRANDE', 29),"+
                 "(231, 'J.POA-RÁPIDA-SERTÓRIO', 1),"+//**************************************
                 "(232, 'ESTANCIA GRANDE P.40', 31),"+
@@ -248,7 +253,7 @@ public class BancoInterno extends SQLiteOpenHelper {
                 "(331, 'ALGARVE SERTORIO', 1),"+//**************************************
                 "(333, 'ALGARVE J.POA', 1),"+//**************************************
                 "(334, 'J.PORTO ALEGRE', 52),"+
-                "(335, 'J.POA-CAIRU', 1),"+//**************************************
+                "(335, 'J.POA-CAIRU', 52),"+//**************************************
                 "(336, 'J.POA-SERTÓRIO', 1),"+//**************************************
                 "(338, 'J.APARECIDA-PDA 40', 1),"+//**************************************
                 "(339, 'J.APARECIDA-PDA 40', 1),"+//**************************************
@@ -261,7 +266,7 @@ public class BancoInterno extends SQLiteOpenHelper {
                 "(350, 'ALVORADA', 14),"+
                 "(351, '11 DE ABRIL', 58),"+
                 "(352, 'UMBU-P.ALVES', 1),"+//**************************************
-                "(353, 'STELLA MARIS-J.APARECIDA', 1),"+//**************************************
+                "(353, 'EXECUTIVO-UMBU-BALTAZAR', 96),"+//**************************************
                 "(355, 'ESTANCIA GRANDE', 29),"+
                 "(356, 'ESTANCIA GRANDE P.40', 31),"+
                 "(357, 'VILA ELZA-BIG', 1),"+//**************************************
@@ -373,7 +378,7 @@ public class BancoInterno extends SQLiteOpenHelper {
                 "(486, 'J.APARECIDA-P.ALVES-BH', 44),"+
                 "(488, 'J.APARECIDA-IGUATEMI', 46),"+
                 "(489, 'P.FIGUEIRA-VIDA NOVA', 68),"+
-                "(490, 'MARINGA-FORMOSA', 1),"+//**************************************
+                "(490, 'MARINGA-FORMOSA', 36),"+
                 "(491, 'ALVORADA ANCHIETA', 1),"+//**************************************
                 "(493, 'VILA ELZA-ANCHIETA', 102),"+
                 "(496, 'P.FIGUEIRA-SÃO PEDRO-F.FERRARI', 1),"+//**************************************
@@ -389,7 +394,7 @@ public class BancoInterno extends SQLiteOpenHelper {
                 "(513, 'VILA ELZA-IPIRANGA-SÃO PEDRO', 1),"+//**************************************
                 "(514, 'AMERICANA FREEWAY', 1),"+//**************************************
                 "(515, 'UMBU-IPIRANGA', 1),"+//**************************************
-                "(516, 'ALVORADA IPIRANGA', 1),"+//**************************************
+                "(516, 'ALVORADA IPIRANGA', 10),"+
                 "(521, 'TM5-VILA ELZA', 92),"+
                 "(522, 'UMBU-CAIRU-SERTÓRIO', 1),"+//**************************************
                 "(523, 'UMBU-ANCHIETA-BALTAZAR', 1),"+

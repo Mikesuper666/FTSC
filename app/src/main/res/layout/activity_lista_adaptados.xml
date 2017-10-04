@@ -4,7 +4,7 @@
     android:id="@+id/conteudoFragment"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@color/colorPrimaryBackGround"
     android:layout_height="match_parent"
     tools:context="onuse.com.br.ftsc.ListaAdaptados">
 
@@ -61,6 +61,25 @@
             android:gravity="right"
             android:orientation="horizontal">
 
+            <AutoCompleteTextView
+                android:id="@+id/procurarCodigoAdaptado"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Digite o código"
+                android:inputType="number"
+                android:maxLines="1"
+                android:maxLength="4"
+                android:textAllCaps="false"
+                android:textColorLink="@android:color/darker_gray"
+                android:textSize="13sp" />
+
+            <Button
+                android:id="@+id/btnProcurarrAdaptado"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/d_procurar" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

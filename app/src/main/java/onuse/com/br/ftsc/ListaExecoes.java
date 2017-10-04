@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.RadioButton;
@@ -42,6 +43,7 @@ public class ListaExecoes extends AppCompatActivity {
     private RadioButton radioNome, radioMatricula, radioExececao;
     private RadioGroup radioGroup;
     private Button btnAdicionarExecaoFragment;
+    private AutoCompleteTextView edtCodigoLinha;
 
     //variaiveis do bando de dados
     private BancoInterno bancoInterno;
@@ -192,7 +194,7 @@ public class ListaExecoes extends AppCompatActivity {
                 alerta.setPositiveButton("Deletar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        repositorioAcoes.DeletarCarrro(execoesParaEnviar.getId());
+                        repositorioAcoes.DeletarExecao(execoesParaEnviar.getId());
                         finish();
                     }
                 });

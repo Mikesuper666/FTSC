@@ -21,16 +21,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
-        <activity android:name="onuse.com.br.ftsc.MainActivity" />
-        <activity android:name="onuse.com.br.ftsc.PrincipalActivity" >
+        <activity
+            android:name="onuse.com.br.ftsc.MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="onuse.com.br.ftsc.PrincipalActivity"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="onuse.com.br.ftsc.ListaAdaptados" />
-        <activity android:name="onuse.com.br.ftsc.ListaExecoes" />
+        <activity
+            android:name="onuse.com.br.ftsc.ListaAdaptados"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="onuse.com.br.ftsc.ListaExecoes"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

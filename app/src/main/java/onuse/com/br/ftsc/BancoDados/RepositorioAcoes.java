@@ -57,13 +57,14 @@ public class RepositorioAcoes{
     }
 
     public Linha Resultado(String id){
-        Cursor cursor = conn.query("nome_linha",new String[]{"_id", "linha"}, "_id=?", new String[]{id}, null, null, null);
+        Cursor cursor = conn.query("nome_linha",new String[]{"_id", "linha","imagem"}, "_id=?", new String[]{id}, null, null, null);
         Linha linha = new Linha();
         cursor.moveToFirst();
         //se encontrou
         if(cursor.getCount() > 0) {
             linha.setId(cursor.getLong(0));
             linha.setNome_linha(cursor.getString(1));
+            linha.setImagem(cursor.getInt(2));
 
         }
         return linha;
@@ -91,15 +92,42 @@ public class RepositorioAcoes{
         return linha;
     }
 
-    public String[] TodosNomes(){
+    public Carros ResultadoCodigo(String codigo){
+        //Cursor cursor = conn.query("nome_linha",new String[]{"_id", "linha"}, "linha LIKE '%=?%'", new String[]{nome}, null, null, null);
 
-        Cursor cursor = conn.rawQuery("SELECT * FROM nome_linha", null);
+        //pega o array de strngs com a pesquisa
+        String[] a = new String[]{codigo};
+        //adicionamos "%" porque quermos todas pesquisas
+        a[0]       = codigo + '%';
+        //adicionamosao nosso cursos o comando sql
+        Cursor   c = conn.rawQuery("SELECT * FROM tipo_carro WHERE _id LIKE ?", a);
+
+        Carros carros = new Carros();
+        c.moveToFirst();
+        //se encontrou
+        if(c.getCount() > 0) {
+            carros.setId(c.getLong(0));
+            carros.setTipoCarro(c.getInt(1));
+            carros.setAdaptado(c.getInt(2));
+
+        }
+        return carros;
+    }
+
+    public String[] TodasRequisicoes(int coluna, String tabela){
+        /**
+         *Metodo que traz para o campo de texto todas requesicoes do banco de dados para um radido preenchimwnto
+         * Parametro string busca o nome da tabela
+         * paramentro inteiro coluna busca a posição da tabela
+         */
+
+        Cursor cursor = conn.rawQuery("SELECT * FROM "+tabela, null);
         String[] a = new String[cursor.getCount()];
 
         int i = 0;
         if (cursor.moveToFirst()) {
             do {
-                a[i] = cursor.getString(1);
+                a[i] = cursor.getString(coluna);
                 i++;
             } while (cursor.moveToNext());
         }

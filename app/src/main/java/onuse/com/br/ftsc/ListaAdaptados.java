@@ -10,12 +10,15 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.RadioButton;
@@ -39,7 +42,8 @@ public class ListaAdaptados extends AppCompatActivity {
     private RadioButton radioTipoCarro, radioAdaptados, radioCodigoCarro;
     private RadioGroup radioGroupAdaptados;
     private ListView listaAdptados;
-    private Button btnAdicionarAdaptado;
+    private Button btnAdicionarAdaptado, btnProcurarrAdaptado;
+    private AutoCompleteTextView edtCodigo;
 
     //variaiveis do bando de dados
     private BancoInterno bancoInterno;
@@ -56,6 +60,7 @@ public class ListaAdaptados extends AppCompatActivity {
         radioCodigoCarro = (RadioButton)findViewById(R.id.radioCodigoCarro);
         radioGroupAdaptados = (RadioGroup)findViewById(R.id.radioGroupAdaptados);
         btnAdicionarAdaptado = (Button) findViewById(R.id.btnAdicionarAdaptado);
+        btnProcurarrAdaptado = (Button) findViewById(R.id.btnProcurarrAdaptado);
         /**************************************************
          * MONTA O LIST VIEW E ADAPTER
          **************************************************/
@@ -72,6 +77,38 @@ public class ListaAdaptados extends AppCompatActivity {
         conn = bancoInterno.getWritableDatabase();
         repositorioAcoes = new RepositorioAcoes(conn);
 
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_dropdown_item_1line, repositorioAcoes.TodasRequisicoes(0,"tipo_carro"));
+        edtCodigo = (AutoCompleteTextView)findViewById(R.id.procurarCodigoAdaptado);
+        edtCodigo.setAdapter(adapter);
+
+        edtCodigo.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                Carros carrosRecebido = repositorioAcoes.ResultadoCodigo(edtCodigo.getText().toString());
+                carros.clear();
+
+                /*
+                Este metodo de if é o valor quando o edittext está vazio, ae eu reencho os valores
+                 */
+                if(i == 0 && i1 == 1 && i2 == 0){
+                    AdicionarDados();
+                }else if(carrosRecebido.getId() != 0) {
+                    carros.add(carrosRecebido);
+                }
+                arrayAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
         AdicionarDados();
         //Registra o menu_alterar flutuante para a lista
         registerForContextMenu(listaAdptados);
@@ -87,6 +124,22 @@ public class ListaAdaptados extends AppCompatActivity {
                 }
             }
         });
+
+
+        btnProcurarrAdaptado.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Carros carrosRecebido = repositorioAcoes.ResultadoCodigo(edtCodigo.getText().toString());
+                carros.clear();
+                if(carrosRecebido.getId() != 0) {
+                    carros.add(carrosRecebido);
+                    arrayAdapter.notifyDataSetChanged();
+                }else{
+                    Toast.makeText(ListaAdaptados.this, "Requisição não encontrada", Toast.LENGTH_LONG).show();
+                }
+
+            }
+        });//faz a busca do codigo no banco e retorna o valor no array
     }
 
     private void AdicionarDados(){

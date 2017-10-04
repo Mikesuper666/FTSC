@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FTSC</string>
+    <string name="app_name">Terminal Center Controller</string>
 
     <string-array name="tipos_carros">
         <item>CMT</item>

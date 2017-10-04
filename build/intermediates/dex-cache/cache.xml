@@ -16,7 +16,7 @@
         jumboMode="true"
         optimize="true"
         revision="26.0.1"
-        sha1="10c493b79406780d83f4029214ced5bed6081f95">
+        sha1="5cb9e052ca035e6916f02bf494d2fccc8246017f">
         <dex dex="/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_eb48de376dd74cd6949b073b89dcbcd085a87074/classes.dex" />
     </item>
 
