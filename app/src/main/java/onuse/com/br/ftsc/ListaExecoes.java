@@ -192,13 +192,13 @@ public class ListaExecoes extends AppCompatActivity {
                 alerta.setPositiveButton("Deletar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        repositorioAcoes.DeletarCarrro(execoesParaEnviar.getId());
                         finish();
                     }
                 });
                 alerta.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        repositorioAcoes.DeletarCarrro(execoesParaEnviar.getId());
                     }
                 });
                 alerta.show();
