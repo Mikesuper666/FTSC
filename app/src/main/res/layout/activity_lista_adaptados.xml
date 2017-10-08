@@ -11,10 +11,52 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
         android:orientation="vertical">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/colorPrimary"
+            android:gravity="right"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp">
+
+            <AutoCompleteTextView
+                android:id="@+id/procurarCodigoAdaptado"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Digite o código"
+                android:inputType="number"
+                android:maxLines="1"
+                android:maxLength="4"
+                android:textAllCaps="false"
+                android:textColorLink="@android:color/darker_gray"
+                android:textSize="13sp" />
+
+            <Button
+                android:id="@+id/btnProcurarrAdaptado"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/d_procurar" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Adicionar: "
+                android:id="@+id/txtAdicionarAdaptado"
+                android:textAlignment="center"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnAdicionarAdaptado"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/d_adicionar" />
+        </LinearLayout>
         <RadioGroup
             android:id="@+id/radioGroupAdaptados"
             android:layout_width="match_parent"
@@ -22,7 +64,9 @@
             android:alwaysDrawnWithCache="true"
             android:checkedButton="@+id/radioTipoCarro"
             android:clickable="false"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -54,47 +98,6 @@
                 android:text="Código"
                 android:textSize="12sp" />
         </RadioGroup>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="right"
-            android:orientation="horizontal">
-
-            <AutoCompleteTextView
-                android:id="@+id/procurarCodigoAdaptado"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="Digite o código"
-                android:inputType="number"
-                android:maxLines="1"
-                android:maxLength="4"
-                android:textAllCaps="false"
-                android:textColorLink="@android:color/darker_gray"
-                android:textSize="13sp" />
-
-            <Button
-                android:id="@+id/btnProcurarrAdaptado"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/d_procurar" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Adicionar um novo carro: "
-                android:textAlignment="center"
-                android:textSize="12sp"
-                android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/btnAdicionarAdaptado"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@drawable/d_adicionar" />
-        </LinearLayout>
-
         <ListView
             android:id="@+id/listaAdaptados"
             android:layout_width="match_parent"

@@ -10,6 +10,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -21,6 +23,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.Collator;
@@ -33,6 +36,7 @@ import onuse.com.br.ftsc.BancoDados.RepositorioAcoes;
 import onuse.com.br.ftsc.Fragments.AdaptadoAlteracaoFragment;
 import onuse.com.br.ftsc.Fragments.ExcecaoAlteracaoFragment;
 import onuse.com.br.ftsc.Fragments.ExecaoFragment;
+import onuse.com.br.ftsc.Helper.Preferencias;
 import onuse.com.br.ftsc.Models.Carros;
 import onuse.com.br.ftsc.Models.Execoes;
 
@@ -43,7 +47,8 @@ public class ListaExecoes extends AppCompatActivity {
     private RadioButton radioNome, radioMatricula, radioExececao;
     private RadioGroup radioGroup;
     private Button btnAdicionarExecaoFragment;
-    private AutoCompleteTextView edtCodigoLinha;
+    private AutoCompleteTextView edtMatricula;
+    private Preferencias preferencias;
 
     //variaiveis do bando de dados
     private BancoInterno bancoInterno;
@@ -68,7 +73,6 @@ public class ListaExecoes extends AppCompatActivity {
         );
         arrayAdapter = new ExcecoesAdapter(this, execoes);
         listaExecoes.setAdapter(arrayAdapter);
-        registerForContextMenu(listaExecoes);
         if(Build.VERSION.SDK_INT >= 21){
             listaExecoes.setNestedScrollingEnabled(true);
         }
@@ -76,6 +80,38 @@ public class ListaExecoes extends AppCompatActivity {
         bancoInterno = new BancoInterno(this);
         conn = bancoInterno.getWritableDatabase();
         repositorioAcoes = new RepositorioAcoes(conn);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_dropdown_item_1line, repositorioAcoes.TodasRequisicoes(0,"d_execoes"));
+        edtMatricula = (AutoCompleteTextView)findViewById(R.id.procurarMatriculaExecao);
+        edtMatricula.setAdapter(adapter);
+
+        edtMatricula.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                Execoes execoesRecebido = repositorioAcoes.ResultadoMatricula(edtMatricula.getText().toString());
+                execoes.clear();
+
+                /*
+                Este metodo de if é o valor quando o edittext está vazio, ae eu reencho os valores
+                 */
+                if(i == 0 && i1 == 1 && i2 == 0){
+                    AdicionarDados();
+                }else if(execoesRecebido.getId() != 0) {
+                    execoes.add(execoesRecebido);
+                }
+                arrayAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
 
         AdicionarDados();
 
@@ -91,6 +127,16 @@ public class ListaExecoes extends AppCompatActivity {
                 }
             }
         });
+
+        preferencias = new Preferencias(ListaExecoes.this);
+        //Registra o menu_alterar flutuante para a lista
+        if(preferencias.getLogin() == 1) {
+            registerForContextMenu(listaExecoes);
+        }else{
+            btnAdicionarExecaoFragment.setVisibility(View.GONE);
+            TextView txtAdicionarExecao = (TextView)findViewById(R.id.txtAdicionarExecao);
+            txtAdicionarExecao.setText("");
+        }
     }
 
     private void AdicionarDados(){

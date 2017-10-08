@@ -23,6 +23,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.Collator;
@@ -34,6 +35,7 @@ import onuse.com.br.ftsc.BancoDados.BancoInterno;
 import onuse.com.br.ftsc.BancoDados.RepositorioAcoes;
 import onuse.com.br.ftsc.Fragments.AdaptadoAlteracaoFragment;
 import onuse.com.br.ftsc.Fragments.AdaptadoFragment;
+import onuse.com.br.ftsc.Helper.Preferencias;
 import onuse.com.br.ftsc.Models.Carros;
 
 public class ListaAdaptados extends AppCompatActivity {
@@ -44,6 +46,7 @@ public class ListaAdaptados extends AppCompatActivity {
     private ListView listaAdptados;
     private Button btnAdicionarAdaptado, btnProcurarrAdaptado;
     private AutoCompleteTextView edtCodigo;
+    private Preferencias preferencias;
 
     //variaiveis do bando de dados
     private BancoInterno bancoInterno;
@@ -110,8 +113,7 @@ public class ListaAdaptados extends AppCompatActivity {
         });
 
         AdicionarDados();
-        //Registra o menu_alterar flutuante para a lista
-        registerForContextMenu(listaAdptados);
+
         btnAdicionarAdaptado.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -140,6 +142,16 @@ public class ListaAdaptados extends AppCompatActivity {
 
             }
         });//faz a busca do codigo no banco e retorna o valor no array
+
+        preferencias = new Preferencias(ListaAdaptados.this);
+        //Registra o menu_alterar flutuante para a lista
+        if(preferencias.getLogin() == 1){
+        registerForContextMenu(listaAdptados);
+        }else{
+            btnAdicionarAdaptado.setVisibility(View.GONE);
+            TextView txtAdicionarAdaptado = (TextView)findViewById(R.id.txtAdicionarAdaptado);
+            txtAdicionarAdaptado.setText("");
+        }
     }
 
     private void AdicionarDados(){

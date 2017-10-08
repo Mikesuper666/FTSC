@@ -42,6 +42,7 @@
                 android:layout_height="wrap_content"
                 android:enabled="false"
                 android:hint="Digite o cógigo"
+                android:textColorHint="@android:color/darker_gray"
                 android:inputType="number"
                 android:maxLength="4"
                 android:maxLines="1"
@@ -64,12 +65,12 @@
                 android:text="Tipo de carro:" />
 
             <Spinner
+                android:id="@+id/fragAlteracaoAdaptadoTipoCarro"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawSelectorOnTop="true"
-                android:textColor="@android:color/white"
                 android:entries="@array/tipos_carros"
-                android:id="@+id/fragAlteracaoAdaptadoTipoCarro"></Spinner>
+                android:textColor="@android:color/white"></Spinner>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"

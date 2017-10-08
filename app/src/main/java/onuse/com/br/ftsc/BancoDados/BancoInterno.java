@@ -4,12 +4,13 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+
 /**
  * Created by maico on 27/09/17.
  */
 public class BancoInterno extends SQLiteOpenHelper {
     public BancoInterno(Context context){
-        super(context, "Soul", null, 1);
+        super(context, "u726847299_tcc", null, 1);
         //contexto, nome do banco, cursor factoyry, versao do banco
     }
 
@@ -17,420 +18,232 @@ public class BancoInterno extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
 
         db.execSQL(
-                "CREATE TABLE if not EXISTS nome_linha " +
-                        "(_id INTEGER PRIMARY KEY," +
+                "CREATE TABLE if not EXISTS nome_linha" +
+                        "(_id INTEGER AUTO_INCREMENT," +
                         "linha VARCHAR (100)," +
-                        "imagem INTEGER(11));"
+                        "imagem INTEGER(11),"+
+                        "codigos VARCHAR(50)," +
+                        "PRIMARY KEY (_id));"
         );
 
-        db.execSQL( "INSERT INTO `nome_linha` (`_id`, `linha`, `imagem`) VALUES"+
-                "(1, 'ALVORADA', 14),"+//**************************************
-                "(2, 'ALVORADA FREEWAY', 2),"+//**************************************
-                "(3, 'ALVORADA CAIRU', 3),"+//**************************************
-                "(4, 'ALVORADA SERTORIO', 4),"+//**************************************
-                "(6, 'ALVORADA ANCHIETA', 5),"+//**************************************
-                "(7, 'SANTA CLARA', 77),"+
-                "(8, 'MARINGA', 57),"+
-                "(9, 'TAIMBÉ-DUQUE DE CAXIAS', 90),"+
-                "(10, 'FORMOSA', 35),"+
-                "(12, 'MARINGA-FORMOSA', 36),"+
-                "(14, 'P.FIGUEIRA-IPIRANGA-PUC', 1),"+//**************************************
-                "(15, 'EXECUTIVO ALVORADA FREEWAY', 1),"+//**************************************
-                "(16, 'ALVORADA EXECUTIVO ASSIS BRASIL', 1),"+
-                "(17, 'STELLA MARIS-BIG', 81),"+
-                "(18, 'EXECUTIVO-ALVORADA-SERTÓRIO', 14),"+
-                "(19, 'TAIMBÉ-DUQUE DE CAXIAS', 90),"+
-                "(20, 'UMBU-IPIRANGA', 1),"+//**************************************
-                "(21, 'ALVORADA PROTASIO', 12),"+
-                "(24, 'P.FIGUEIRA-SÃO PEDRO-F.FERRARI', 67),"+
-                "(25, 'P.FIGUEIRA-P.ALVES', 1),"+//**************************************
-                "(26, 'AMERICANA FREEWAY', 1),"+//**************************************
-                "(27, 'P.FIGUEIRA-SÃO PEDRO-P.ALVES', 1),"+//**************************************
-                "(28, 'VILA ELZA-PUC', 1),"+//**************************************
-                "(29, 'P.FIGUEIRA-AMERICANA', 60),"+
-                "(30, 'P.FIGUEIRA', 59),"+
-                "(31, 'P.FIGUEIRA-P.ALVES-CARLOS GOMES', 1),"+//**************************************
-                "(32, 'P.FIGUEIRA-CAIRU', 1),"+//**************************************
-                "(33, 'P.FIGUEIRA-FREE WAY', 1),"+//**************************************
-                "(34, 'SÃO PEDRO-FERRARI', 78),"+
-                "(36, 'SÃO PEDRO-CEASA', 77),"+
-                "(37, 'P.FIGUEIRA-F.FERRARI', 62),"+
-                "(38, 'CABRAL', 18),"+
-                "(39, 'UMBU', 96),"+
-                "(40, 'STELLA MARIS-PDA-40', 83),"+
-                "(41, 'SÃO PEDRO-FERRARI', 78),"+
-                "(43, 'UMBU-CAIRU', 1),"+//**************************************
-                "(44, '11 DE ABRIL', 58),"+
-                "(45, 'SALOMÉ', 71),"+
-                "(46, 'SALOMÉ-CAIRU', 1),"+//**************************************
-                "(47, 'SALOMÉ-SERTÓRIO', 1),"+//**************************************
-                "(48, 'ALVORADA FREEWAY', 1),"+//**************************************
-                "(49, 'ALVORADA EXECUTIVO ASSIS BRASIL', 1),"+//**************************************
-                "(50, 'P.FIGUEIRA-IGUATEMI', 64),"+
-                "(51, 'VILA ELZA', 99),"+
-                "(52, 'SALOMÉ-UMBU', 75),"+
-                "(53, 'ALGARVE EXEC. ASSIS BRASIL', 1),"+//**************************************
-                "(54, 'UMBU-ANCHIETA-AMERICANA', 97),"+
-                "(55, 'ALGARVE J.POA EXEC A/B', 1),"+//**************************************
-                "(56, 'UMBU-P.ALVES', 1),"+//**************************************
-                "(57, 'ALVORADA INTERSUL', 37),"+
-                "(59, 'VILA ELZA-ANCHIETA', 102),"+
-                "(60, 'VILA ELZA', 99),"+
-                "(61, 'P.FIGUEIRA-VIDA NOVA-FAIXA', 1),"+//**************************************
-                "(62, 'VILA ELZA-CAIRU', 1),"+//**************************************
-                "(63, 'VILA ELZA-SERTÓRIO', 1),"+//**************************************
-                "(65, 'VILA ELZA-PIRATINI-UMBU-AMERICANA', 106),"+
-                "(66, 'VILA ELZA-FREE WAY', 100),"+
-                "(67, 'VILA ELZA-PROTÁSIO ALVES', 1),"+//**************************************
-                "(68, 'VILA ELZA-IPIRANGA', 1),"+//**************************************
-                "(69, 'VILA ELZA-FREE WAY', 100),"+//**************************************
-                "(70, 'EXECUTIVO-J.ALGARVE-J.POA-J.PORTO VERDE', 55),"+
-                "(71, 'VILA ELZA-AMERICANA', 100),"+
-                "(72, 'AMERICANA CAIRU', 1),"+//**************************************
-                "(73, 'SUMARÉ', 87),"+
-                "(74, 'AMERICANA CEE', 16),"+
-                "(75, 'EXECUTIVO-AMERICANA', 1),"+//**************************************
-                "(76, 'P.FIGUEIRA-VIDA NOVA', 68),"+
-                "(79, 'AMERICANA ANCHIETA', 1),"+//**************************************
-                "(80, 'ALGARVE', 51),"+
-                "(81, 'PORTO VERDE', 70),"+
-                "(82, 'ALGARVE CAIRU', 1),"+//**************************************
-                "(83, 'ALGARVE SERTORIO', 1),"+//**************************************
-                "(84, 'EXECUTIVO-J.ALGARVE-FREE WAY', 51),"+//**************************************
-                "(85, 'EXECUTIVO-J.ALGARVE-ASSIS BRASIL', 51),"+
-                "(87, 'J.POA-J.ALG-STELLA M-J.APARECIDA', 56),"+
-                "(88, 'ALGARVE J.POA', 1),"+//**************************************
-                "(90, 'J.PORTO ALEGRE', 52),"+
-                "(92, 'J.POA-CAIRU', 1),"+//**************************************
-                "(93, 'J.POA-SERTÓRIO', 1),"+//**************************************
-                "(94, 'ALGARVE EXEC. ASSIS BRASIL', 1),"+//**************************************
-                "(96, 'ALGARVE ANCHIETA', 1),"+//**************************************
-                "(97, 'J.POA-ANCHIETA', 1),"+//**************************************
-                "(98, 'PORTO VERDE-SERTÓRIO', 1),"+//**************************************
-                "(99, 'P.FIGUEIRA-VIDA NOVA-NOVA ALVORADA', 69),"+
-                "(100, 'P.FIGUEIRA-NOVA ALVORADA', 68),"+
-                "(101, 'VILA ELZA-IPIRANGA-SÃO PEDRO', 1),"+//**************************************
-                "(102, 'VILA ELZA-P.ALVES-SÃO PEDRO', 1),"+//**************************************
-                "(103, 'AMERICANA FREEWAY', 1),"+//**************************************
-                "(105, 'TIJUCA', 91),"+
-                "(106, 'TIJUCA', 91),"+
-                "(107, 'UMBU-SERTÓRIO-CAIRU', 1),"+//**************************************
-                "(109, 'UMBU-ANCHIETA-BALTAZAR', 97),"+
-                "(110, 'UMBU-ANCHIETA-BALTAZAR', 97),"+//**************************************
-                "(111, 'J.POA-ANDRADE NEVES', 53),"+
-                "(112, 'J.POA-ANDRADE NEVES', 53),"+
-                "(115, 'PORTO VERDE-JALGARVE-JPOA', 1),"+//**************************************
-                "(116, 'PORTO VERDE-JALGARVE-JPOA', 1),"+//**************************************
-                "(117, 'STELLA MARIS-SERTÓRIO-CAIRU', 1),"+
-                "(118, 'VILA ELZA-SERTÓRIO-CAIRU', 1),"+//**************************************
-                "(119, 'PORTO VERDE-SERTÓRIO-CAIRU', 1),"+//**************************************
-                "(120, 'J.APARECIDA-SERTÓRIO-CAIRU', 1),"+//**************************************
-                "(121, 'J.POA-J.ALGARVE-P.ALVES', 1),"+//**************************************
-                "(122, 'VILA ELZA-SERTÓRIO-CAIRU', 1),"+//**************************************
-                "(123, 'PORTO VERDE-SERTÓRIO-CAIRU', 1),"+//**************************************
-                "(125, 'ALVORADA PUC', 1),"+//**************************************
-                "(126, 'ALVORADA SERTORIO CAIRU', 1),"+//**************************************
-                "(127, 'ALGARVE J.POA PORTO VERDE ASSIS BRASIL', 1),"+//**************************************
-                "(129, 'STELLA MARIS-SERTÓRIO-CAIRU', 1),"+//**************************************
-                "(131, 'ALGARVE J.POA PORTO VERDE CAIRU', 1),"+//**************************************
-                "(135, 'PORTO VERDE-JALGARVE-JPOA-CASTELO BCO', 1),"+//**************************************
-                "(136, 'PORTO VERDE-JALGARVE-JPOA-CASTELO BCO', 1),"+//**************************************
-                "(137, 'PORTO VERDE-JALGARVE-JPOA-CASTELO BCO', 1),"+//**************************************
-                "(138, 'ALVORADA-ITARARÉ', 11),"+
-                "(139, 'ALVORADA-IPIRANGA-PUC-VILA ELZA', 10),"+
-                "(140, 'SÃO PEDRO -RUI RAMOS', 1),"+//**************************************
-                "(142, 'NOVA AMERICANA', 1),"+//**************************************
-                "(143, 'ALVORADA-PROTÁSIO-IPA-VILA ELZA', 9),"+//**************************************
-                "(146, 'TAIMBÉ-AMERICANA-P.ALVES', 1),"+//**************************************
-                "(148, 'J.APARECIDA-FREE WAY', 1),"+//**************************************
-                "(150, 'SÃO PEDRO -RUI RAMOS', 1),"+//**************************************
-                "(151, 'ALVORADA SAO BORJA', 13),"+
-                "(152, 'J.APARECIDA-PDA 40', 1),"+//**************************************
-                "(155, 'ALVORADA-PROTÁSIO-JPOA', 1),"+//**************************************
-                "(158, 'SÃO PEDRO-FERRARI-PROTÁSIO ALVES', 1),"+//**************************************
-                "(159, 'FERNANDO FERRARI PROTASIO ALVES', 1),"+//**************************************
-                "(160, 'P.FIGUEIRA-NOVA ALVORADA-PAR', 64),"+
-                "(162, 'P.FIGUEIRA-SÃO PEDRO-P.ALVES-PAR', 1),"+//**************************************
-                "(164, 'P.FIGUEIRA-VIDA NOVA-PAR', 68),"+
-                "(166, 'P.FIGUEIRA-SÃO PEDRO-F.FERRARI-PAR', 67),"+
-                "(172, 'PORTO VERDE-JALGARVE-JPOA-PDA', 1),"+//**************************************
-                "(173, 'J.POA-J.ALG-PV-STELLA MARIS-J.APARECIDA-BH-FAPA', 1),"+//**************************************
-                "(178, 'AMERICANA P.40 SAL', 1),"+//**************************************
-                "(179, 'SALOMÉ-UMBU-FAPA', 1),"+//**************************************
-                "(181, 'SÃO PEDRO-PDA', 79),"+
-                "(182, 'PINDORAMA', 1),"+//**************************************
-                "(183, 'UMBU-FAPA', 98),"+
-                "(184, 'STELLA MARIS-PDA', 83),"+
-                "(185, 'VILA ELZA-PDA', 1),"+//**************************************
-                "(188, 'VILA ELZA-FAPA', 103),"+
-                "(189, 'VILA ELZA-FAPA', 103),"+//**************************************
-                "(190, 'SÃO PEDRO-MARINGA-PDA', 1),"+//**************************************
-                "(193, 'J.APARECIDA-RÁPIDA-SERTÓRIO', 1),"+//**************************************
-                "(194, 'ALGARVE J.POA EX. P.VERDE FW', 1),"+//**************************************
-                "(200, 'J.APARECIDA', 41),"+
-                "(201, 'J.APARECIDA-BH', 43),"+
-                "(202, 'J.APARECIDA-CAIRU', 1),"+//**************************************
-                "(203, 'J.APARECIDA-SERTÓRIO', 1),"+//**************************************
-                "(204, 'J.APARECIDA-PROTÁSIO ALVES', 1),"+//**************************************
-                "(206, 'J.APARECIDA-P.ALVES-BH', 44),"+
-                "(207, 'J.APARECIDA-IGUATEMI', 46),"+
-                "(208, 'ALVORADA INTERSUL B.H', 1),"+//**************************************
-                "(209, 'J.APARECIDA-ANCHIETA', 1),"+//**************************************
-                "(210, 'ALVORADA', 14),"+
-                "(211, 'SERVIDÃO', 1),"+//**************************************
-                "(212, 'J.APARECIDA-SERVIDÃO', 42),"+
-                "(213, 'J.APARECIDA-SERVIDÃO', 42),"+
-                "(216, 'J.APARECIDA-IPIRANGA', 1),"+//**************************************
-                "(217, 'STELLA MARIS-J.APARECIDA', 1),"+//**************************************
-                "(218, 'STELLA MARIS-J.APARECIDA-CAIRU', 1),"+//**************************************
-                "(219, 'J.APARECIDA-IPIRANGA', 48),"+
-                "(221, 'ALVORADA GRAVATAI/ULBRA', 8),"+
-                "(223, 'ALVORADA GRAVATAI/ULBRA', 8),"+
-                "(230, 'ESTANCIA GRANDE', 29),"+
-                "(231, 'J.POA-RÁPIDA-SERTÓRIO', 1),"+//**************************************
-                "(232, 'ESTANCIA GRANDE P.40', 31),"+
-                "(240, 'DISTRITO INDUSTRIAL BALTAZAR', 24),"+
-                "(241, 'DISTRITO INDUSTRIAL P.40', 1),"+
-                "(242, 'DISTRITO INDUSTRIAL CACHOEIRINHA', 19),"+
-                "(244, 'VILA ELZA-PDA', 1),"+//**************************************
-                "(245, 'VILA ELZA-BIG', 1),"+//**************************************
-                "(247, 'VILA ELZA-BIG-AMERICANA', 1),"+//**************************************
-                "(250, 'VILA ELZA-ZIVI', 1),"+//**************************************
-                "(251, 'DISTRITO INDUSTRIAL CIRCULAR ALVORADA', 23),"+//**************************************
-                "(253, 'J.APARECIDA VIA 6425-F.DHIL', 1),"+//**************************************
-                "(254, 'J.APARECIDA SAÍDA 6425-F.DHILL', 1),"+//**************************************
-                "(255, 'SALOMÉ-RÁPIDA-SERTÓRIO', 1),"+//**************************************
-                "(256, 'VILA ELZA-RÁPIDA-SERTÓRIO', 1),"+//**************************************
-                "(257, 'UMBU-RÁPIDA-SERTÓRIO', 1),"+//**************************************
-                "(260, 'VILA ELZA-PIRATINI', 104),"+
-                "(263, 'SALOMÉ-UMBU', 75),"+
-                "(265, 'INTERSUL', 37),"+
-                "(267, 'UMBU-IPIRANGA', 1),"+//**************************************
-                "(270, 'ESTANCIA GRANDE CAIRU', 1),"+//**************************************
-                "(271, 'VILA ELZA-IPIRANGA-SÃO PEDRO', 1),"+//**************************************
-                "(274, 'SALOMÉ-PROTÁSIO ALVES', 1),"+//**************************************
-                "(277, 'VILA ELZA-PUC', 1),"+//**************************************
-                "(279, 'STELLA MARIS-SERTÓRIO', 84),"+
-                "(280, 'STELLA MARIS', 86),"+
-                "(281, 'STELLA MARIS-SERTÓRIO', 84),"+
-                "(283, 'ALGARVE ANCHIETA', 1),"+//**************************************
-                "(284, 'J.POA-ANCHIETA', 1),"+//**************************************
-                "(285, 'PORTO VERDE-SERTÓRIO', 1),"+//**************************************
-                "(287, 'P.FIGUEIRA-NOVA ALVORADA', 64),"+
-                "(288, 'VILA ELZA-P.ALVES-SÃO PEDRO', 1),"+//**************************************
-                "(291, 'P.FIGUEIRA-SÃO PEDRO-F.FERRARI', 67),"+
-                "(292, 'P.FIGUEIRA-FREE WAY', 1),"+//**************************************
-                "(295, 'VILA ELZA-ANCHIETA', 102),"+
-                "(296, 'P.FIGUEIRA-PUC', 1),"+//**************************************
-                "(297, 'P.FIGUEIRA-IGUATEMI', 63),"+
-                "(298, 'P.FIGUEIRA-VIDA NOVA', 68),"+
-                "(300, 'DISTRITO INDUSTRIAL CACHOEIRINHA', 19),"+
-                "(302, 'MARINGA', 57),"+
-                "(303, 'TAIMBÉ', 89),"+
-                "(304, 'TAIMBÉ-FORMOSA-MARINGA', 1),"+//**************************************
-                "(305, 'P.FIGUEIRA-P.ALVES', 1),"+//**************************************
-                "(306, 'P.FIGUEIRA', 59),"+
-                "(307, 'P.FIGUEIRA-CAIRU', 1),"+//**************************************
-                "(309, 'P.FIGUEIRA-F.FERRARI', 62),"+
-                "(311, 'SÃO PEDRO-CEASA', 77),"+
-                "(312, 'CABRAL', 18),"+
-                "(313, 'UMBU', 96),"+
-                "(314, 'SÃO PEDRO', 1),"+//**************************************
-                "(315, 'FERNANDO FERRARI', 32),"+
-                "(317, 'UMBU-CAIRU', 1),"+//**************************************
-                "(318, 'UMBU-SERTÓRIO', 1),"+//**************************************
-                "(319, 'SALOMÉ', 71),"+
-                "(320, 'SALOMÉ-CAIRU', 1),"+//**************************************
-                "(321, 'SALOMÉ-SERTÓRIO', 1),"+//**************************************
-                "(322, 'P.FIGUEIRA-SÃO PEDRO', 66),"+
-                "(323, 'VILA ELZA', 99),"+
-                "(324, 'UMBU-ANCHIETA-AMERICANA', 103),"+
-                "(326, 'VILA ELZA-SERTÓRIO', 1),"+//**************************************
-                "(327, 'VILA ELZA-CAIRU', 1),"+//**************************************
-                "(328, 'SUMARÉ', 87),"+
-                "(329, 'ALGARVE', 51),"+
-                "(330, 'ALGARVE CAIRU', 1),"+//**************************************
-                "(331, 'ALGARVE SERTORIO', 1),"+//**************************************
-                "(333, 'ALGARVE J.POA', 1),"+//**************************************
-                "(334, 'J.PORTO ALEGRE', 52),"+
-                "(335, 'J.POA-CAIRU', 52),"+//**************************************
-                "(336, 'J.POA-SERTÓRIO', 1),"+//**************************************
-                "(338, 'J.APARECIDA-PDA 40', 1),"+//**************************************
-                "(339, 'J.APARECIDA-PDA 40', 1),"+//**************************************
-                "(344, 'SÃO PEDRO-PDA', 79),"+
-                "(345, 'SÃO PEDRO-PDA', 79),"+
-                "(346, 'J.APARECIDA', 41),"+
-                "(347, 'J.APARECIDA-CAIRU', 45),"+
-                "(348, 'J.APARECIDA-SERTÓRIO', 1),"+//**************************************
-                "(349, 'J.APARECIDA-PROTÁSIO ALVES', 44),"+
-                "(350, 'ALVORADA', 14),"+
-                "(351, '11 DE ABRIL', 58),"+
-                "(352, 'UMBU-P.ALVES', 1),"+//**************************************
-                "(353, 'EXECUTIVO-UMBU-BALTAZAR', 96),"+//**************************************
-                "(355, 'ESTANCIA GRANDE', 29),"+
-                "(356, 'ESTANCIA GRANDE P.40', 31),"+
-                "(357, 'VILA ELZA-BIG', 1),"+//**************************************
-                "(358, 'VILA ELZA-BIG', 1),"+//**************************************
-                "(359, 'ESTANCIA GRANDE CAIRU', 1),"+//**************************************
-                "(360, 'SALOMÉ-ANCHIETA', 72),"+
-                "(361, 'ALVORADA VIAMAO', 3),"+
-                "(362, 'STELLA MARIS', 86),"+
-                "(363, 'INTERSUL', 37),"+
-                "(364, 'DISTRITO INDUSTRIAL BALTAZAR', 24),"+
-                "(365, 'DISTRITO INDUSTRIAL P.40', 1),"+//**************************************
-                "(366, 'PINDORAMA', 1),"+//**************************************
-                "(368, 'SANTA CLARA', 76),"+
-                "(369, 'ALVORADA INTERSUL', 37),"+
-                "(370, 'P.FIGUEIRA-VIDA NOVA-FAIXA', 65),"+
-                "(371, 'VILA ELZA-AMERICANA', 20),"+
-                "(372, 'VILA ELZA-BIG-AMERICANA', 1),"+//**************************************
-                "(373, 'ALGARVE FREEWAY', 1),"+//**************************************
-                "(374, 'VILA ELZA-BIG-AMERICANA', 1),"+//**************************************
-                "(375, 'PINDORAMA', 1),"+//**************************************
-                "(376, 'STELLA MARIS-J.APARECIDA-CAIRU', 1),"+//**************************************
-                "(377, 'STELLA MARIS-BIG', 81),"+
-                "(378, 'STELLA MARIS-BIG', 81),"+
-                "(380, 'P.FIGUEIRA-IPIRANGA', 1),"+//**************************************
-                "(381, 'PORTO VERDE', 70),"+
-                "(382, 'AMERICANA ANCHIETA', 1),"+//**************************************
-                "(383, 'VILA ELZA-FREE WAY', 1),"+//**************************************
-                "(384, 'VILA ELZA-PROTÁSIO ALVES', 1),"+//**************************************
-                "(385, 'VILA ELZA-ZIVI', 1),"+//**************************************
-                "(386, 'VILA ELZA-ZIVI', 1),"+//**************************************
-                "(387, 'VILA ELZA-IPIRANGA', 1),"+//**************************************
-                "(390, 'J.APARECIDA-BH', 43),"+
-                "(391, 'J.APARECIDA-P.ALVES-BH', 44),"+
-                "(392, 'J.APARECIDA-IGUATEMI', 46),"+
-                "(393, 'ALVORADA INTERSUL B.H', 1),"+//**************************************
-                "(394, 'VILA ELZA-PIRATINI-UMBU-AMERICANA', 1),"+//**************************************
-                "(396, 'AMERICANA CEE', 16),"+
-                "(400, 'P.FIGUEIRA-PUC', 1),"+//**************************************
-                "(401, 'ALVORADA', 14),"+
-                "(402, 'J.APARECIDA', 41),"+
-                "(403, 'ALVORADA CAIRU', 1),"+//**************************************
-                "(404, 'ALVORADA SERTORIO', 1),"+
-                "(406, 'J.APARECIDA-CAIRU', 1),"+//**************************************
-                "(407, 'SANTA CLARA', 76),"+
-                "(408, 'MARINGA', 57),"+
-                "(409, 'TAIMBÉ', 89),"+
-                "(410, 'FORMOSA', 35),"+
-                "(411, 'J.APARECIDA-SERTÓRIO', 1),"+//**************************************
-                "(412, 'J.APARECIDA-PROTÁSIO ALVES', 1),"+//**************************************
-                "(413, 'ALVORADA', 14),"+
-                "(414, '11 DE ABRIL', 58),"+
-                "(415, 'ALVORADA FREEWAY', 1),"+//**************************************
-                "(416, 'ALVORADA EXECUTIVO ASSIS BRASIL', 1),"+//**************************************
-                "(417, 'UMBU-P.ALVES', 1),"+//**************************************
-                "(420, 'ALVORADA INTERSUL', 37),"+
-                "(421, 'ALVORADA PUC', 1),"+//**************************************
-                "(422, 'STELLA MARIS-J.APARECIDA', 1),"+//**************************************
-                "(423, 'STELLA MARIS-J.APARECIDA-CAIRU', 1),"+
-                "(424, 'P.FIGUEIRA-IPIRANGA', 1),"+
-                "(425, 'P.FIGUEIRA-P.ALVES', 1),"+
-                "(426, 'ESTANCIA GRANDE', 1),"+
-                "(427, 'DISTRITO INDUSTRIAL BALTAZAR', 1),"+
-                "(428, 'INTERSUL', 1),"+
-                "(429, 'ESTANCIA GRANDE CAIRU', 1),"+//**************************************
-                "(430, 'P.FIGUEIRA', 59),"+
-                "(431, 'P.FIGUEIRA-F.FERRARI', 62),"+
-                "(432, 'P.FIGUEIRA-CAIRU', 1),"+//**************************************
-                "(433, 'UMBU-ANCHIETA-AMERICANA', 97),"+
-                "(434, 'P.FIGUEIRA-F.FERRARI', 62),"+
-                "(436, 'SÃO PEDRO-CEASA', 77),"+
-                "(437, 'STELLA MARIS', 86),"+
-                "(438, 'CABRAL', 18),"+
-                "(439, 'UMBU', 96),"+
-                "(440, 'SÃO PEDRO', 1),"+
-                "(441, 'FERNANDO FERRARI', 1),"+
-                "(443, 'UMBU-CAIRU', 1),"+//**************************************
-                "(444, 'UMBU-SERTÓRIO', 1),"+//**************************************
-                "(445, 'SALOMÉ', 71),"+
-                "(446, 'SALOMÉ-PDA40', 79),"+
-                "(447, 'SALOMÉ-SERTÓRIO', 1),"+//**************************************
-                "(448, 'P.FIGUEIRA-SÃO PEDRO', 66),"+
-                "(449, 'VILA ELZA', 99),"+
-                "(450, 'SALOMÉ-ANCHIETA', 72),"+
-                "(452, 'VILA ELZA-SERTÓRIO', 1),"+//**************************************
-                "(453, 'VILA ELZA-CAIRU', 1),"+//**************************************
-                "(454, 'AMERICANA', 15),"+
-                "(455, 'AMERICANA CAIRU', 1),"+//**************************************
-                "(456, 'SUMARÉ', 87),"+
-                "(458, 'AMERICANA ANCHIETA', 1),"+//**************************************
-                "(459, 'ALGARVE', 51),"+
-                "(460, 'ALGARVE CAIRU', 1),"+//**************************************
-                "(461, 'ALGARVE SERTORIO', 1),"+//**************************************
-                "(464, 'J.PORTO ALEGRE', 52),"+
-                "(465, 'J.POA-CAIRU', 1),"+//**************************************
-                "(466, 'J.POA-SERTÓRIO', 1),"+//**************************************
-                "(470, 'ALVORADA FREEWAY', 1),"+//**************************************
-                "(471, 'AMERICANA CEE FREEWAY', 1),"+//**************************************
-                "(472, 'ALGARVE FREEWAY', 1),"+//**************************************
-                "(473, 'ALGARVE EXEC. ASSIS BRASIL', 1),"+//**************************************
-                "(474, 'VILA ELZA-FREE WAY', 1),"+//**************************************
-                "(475, 'P.FIGUEIRA-VIDA NOVA-FAIXA', 68),"+
-                "(477, 'PORTO VERDE', 70),"+
-                "(479, 'VILA ELZA-PROTÁSIO ALVES', 1),"+//**************************************
-                "(480, 'VILA ELZA-IPIRANGA', 1),"+//**************************************
-                "(481, 'J.APARECIDA-BH', 43),"+
-                "(482, 'ALVORADA INTERSUL B.H', 1),"+//**************************************
-                "(483, 'ALGARVE J.POA', 1),"+//**************************************
-                "(485, 'P.FIGUEIRA-IGUATEMI', 63),"+
-                "(486, 'J.APARECIDA-P.ALVES-BH', 44),"+
-                "(488, 'J.APARECIDA-IGUATEMI', 46),"+
-                "(489, 'P.FIGUEIRA-VIDA NOVA', 68),"+
-                "(490, 'MARINGA-FORMOSA', 36),"+
-                "(491, 'ALVORADA ANCHIETA', 1),"+//**************************************
-                "(493, 'VILA ELZA-ANCHIETA', 102),"+
-                "(496, 'P.FIGUEIRA-SÃO PEDRO-F.FERRARI', 1),"+//**************************************
-                "(497, 'P.FIGUEIRA-FREE WAY', 1),"+//**************************************
-                "(500, 'ALGARVE ANCHIETA', 1),"+//**************************************
-                "(501, 'J.POA-ANCHIETA', 1),"+//**************************************
-                "(502, 'PORTO VERDE-SERTÓRIO', 1),"+//**************************************
-                "(504, 'P.FIGUEIRA-NOVA ALVORADA', 64),"+
-                "(505, 'VILA ELZA-P.ALVES-SÃO PEDRO', 1),"+//**************************************
-                "(508, 'STELLA MARIS-SERTÓTIO', 84),"+
-                "(509, 'VILA ELZA-PUC', 1),"+//**************************************
-                "(511, 'SALOMÉ-PROTÁSIO ALVES', 1),"+//**************************************
-                "(513, 'VILA ELZA-IPIRANGA-SÃO PEDRO', 1),"+//**************************************
-                "(514, 'AMERICANA FREEWAY', 1),"+//**************************************
-                "(515, 'UMBU-IPIRANGA', 1),"+//**************************************
-                "(516, 'ALVORADA IPIRANGA', 10),"+
-                "(521, 'TM5-VILA ELZA', 92),"+
-                "(522, 'UMBU-CAIRU-SERTÓRIO', 1),"+//**************************************
-                "(523, 'UMBU-ANCHIETA-BALTAZAR', 1),"+
-                "(525, 'PORTO VERDE-JALGARVE-JPOA', 1),"+
-                "(526, 'VILA ELZA-SERTÓRIO-CAIRU', 97),"+
-                "(527, 'PORTO VERDE-SERTÓRIO-CAIRU', 1),"+
-                "(531, 'J.APARECIDA-SERVIDÃO', 1),"+//**************************************
-                "(535, 'ALVORADA PUC', 1),"+//**************************************
-                "(538, 'ALGARVE J.POA PORTO VERDE CAIRU', 1),"+//**************************************
-                "(539, 'STELLA MARIS-SERTÓRIO-CAIRU', 84),"+
-                "(540, 'SÃO PEDRO -RUI RAMOS', 1),"+//**************************************
-                "(541, 'J.APARECIDA-IPIRANGA', 48),"+
-                "(549, 'SÃO PEDRO-FERRARI-PROTÁSIO ALVES', 1),"+//**************************************
-                "(710, 'TM5', 93),"+
-                "(713, 'TM5-VILA ELZA', 1),"+//**************************************
-                "(951, 'TM5', 93),"+
-                "(952, 'TM5', 93),"+
-                "(953, 'TM1', 92),"+
-                "(954, 'TM1', 1),"+//**************************************
-                "(955, 'TM2', 1),"+//**************************************
-                "(7199, 'ESTANCIA GRANDE MICRO', 1);"//**************************************
-        );
-
+        /*db.execSQL( "INSERT INTO `nome_linha` (`_id`, `linha`, `imagem`, `codigos`) VALUES"+
+                "(0, '11 DE ABRIL', 58, '31, 44, 351, 414'),"+
+                "(1, 'ALVORADA', 14, '1, 401'),"+
+                "(2, 'ALVORADA ANCHIETA', 14, '6, 491'),"+
+                "(3, 'ALVORADA CAIRU', 14, '3, 403'),"+
+                "(4, 'ALVORADA FREEWAY', 14, '2, 48, 15, 415, 470'),"+
+                "(5, 'ALVORADA GRAVATAI', 8, '220'),"+
+                "(6, 'ALVORADA GRAVATAI ULBRA', 8, '71, 221, 223'),"+
+                "(7, 'ALVORADA GRAVATAI FERRAMENTAS GERAIS', 0, '223'),"+
+                "(8, 'ALVORADA IPIRANGA', 10, '516, 104'),"+
+                "(9, 'ALVORADA IPIRANGA PUC VILA ELZA', 12, '139'),"+//editar
+                "(10, 'ALVORADA ITARARÉ', 11, '138'),"+
+                "(11, 'ALVORADA PROTASIO', 12, '21, 421'),"+
+                "(12, 'ALVORADA PROTÁSIO IPA VILA ELZA', 12, '143'),"+//editar
+                "(13, 'ALVORADA PROTÁSIO JARDIN POA', 12, '155'),"+//EDITAR
+                "(14, 'ALVORADA PUC', 10, '125, 535'),"+
+                "(15, 'ALVORADA SÃO BORJA', 13, '151'),"+
+                "(16, 'ALVORADA SERTORIO', 14, '4, 18, 50, 404'),"+
+                "(17, 'ALVORADA SERTORIO CAIRU', 14, '126'),"+
+                "(18, 'ALVORADA VIAMAO', 3, '185, 361, 275'),"+
+                "(19, 'AMERICANA', 15, '70, 454'),"+
+                "(20, 'AMERICANA ANCHIETA', 15, '79, 382, 458'),"+
+                "(21, 'AMERICANA CAIRU', 15, '72, 455'),"+
+                "(22, 'AMERICANA CEE', 16, '74, 396'),"+
+                "(23, 'AMERICANA CEE FREEWAY', 16, '78, 382, 471, 71'),"+
+                "(24, 'AMERICANA FREEWAY', 15, '26, 52, 75, 103'),"+
+                "(25, 'AMERICANA PORTO RICO', 1, '153'),"+//**************************************
+                "(26, 'AMERICANA RÁPIDA SERTÓRIO', 15, '192'),"+
+                "(27, 'AMERICANA SALOMÉ PDA40', 1, '178'),"+//**************************************
+                "(28, 'CABRAL FREDERICO DHIL', 18, '38, 312, 438'),"+
+                "(29, 'CEDRO', 1, '42, 312, 438'),"+//**************************************
+                "(30, 'DISTRITO INDUSTRIAL BALTAZAR', 24, '240, 364, 427'),"+
+                "(31, 'DISTRITO INDUSTRIAL CACHOEIRINHA', 19, '242, 300'),"+
+                "(32, 'DISTRITO INDUSTRIAL CACHOEIRINHA FIGUEIRA', 20, '242, 300'),"+
+                "(33, 'DISTRITO INDUSTRIAL CACHOEIRINHA P.47', 26, '242, 300'),"+
+                "(34, 'DISTRITO INDUSTRIAL CIRCULAR ALVORADA', 23, '251, 249'),"+
+                "(35, 'DISTRITO INDUSTRIAL PDA 40', 24, '241, 365'),"+
+                "(36, 'ESTANCIA GRANDE', 29, '230, 355, 426'),"+
+                "(37, 'ESTANCIA GRANDE CAIRU', 29, '270, 359, 429'),"+//**************************************
+                "(38, 'ESTANCIA GRANDE (7500-7501)', 29, '7199'),"+//**************************************
+                "(39, 'ESTANCIA GRANDE FERRAMENTAS GERAIS PDA 40', 30, '233'),"+
+                "(40, 'ESTANCIA GRANDE PDA 40', 31, '232'),"+
+                "(41, 'EXECUTIVO ALVORADA ASSIS BRASIL', 14, '16, 49, 416'),"+
+                "(42, 'EXECUTIVO ALVORADA FREEWAY', 14, '15'),"+
+                "(43, 'EXECUTIVO ALVORADA SERTÓRIO', 14, '18'),"+
+                "(44, 'EXECUTIVO AMERICANA', 15, '75'),"+
+                "(45, 'EXECUTIVO JARDIN ALGARVE ASSIS BRASIL', 51, '85, 53, 374, 473'),"+
+                "(46, 'EXECUTIVO JARDIN ALGARVE FREEWAY', 15, '84'),"+
+                "(47, 'EXECUTIVO JARDIN JARDIN POA', 52, '194, 94, 55'),"+
+                "(48, 'EXECUTIVO JARDIN JARDIN POA JARDIN PORTO VERDE', 1, '70'),"+//editar
+                "(49, 'EXECUTIVO JARDIN JARDIN APARECIDA', 41, '205, 282, 506, 67'),"+
+                "(50, 'EXECUTIVO JARDIN POA', 52, '95, 337, 497'),"+
+                "(52, 'EXECUTIVO P FIGUEIRA', 61, '64, 68, 327, 453'),"+
+                "(53, 'EXECUTIVO PORTO VERDE', 70, '70, 194, 195, 529'),"+
+                "(54, 'EXECUTIVO PORTO VERDE JARDIN ALGARVE', 55, '115'),"+
+                "(55, 'EXECUTIVO SALOMÉ ITARARÉ', 74, '170'),"+
+                "(56, 'EXECUTIVO UMBU BALTAZAR', 1, '535'),"+//editar
+                "(57, 'EXECUTIVO VILA ELZA', 100, '113'),"+
+                "(58, 'FERNANDO FERRARI', 32, '41, 315, 441'),"+
+                "(59, 'FERNANDO FERRARI PROTASIO ALVES', 32, '158, 159'),"+//editar
+                "(60, 'FORMOSA', 35, '10, 410'),"+
+                "(61, 'FORMOSA MARINGA', 36, '12'),"+
+                "(62, 'INTERSUL', 37, '265, 363, 428'),"+
+                "(63, 'INTERSUL FLORIANO PEIXOTO', 37, '264'),"+
+                "(64, 'JARDIN ALGARVE', 51, '80, 329, 459'),"+
+                "(65, 'JARDIN ALGARVE ANCHIETA', 51, '96, 283, 500'),"+
+                "(66, 'JARDIN ALGARVE CAIRU', 51, '82, 330, 460'),"+
+                "(67, 'JARDIN ALGARVE FREEWAY', 51, '54, 84, 373, 472'),"+
+                "(68, 'JARDIN ALGARVE JARDIN POA', 54, '88, 333, 463'),"+
+                "(69, 'JARDIN ALGARVE JARDIN POA PORTO VERDE', 55, '91'),"+
+                "(70, 'JARDIN ALGARVE JARDIN POA PORTO VERDE TERRA NOVA', 51, '585'),"+//**************************************
+                "(71, 'JARDIN ALGARVE PORTO VERDE', 55, '127'),"+
+                "(72, 'JARDIN ALGARVE PORTO VERDE ANCHIETA', 55, '144'),"+
+                "(73, 'JARDIN ALGARVE PORTO VERDE CAIRU', 55, '131, 538'),"+
+                "(74, 'JARDIN ALGARVE SERTORIO', 51, '83, 331, 461'),"+
+                "(75, 'JARDIN ALVORADA', 38, '210, 350, 413'),"+
+                "(76, 'JARDIN ALVORADA INTERSUL', 39, '57, 369, 420'),"+
+                "(77, 'JARDIN ALVORADA BH', 40, '208, 393, 482'),"+
+                "(78, 'JARDIN ALVORADA FLORIANO PEIXOTO', 34, '262, 215, 532'),"+
+                "(79, 'JARDIN ALVORADA PROTÁSIO ALVES', 107, '58, 209, 278, 507'),"+
+                "(80, 'JARDIN APARECIDA', 41, '200, 346, 402'),"+
+                "(81, 'JARDIN APARECIDA ANCHIETA', 41, '209'),"+
+                "(82, 'JARDIN APARECIDA BH', 43, '201, 390, 481'),"+
+                "(83, 'JARDIN APARECIDA CAIRU', 41, '202, 347, 406'),"+
+                "(84, 'JARDIN APARECIDA FREE WAY', 41, '148'),"+
+                "(85, 'JARDIN APARECIDA IGUATEMI', 46, '207, 392, 488'),"+
+                "(86, 'JARDIN APARECIDA IPIRANGA', 48, '216, 219, 541'),"+
+                "(87, 'JARDIN APARECIDA PROTÁSIO ALVES', 49, '204, 349, 412'),"+
+                "(88, 'JARDIN APARECIDA PROTÁSIO ALVES BH', 44, '206, 391, 486'),"+
+                "(89, 'JARDIN APARECIDA PDA 40', 1, '152, 338, 339'),"+//editar
+                "(90, 'JARDIN APARECIDA RÁPIDA SERTÓRIO', 41, '193'),"+
+                "(91, 'JARDIN APARECIDA SAÍDA 6425 FERNANDO DHILL', 41, '254'),"+
+                "(92, 'JARDIN APARECIDA SERTÓRIO', 41, '203, 348, 411'),"+
+                "(93, 'JARDIN APARECIDA SERTÓRIO CAIRU', 41, '120'),"+
+                "(94, 'JARDIN APARECIDA SERVIDÃO', 42, '212, 213, 531'),"+
+                "(95, 'JARDIN APARECIDA VIA 6425 FERNANDO DHIL', 41, '253'),"+
+                "(96, 'JARDIN PORTO ALEGRE', 70, '90, 334, 464'),"+
+                "(97, 'JARDIN PORTO ALEGRE ANCHIETA', 52, '97, 284, 501'),"+
+                "(98, 'JARDIN PORTO ALEGRE ANDRADE NEVES', 53, '111, 112'),"+
+                "(99, 'JARDIN PORTO ALEGRE PROTÁSIO ALVES', 12, '121'),"+
+                "(100, 'JARDIN PORTO ALEGRE J ALG PV STELLA MARIS J APARECIDA BH FAPA', 50, '173'),"+
+                "(101, 'JARDIN PORTO ALEGRE J ALG STELLA M J APARECIDA', 50, '87'),"+//editar
+                "(102, 'JARDIN PORTO ALEGRE CAIRU', 52, '92, 335, 465'),"+
+                "(103, 'JARDIN PORTO ALEGRE RÁPIDA SERTÓRIO', 52, '231'),"+
+                "(104, 'JARDIN PORTO ALEGRE SERTÓRIO', 52, '93, 336, 466'),"+
+                "(105, 'MARINGA', 57, '8, 302, 408'),"+
+                "(106, 'MARINGA FORMOSA', 36, '12, 490'),"+
+                "(107, 'NOVA AMERICANA', 1, '142'),"+//editar
+                "(108, 'PASSO FIGUEIRA', 59, '30, 306, 430'),"+
+                "(109, 'PASSO FIGUEIRA AMERICANA', 60, '29'),"+
+                "(110, 'PASSO FIGUEIRA CAIRU', 59, '32, 307, 432'),"+
+                "(111, 'PASSO FIGUEIRA FERNANDO FERRARI', 62, '37, 309, 431, 434'),"+
+                "(112, 'PASSO FIGUEIRA FREE WAY', 60, '33, 292, 497'),"+
+                "(113, 'PASSO FIGUEIRA IGUATEMI', 63, '50, 297, 485'),"+
+                "(114, 'PASSO FIGUEIRA IPIRANGA', 59, '26, 380, 424'),"+
+                "(115, 'PASSO FIGUEIRA IPIRANGA PUC', 59, '14'),"+
+                "(116, 'PASSO FIGUEIRA NOVA ALVORADA', 64, '100, 287, 504'),"+
+                "(117, 'PASSO FIGUEIRA NOVA ALVORADA PAR', 64, '160'),"+//editar
+                "(118, 'PASSO FIGUEIRA PROTÁSIO ALVES', 59, '25, 305, 425'),"+
+                "(119, 'PASSO FIGUEIRA PROTÁSIO ALVES CARLOS GOMES', 59, '31'),"+
+                "(120, 'PASSO FIGUEIRA PUC', 59, '14, 296, 400'),"+
+                "(121, 'PASSO FIGUEIRA SÃO PEDRO', 66, '49, 322, 448'),"+
+                "(122, 'PASSO FIGUEIRA SÃO PEDRO P.ALVES', 66, '27'),"+
+                "(123, 'PASSO FIGUEIRA SÃO PEDRO P.ALVES PAR', 66, '162'),"+
+                "(124, 'PASSO FIGUEIRA SÃO PEDRO FERNANDO FERRARI', 67, '24, 27, 291, 496'),"+
+                "(125, 'PASSO FIGUEIRA SÃO PEDRO FERNANDO FERRARI PAR', 67, '166'),"+
+                "(126, 'PASSO FIGUEIRA VIDA NOVA NOVA ALVORADA', 69, '99'),"+
+                "(127, 'PASSO FIGUEIRA VIDA NOVA', 68, '76, 79, 298, 489'),"+
+                "(128, 'PASSO FIGUEIRA VIDA NOVA PAR', 68, '164'),"+
+                "(129, 'PINDORAMA', 1, '182, 366, 375'),"+//editar
+                "(130, 'PORTO VERDE', 70, '81, 381, 477'),"+
+                "(131, 'PORTO VERDE J ALGARVE J POA', 55, '115, 116, 525'),"+
+                "(132, 'PORTO VERDE J ALGARVE J POA CASTELO BCO', 55, '135, 136, 139'),"+//editar
+                "(133, 'PORTO VERDE J ALGARVE J POA PDA', 1, '172'),"+//editar
+                "(134, 'PORTO VERDE SERTÓRIO', 70, '98, 285, 502'),"+
+                "(135, 'PORTO VERDE SERTÓRIO CAIRU', 70, '119, 123, 527'),"+
+                "(136, 'SALOMÉ', 71, '45, 319, 445'),"+
+                "(137, 'SALOMÉ ANCHIETA', 72, '55, 360, 450'),"+
+                "(138, 'SALOMÉ CAIRU', 71, '46, 320, 446'),"+
+                "(139, 'SALOMÉ PDA 40', 79, '180'),"+
+                "(140, 'SALOMÉ PROTÁSIO ALVES', 71, '53, 274, 511'),"+
+                "(141, 'SALOMÉ RÁPIDA SERTÓRIO', 71, '255'),"+
+                "(142, 'SALOMÉ SERTÓRIO', 71, '47, 321, 447'),"+
+                "(143, 'SALOMÉ UMBU', 75, '52, 263'),"+
+                "(144, 'SALOMÉ UMBU FAPA', 1, '179'),"+//editar
+                "(145, 'SANTA CLARA', 76, '7, 368, 407'),"+
+                "(146, 'SÃO PEDRO', 79, '40, 314, 440'),"+
+                "(147, 'SÃO PEDRO CEASA', 77, '36, 311, 436'),"+
+                "(148, 'SÃO PEDRO FERRARI', 78, '34, 41, 315, 441'),"+
+                "(149, 'SÃO PEDRO FERRARI PROTÁSIO ALVES', 78, '158, 549'),"+
+                "(150, 'SÃO PEDRO MARINGA PDA 40', 79, '190'),"+//editar
+                "(151, 'SÃO PEDRO PDA', 79, '181, 344, 345'),"+
+                "(152, 'SÃO PEDRO  RUI RAMOS', 108, '140, 150, 540'),"+
+                "(153, 'SERVIDÃO', 42, '211'),"+
+                "(154, 'STELLA MARIS', 86, '427280, 362, 437'),"+
+                "(155, 'STELLA MARIS BIG', 81, '17, 377, 378'),"+
+                "(156, 'STELLA MARIS JARDIN APARECIDA', 82, '217, 353, 422'),"+
+                "(157, 'STELLA MARIS JARDIN APARECIDA CAIRU', 82, '218, 376, 423'),"+
+                "(158, 'STELLA MARIS PDA 40', 83, '184'),"+
+                "(159, 'STELLA MARIS SERTÓRIO', 84, '281, 279, 508'),"+
+                "(160, 'STELLA MARIS SERTÓRIO CAIRU', 84, '117, 129, 534'),"+
+                "(161, 'STELLA MARIS TERRA NOVA', 84, '259'),"+
+                "(162, 'SUMARÉ', 87, '73, 328, 456'),"+
+                "(163, 'SUMARÉ NOVA AMERICANA', 88, '142'),"+
+                "(164, 'TAIMBÉ', 89, '303, 409'),"+
+                "(165, 'TAIMBÉ AMERICANA PROTÁSIO ALVES', 1, '146'),"+//editar
+                "(166, 'TAIMBÉ DUQUE DE CAXIAS', 90, '19, 9'),"+
+                "(167, 'TAIMBÉ FORMOSA MARINGA', 36, '304' ),"+//EDITAR
+                "(168, 'TIJUCA', 91, '105, 106, 521'),"+
+                "(169, 'TM1', 92, '953, 954'),"+//editar
+                "(170, 'TM2', 92, '955'),"+//editar
+                "(171, 'TM5', 92, '710, 951, 952'),"+//editar
+                "(172, 'TM5 VILA ELZA', 92, '713, 521'),"+//editar
+                "(173, 'UMBU', 96, '39, 313, 439'),"+
+                "(174, 'UMBU ANCHIETA AMERICANA', 97, '54, 324, 433'),"+
+                "(175, 'UMBU ANCHIETA BALTAZAR', 97, '109, 110, 523'),"+
+                "(176, 'UMBU CAIRU', 96, '43, 317, 443'),"+
+                "(177, 'UMBU CAIRU SERTÓRIO', 97, '107, 105, 522'),"+
+                "(178, 'UMBU FAPA', 98, '183'),"+//editar
+                "(179, 'UMBU IPIRANGA', 96, '20, 267, 515'),"+
+                "(180, 'UMBU PROTÁSIO ALVES', 96, '56, 352, 417'),"+
+                "(181, 'UMBU RÁPIDA SERTÓRIO', 96, '257'),"+
+                "(182, 'UMBU SERTÓRIO', 97, '48, 318, 444'),"+
+                "(183, 'UMBU SERTÓRIO CAIRU', 97, '107'),"+
+                "(184, 'VILA ELZA', 99, '51, 60, 323, 449'),"+
+                "(185, 'VILA ELZA AMERICANA', 100, '71, 371'),"+
+                "(186, 'VILA ELZA ANCHIETA', 102, '59, 295, 493'),"+
+                "(187, 'VILA ELZA BIG', 99, '245, 357, 358'),"+
+                "(188, 'VILA ELZA BIG AMERICANA', 100, '247, 374, 372'),"+
+                "(189, 'VILA ELZA BIG FADERGS', 99, '576'),"+//**************************************
+                "(190, 'VILA ELZA ZIVI', 99, '250, 385, 386'),"+
+                "(191, 'VILA ELZA CAIRU', 99, '62, 327, 453'),"+
+                "(192, 'VILA ELZA FAPA', 103, '188, 189'),"+
+                "(193, 'VILA ELZA FREE WAY', 100, '66, 69, 383, 474'),"+
+                "(194, 'VILA ELZA IPIRANGA', 12, '68, 387, 480'),"+//editar
+                "(195, 'VILA ELZA IPIRANGA SÃO PEDRO', 12, '101, 271, 513'),"+//editar
+                "(196, 'VILA ELZA PDA 40', 99, '185, 244'),"+//editar
+                "(197, 'VILA ELZA PIRATINI UMBU AMERICANA', 106, '394, 65'),"+
+                "(198, 'VILA ELZA PROTÁSIO ALVES', 99, '67, 384, 479'),"+
+                "(199, 'VILA ELZA P.ALVES SÃO PEDRO', 105, '102, 288, 505'),"+
+                "(200, 'VILA ELZA PUC', 12, '28, 277, 509'),"+
+                "(201, 'VILA ELZA RÁPIDA SERTÓRIO', 99, '256'),"+
+                "(202, 'VILA ELZA SERTÓRIO', 99, '63, 326, 452'),"+
+                "(203, 'VILA ELZA SERTÓRIO CAIRU', 99, '118, 122, 526'),"+
+                "(204, 'VILA ELZA PIRATINI', 104, '260'),"+
+                "(205, 'EMN X CENTRO', 27, '800'),"+
+                "(206, 'EMN X CAIRU', 28, '801'),"+
+                "(207, 'TREINAMENTO', 1, '935');"
+        );*/
         db.execSQL(
                 "CREATE TABLE if not EXISTS d_execoes " +
-                        "(_id INTEGER PRIMARY KEY," +
+                        "(_id INTEGER AUTO_INCREMENT," +
                         "nome VARCHAR (100)," +
-                        "tipo_execao INTEGER(11));"
+                        "tipo_execao INTEGER(11),"+
+                        "PRIMARY KEY (_id));"
         );
 
-        db.execSQL( "INSERT INTO `d_execoes` (`_id`, `nome`, `tipo_execao`) VALUES" +
-                "(0000, 'Teste barba', 0),"+
-                "(1111, 'Teste boné', 1),"+
-                "(2222, 'Oculos Escuros', 2),"+
-                "(3333, 'Cabelo comprido', 3),"+
-                "(4444, 'Uniforme', 4),"+
+       /* db.execSQL( "INSERT INTO `d_execoes` (`_id`, `nome`, `tipo_execao`) VALUES" +
                 "(4185, 'João Fulano', 0),"+
                 "(5261, 'Fulano Cavalo', 0),"+
                 "(5265, 'Nome Sobrenome', 0),"+
@@ -450,22 +263,69 @@ public class BancoInterno extends SQLiteOpenHelper {
                 "(6956, 'Nome Sobrenome', 1),"+
                 "(7897, 'Nome Sobrenome', 1),"+
                 "(26864, 'Nome Sobrenome', 1);"
-        );
+        );*/
 
         db.execSQL(
                 "CREATE TABLE if not EXISTS tipo_carro " +
-                        "(_id INTEGER PRIMARY KEY," +
+                        "(_id INTEGER AUTO_INCREMENT," +
                         "tipoCarro INTEGER (11)," +
-                        "d_adaptado INTEGER(11));"
+                        "d_adaptado INTEGER(11),"+
+                        "PRIMARY KEY (_id));"
         );
 
-        db.execSQL( "INSERT INTO `tipo_carro` (`_id`, `tipoCarro`, `d_adaptado`) VALUES" +
-                "(1111, 0, 0),"+
-                "(2222, 1, 0),"+
-                "(3333, 2, 0),"+
-                "(4444, 3, 0),"+
+       /* db.execSQL( "INSERT INTO `tipo_carro` (`_id`, `tipoCarro`, `d_adaptado`) VALUES" +
                 "(2603, 0, 1),"+
                 "(2613, 0, 1),"+
+                "(7003, 1, 1),"+
+                "(7004, 1, 1),"+
+                "(7146, 1, 1),"+
+                "(7147, 1, 1),"+
+                "(7179, 1, 1),"+
+                "(7180, 1, 1),"+
+                "(7181, 1, 1),"+
+                "(7182, 1, 1),"+
+                "(7183, 1, 1),"+
+                "(7184, 1, 1),"+
+                "(7185, 1, 1),"+
+                "(7186, 1, 1),"+
+                "(7187, 1, 1),"+
+                "(7188, 1, 1),"+
+                "(7189, 1, 1),"+
+                "(7190, 1, 1),"+
+                "(7191, 1, 1),"+
+                "(7192, 1, 1),"+
+                "(7193, 1, 1),"+
+                "(7194, 1, 1),"+
+                "(7195, 1, 1),"+
+                "(7196, 1, 1),"+
+                "(7197, 1, 1),"+
+                "(7199, 1, 1),"+
+                "(7200, 1, 1),"+
+                "(7201, 1, 1),"+
+                "(7202, 1, 1),"+
+                "(7203, 1, 1),"+
+                "(7204, 1, 1),"+
+                "(7205, 1, 1),"+
+                "(7206, 1, 1),"+
+                "(7207, 1, 1),"+
+                "(7208, 1, 1),"+
+                "(7209, 1, 1),"+
+                "(7210, 1, 1),"+
+                "(7211, 1, 1),"+
+                "(7212, 1, 1),"+
+                "(7213, 1, 1),"+
+                "(7214, 1, 1),"+
+                "(7215, 1, 1),"+
+                "(7216, 1, 1),"+
+                "(7217, 1, 1),"+
+                "(7218, 1, 1),"+
+                "(7219, 1, 1),"+
+                "(7220, 1, 1),"+
+                "(7221, 1, 1),"+
+                "(7222, 1, 1),"+
+                "(7223, 1, 1),"+
+                "(7224, 1, 1),"+
+                "(7225, 1, 1),"+
                 "(7226, 1, 1),"+
                 "(7227, 1, 1),"+
                 "(7228, 1, 1),"+
@@ -481,8 +341,49 @@ public class BancoInterno extends SQLiteOpenHelper {
                 "(7711, 2, 1),"+
                 "(7712, 2, 1),"+
                 "(7716, 2, 1),"+
-                "(7717, 2, 1);"
-        );
+                "(7717, 2, 1),"+
+                "(7401, 3, 1),"+
+                "(7402, 3, 1),"+
+                "(7403, 3, 1),"+
+                "(7404, 3, 1),"+
+                "(7405, 3, 1),"+
+                "(7406, 3, 1),"+
+                "(7407, 3, 1),"+
+                "(7408, 3, 1),"+
+                "(7458, 3, 1),"+
+                "(7459, 3, 1),"+
+                "(7460, 3, 1),"+
+                "(7461, 3, 1),"+
+                "(7462, 3, 1),"+
+                "(7463, 3, 1),"+
+                "(7464, 3, 1),"+
+                "(7465, 3, 1),"+
+                "(7470, 3, 1),"+
+                "(7471, 3, 1),"+
+                "(7472, 3, 1),"+
+                "(7473, 3, 1),"+
+                "(7474, 3, 1),"+
+                "(7475, 3, 1),"+
+                "(7476, 3, 1),"+
+                "(7477, 3, 1),"+
+                "(7478, 3, 1),"+
+                "(7479, 3, 1),"+
+                "(7480, 3, 1),"+
+                "(7481, 3, 1),"+
+                "(7482, 3, 1),"+
+                "(7483, 3, 1),"+
+                "(7484, 3, 1),"+
+                "(7485, 3, 1),"+
+                "(7486, 3, 1),"+
+                "(7487, 3, 1),"+
+                "(7488, 3, 1),"+
+                "(7489, 3, 1),"+
+                "(7490, 3, 1),"+
+                "(7491, 3, 1),"+
+                "(7492, 3, 1),"+
+                "(7493, 3, 1),"+
+                "(7494, 3, 1);"
+);*/
     }
 
     @Override

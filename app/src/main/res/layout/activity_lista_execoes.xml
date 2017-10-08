@@ -6,13 +6,47 @@
     android:layout_height="match_parent"
     android:id="@+id/conteudoFragmentExecoes"
     tools:context="onuse.com.br.ftsc.ListaExecoes"
-    android:background="@color/colorPrimary">
+    android:background="@color/colorPrimaryBackGround">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp">
+        android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary"
+        android:gravity="right"
+        android:orientation="horizontal"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp">
+        <AutoCompleteTextView
+            android:id="@+id/procurarMatriculaExecao"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Digite a matricula"
+            android:inputType="number"
+            android:maxLines="1"
+            android:maxLength="6"
+            android:textAllCaps="false"
+            android:textColorLink="@android:color/darker_gray"
+            android:textSize="13sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Adicionar : "
+            android:id="@+id/txtAdicionarExecao"
+            android:textAlignment="center"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnAdicionarExecaoFragment"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/d_adicionar" />
+        </LinearLayout>
         <RadioGroup
             android:id="@+id/radioGroup"
             android:layout_width="match_parent"
@@ -44,26 +78,7 @@
                 android:layout_height="wrap_content"
                 android:text="Execeção" />
         </RadioGroup>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="right"
-            android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Adicionar uma nova exeção : "
-                android:textAlignment="center"
-                android:textSize="12sp"
-                android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/btnAdicionarExecaoFragment"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@drawable/d_adicionar" />
-        </LinearLayout>
         <ListView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

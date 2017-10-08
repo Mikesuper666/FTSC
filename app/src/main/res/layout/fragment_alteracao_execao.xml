@@ -42,10 +42,11 @@
                 android:layout_height="wrap_content"
                 android:enabled="false"
                 android:hint="Digite o cógigo"
+                android:textColorHint="@android:color/darker_gray"
+                android:textColor="@color/colorBranco"
                 android:inputType="number"
                 android:maxLength="4"
                 android:maxLines="1"
-                android:textColor="@android:color/white"
                 android:textColorLink="@color/colorPrimary" />
 
         </LinearLayout>
@@ -68,6 +69,8 @@
                 android:layout_height="wrap_content"
                 android:maxLines="1"
                 android:maxLength="30"
+                android:textColorHint="@android:color/darker_gray"
+                android:textColor="@color/colorBranco"
                 android:id="@+id/fragAlteracaoExecaoNome"
                 android:hint="Digite o nome"/>
 
@@ -89,7 +92,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawSelectorOnTop="true"
-                android:textColor="@android:color/white"
                 android:entries="@array/permissao_para"
                 android:id="@+id/fragAlteracaoAdaptadoExecaoTipo"></Spinner>
         </LinearLayout>

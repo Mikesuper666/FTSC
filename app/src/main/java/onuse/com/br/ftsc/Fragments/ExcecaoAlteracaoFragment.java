@@ -1,14 +1,17 @@
 package onuse.com.br.ftsc.Fragments;
 
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -65,6 +68,13 @@ public class ExcecaoAlteracaoFragment extends Fragment{
                 }
             }
         });
+
+             /*
+        * Obrigatorio para modificação das cores do spinnner
+        * */
+        SpinnerCustomizado spinnerCustomizado = new SpinnerCustomizado();
+        spinnerCustomizado.Spinner(getActivity(), fragAlteracaoAdaptadoExecaoTipo);
+        //***********************************************************************
 
         fragAlteracaoExecaoCancelar.setOnClickListener(new View.OnClickListener() {
             @Override

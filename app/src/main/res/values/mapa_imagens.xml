@@ -104,7 +104,9 @@
     <item>@drawable/velza_fapa</item>
     <item>@drawable/velza_piratini</item>
     <item>@drawable/velza_saopedro</item>
-    <item>@drawable/velza_umbu_americana</item></integer-array>
+    <item>@drawable/velza_umbu_americana</item>
+    <item>@drawable/jalvorada_p_alves</item>
+    <item>@drawable/saopedro_rui_ramos</item></integer-array>
 
     <integer-array name="images_execoes">
         <item>@drawable/d_bone</item>

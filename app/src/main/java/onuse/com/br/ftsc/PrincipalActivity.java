@@ -1,22 +1,29 @@
 package onuse.com.br.ftsc;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.TypedArray;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.location.Location;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -27,12 +34,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import com.github.chrisbanes.photoview.PhotoView;
 
 import onuse.com.br.ftsc.BancoDados.BancoInterno;
+import onuse.com.br.ftsc.BancoDados.CRUD;
+import onuse.com.br.ftsc.BancoDados.Conexao;
 import onuse.com.br.ftsc.BancoDados.RepositorioAcoes;
 import onuse.com.br.ftsc.Helper.Permissoes;
 import onuse.com.br.ftsc.Models.Linha;
@@ -41,7 +47,8 @@ public class PrincipalActivity extends AppCompatActivity {
     private Button btnNomeLinha, btnCodigoLinha;
     private TextView txtCodigoLinha, txtNomeLinha;
     private AutoCompleteTextView edtNomeLinha, edtCodigoLinha;
-    private ImageView imagemRota, btnAdaptados, btnExcecoes, btnCompartilhar;
+    private ImageView btnAdaptados, btnExcecoes, btnCompartilhar, btnAtualizarDados;
+    private PhotoView imagemRota;
     private TypedArray img;
     private int numeroImagem = 0;
     //variaiveis do bando de dados
@@ -54,6 +61,7 @@ public class PrincipalActivity extends AppCompatActivity {
 
     private String[] permissoesNecessarias = new String[]{
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.ACCESS_NETWORK_STATE,
             Manifest.permission.INTERNET
     };
     @Override
@@ -70,12 +78,14 @@ public class PrincipalActivity extends AppCompatActivity {
         btnCodigoLinha = (Button)findViewById(R.id.btnCodigoLinha);
         btnAdaptados = (ImageView)findViewById(R.id.btnAdaptados);
         btnExcecoes = (ImageView)findViewById(R.id.btnExcecoes);
-        imagemRota = (ImageView) findViewById(R.id.imagemRota);
         btnCompartilhar = (ImageView) findViewById(R.id.btnCompartilhar);
+        btnAtualizarDados = (ImageView) findViewById(R.id.btnAtualizarDados);
+        imagemRota = (PhotoView) findViewById(R.id.imagemRota);
 
         bancoInterno = new BancoInterno(this);
         conn = bancoInterno.getWritableDatabase();
         repositorioAcoes = new RepositorioAcoes(conn);
+
 
         img = getResources().obtainTypedArray(R.array.images_rotas);
 
@@ -87,7 +97,7 @@ public class PrincipalActivity extends AppCompatActivity {
         edtNomeLinha.setAdapter(adapter);
 
         ArrayAdapter<String> adapterCodigo = new ArrayAdapter<String>(this,
-                android.R.layout.simple_dropdown_item_1line, repositorioAcoes.TodasRequisicoes(0,"nome_linha"));
+                android.R.layout.simple_dropdown_item_1line, repositorioAcoes.TodasRequisicoes(3,"nome_linha"));
         edtCodigoLinha = (AutoCompleteTextView)
                 findViewById(R.id.edtCodigoLinha);
         edtCodigoLinha.setAdapter(adapterCodigo);
@@ -98,8 +108,8 @@ public class PrincipalActivity extends AppCompatActivity {
                 linha = repositorioAcoes.ResultadoNome(edtNomeLinha.getText().toString());
 
                 if(linha.getNome_linha() !=null) {
-                    txtCodigoLinha.setText(linha.getNome_linha());
-                    txtNomeLinha.setText(linha.getId() + "");
+                    txtNomeLinha.setText(linha.getNome_linha());
+                    txtCodigoLinha.setText(linha.getCodigoLinha());
                     imagemRota.setImageResource(img.getResourceId(linha.getImagem(), -1));
                 }else{
                     txtNomeLinha.setText("CÓDIGO NÃO ENCONTRADO!");
@@ -113,12 +123,20 @@ public class PrincipalActivity extends AppCompatActivity {
                 linha = repositorioAcoes.Resultado(edtCodigoLinha.getText().toString());
 
                 if(linha.getNome_linha() !=null) {
-                    txtCodigoLinha.setText(linha.getNome_linha());
-                    txtNomeLinha.setText(linha.getId() + "");
+                    txtNomeLinha.setText(linha.getNome_linha());
+                    txtCodigoLinha.setText(linha.getCodigoLinha());
                     imagemRota.setImageResource(img.getResourceId(linha.getImagem(), -1));
                 }else{
                     txtNomeLinha.setText("CÓDIGO NÃO ENCONTRADO!");
                 }
+            }
+        });
+
+        btnAtualizarDados.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //DELETA O BANCO ATUAL OFFLINE DE LIINHAS
+                DeletarLinhasAtuais();
             }
         });
 
@@ -184,4 +202,12 @@ public class PrincipalActivity extends AppCompatActivity {
             startActivity(Intent.createChooser(intent, "Share Image"));
         }
     }
+
+    public void DeletarLinhasAtuais() {
+
+        repositorioAcoes.DeletarLinhas();
+        CRUD crud = new CRUD(PrincipalActivity.this);
+        crud.conectarAobanco();
+    }
+
 }

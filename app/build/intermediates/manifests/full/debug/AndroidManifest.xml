@@ -9,6 +9,8 @@
         android:targetSdkVersion="26" />
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <meta-data
         android:name="android.support.VERSION"
@@ -26,6 +28,10 @@
             android:screenOrientation="portrait" />
         <activity
             android:name="onuse.com.br.ftsc.PrincipalActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="onuse.com.br.ftsc.LoginActivity"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

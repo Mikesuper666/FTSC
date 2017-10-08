@@ -8,6 +8,7 @@ public class Linha {
     private long id;
     private String nome_linha;
     private int imagem;
+    private String codigoLinha;
 
     public Linha()
     {
@@ -36,5 +37,13 @@ public class Linha {
 
     public void setImagem(int imagem) {
         this.imagem = imagem;
+    }
+
+    public String getCodigoLinha() {
+        return codigoLinha;
+    }
+
+    public void setCodigoLinha(String codigoLinha) {
+        this.codigoLinha = codigoLinha;
     }
 }

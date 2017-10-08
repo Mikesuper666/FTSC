@@ -6,9 +6,7 @@
     android:height="50dp">
     <path
         android:pathData="M489.20345 247.76468A241.43877 245.65605 0 0 1 247.76468 493.42073 241.43877 245.65605 0 0 1 6.3259125 247.76468 241.43877 245.65605 0 0 1 247.76468 2.1086273 241.43877 245.65605 0 0 1 489.20345 247.76468Z"
-        android:fillColor="#d40000"
-        android:fillAlpha="0.98"
-        android:strokeMiterLimit="4" />
+        android:fillColor="#BDBDBD" />
     <group
         android:scaleX="1.043432"
         android:scaleY="-1.043432"

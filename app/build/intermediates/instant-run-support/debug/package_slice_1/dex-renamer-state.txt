@@ -1,4 +1,4 @@
-#Wed Oct 04 20:16:11 BRT 2017
+#Sat Oct 07 17:29:14 BRT 2017
 base.0=/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_1
 renamed.0=classes.dex
 file.0=/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_1/classes.dex

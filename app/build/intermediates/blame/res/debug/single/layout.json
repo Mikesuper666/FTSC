@@ -88,6 +88,10 @@
         "source": "/home/maico/AndroidStudioProjects/FTSC/app/src/main/res/layout/widget_adaptados.xml"
     },
     {
+        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/layout/activity_login.xml",
+        "source": "/home/maico/AndroidStudioProjects/FTSC/app/src/main/res/layout/activity_login.xml"
+    },
+    {
         "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/layout/abc_action_menu_layout.xml",
         "source": "/home/maico/.android/build-cache/ec4f7e121041ecea9fb0051e2b07ff8714f211b2/output/res/layout/abc_action_menu_layout.xml"
     },

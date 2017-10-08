@@ -9,7 +9,7 @@
         android:translateY="-0.2745976">
         <path
             android:pathData="M188.14799 94.073997A94.073997 94.073997 0 0 1 94.073997 188.14799 94.073997 94.073997 0 0 1 0 94.073997 94.073997 94.073997 0 0 1 94.073997 0 94.073997 94.073997 0 0 1 188.14799 94.073997Z"
-            android:fillColor="#00ffff" />
+            android:fillColor="#BDBDBD" />
     </group>
     <group
         android:scaleX="0.9262918"

@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="onuse.com.br.ftsc">
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
     <application
         android:allowBackup="true"
         android:icon="@drawable/d_icone"
@@ -11,6 +13,9 @@
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity" android:screenOrientation="portrait"/>
         <activity android:name=".PrincipalActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".LoginActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

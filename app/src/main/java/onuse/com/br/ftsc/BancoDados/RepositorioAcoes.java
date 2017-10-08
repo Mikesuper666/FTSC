@@ -57,7 +57,7 @@ public class RepositorioAcoes{
     }
 
     public Linha Resultado(String id){
-        Cursor cursor = conn.query("nome_linha",new String[]{"_id", "linha","imagem"}, "_id=?", new String[]{id}, null, null, null);
+        Cursor cursor = conn.query("nome_linha",new String[]{"_id", "linha","imagem", "codigos"}, "codigos=?", new String[]{id}, null, null, null);
         Linha linha = new Linha();
         cursor.moveToFirst();
         //se encontrou
@@ -65,6 +65,7 @@ public class RepositorioAcoes{
             linha.setId(cursor.getLong(0));
             linha.setNome_linha(cursor.getString(1));
             linha.setImagem(cursor.getInt(2));
+            linha.setCodigoLinha(cursor.getString(3));
 
         }
         return linha;
@@ -87,6 +88,7 @@ public class RepositorioAcoes{
             linha.setId(c.getLong(0));
             linha.setNome_linha(c.getString(1));
             linha.setImagem(c.getInt(2));
+            linha.setCodigoLinha(c.getString(3));
 
         }
         return linha;
@@ -112,6 +114,28 @@ public class RepositorioAcoes{
 
         }
         return carros;
+    }
+
+    public Execoes ResultadoMatricula(String codigo){
+        //Cursor cursor = conn.query("nome_linha",new String[]{"_id", "linha"}, "linha LIKE '%=?%'", new String[]{nome}, null, null, null);
+
+        //pega o array de strngs com a pesquisa
+        String[] a = new String[]{codigo};
+        //adicionamos "%" porque quermos todas pesquisas
+        a[0]       = codigo + '%';
+        //adicionamosao nosso cursos o comando sql
+        Cursor   c = conn.rawQuery("SELECT * FROM d_execoes WHERE _id LIKE ?", a);
+
+        Execoes execoes = new Execoes();
+        c.moveToFirst();
+        //se encontrou
+        if(c.getCount() > 0) {
+            execoes.setId(c.getLong(0));
+            execoes.setNome(c.getString(1));
+            execoes.setTipoExecao(c.getInt(2));
+
+        }
+        return execoes;
     }
 
     public String[] TodasRequisicoes(int coluna, String tabela){
@@ -189,6 +213,17 @@ public class RepositorioAcoes{
         conn.insertOrThrow("tipo_carro",null , values);
     }
 
+    public void AdicionarLinha(String nome_linha, String imagem, String codigos){
+
+        ContentValues values = new ContentValues();
+        values.put("linha", nome_linha );
+        values.put("imagem", imagem );
+        values.put("codigos", codigos );
+
+        conn.insertOrThrow("nome_linha",null , values);
+
+    }
+
     public void InserirNovaExecao(int id, String nome, int tipoExecao)
     {
         ContentValues values = new ContentValues();
@@ -225,5 +260,9 @@ public class RepositorioAcoes{
     public void DeletarExecao(long id)
     {
         conn.delete("d_execoes", "_id= ?",new String[]{String.valueOf(id)});
+    }
+
+    public void DeletarLinhas(){
+        conn.delete("nome_linha", "",null);
     }
 }
