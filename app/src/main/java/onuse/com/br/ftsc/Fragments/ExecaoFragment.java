@@ -17,7 +17,9 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import onuse.com.br.ftsc.BancoDados.BancoInterno;
+import onuse.com.br.ftsc.BancoDados.BancoOnlineInsert;
 import onuse.com.br.ftsc.BancoDados.RepositorioAcoes;
+import onuse.com.br.ftsc.ListaExecoes;
 import onuse.com.br.ftsc.Models.Carros;
 import onuse.com.br.ftsc.Models.Execoes;
 import onuse.com.br.ftsc.R;
@@ -53,12 +55,14 @@ public class ExecaoFragment  extends Fragment {
             @Override
             public void onClick(View view) {
                 if(ConfirmarCadastro()){
-                    BancoInterno bancoInterno = new BancoInterno(getActivity());
+                    BancoOnlineInsert bancoOnlineInsert = new BancoOnlineInsert(getActivity());
+                    bancoOnlineInsert.conectarAobancoInsersao(0, codigo, nome, tipoExecao);
+                    /*BancoInterno bancoInterno = new BancoInterno(getActivity());
                     SQLiteDatabase conn = bancoInterno.getWritableDatabase();
                     RepositorioAcoes repositorioAcoes = new RepositorioAcoes(conn);
                     repositorioAcoes.InserirNovaExecao(codigo,nome,tipoExecao);
                     Toast.makeText(getActivity(), "Gravado com sucesso!", Toast.LENGTH_LONG).show();
-                    getActivity().finish();
+                    getActivity().finish();*/
                 }
             }
         });

@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String email = edtEmail.getText().toString();
                 String senha = edtSenha.getText().toString();
-                if(email.equals("fiscal") && senha.equals("fiscal")){
+                if(email.equals("") && senha.equals("")){
                     preferencias.SalvarLogin(1);
                     Intent intent = new Intent(LoginActivity.this, PrincipalActivity.class);
                     startActivity(intent);

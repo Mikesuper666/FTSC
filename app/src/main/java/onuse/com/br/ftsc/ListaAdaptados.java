@@ -23,7 +23,6 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.Collator;
@@ -32,6 +31,8 @@ import java.util.Comparator;
 
 import onuse.com.br.ftsc.Adapter.AdaptadosAdapter;
 import onuse.com.br.ftsc.BancoDados.BancoInterno;
+import onuse.com.br.ftsc.BancoDados.BancoOnlineDelete;
+import onuse.com.br.ftsc.BancoDados.BancoOnlineSelect;
 import onuse.com.br.ftsc.BancoDados.RepositorioAcoes;
 import onuse.com.br.ftsc.Fragments.AdaptadoAlteracaoFragment;
 import onuse.com.br.ftsc.Fragments.AdaptadoFragment;
@@ -44,7 +45,7 @@ public class ListaAdaptados extends AppCompatActivity {
     private RadioButton radioTipoCarro, radioAdaptados, radioCodigoCarro;
     private RadioGroup radioGroupAdaptados;
     private ListView listaAdptados;
-    private Button btnAdicionarAdaptado, btnProcurarrAdaptado;
+    private Button btnAdicionarAdaptado, btnProcurarrAdaptado, btnAtualizarAdaptados;
     private AutoCompleteTextView edtCodigo;
     private Preferencias preferencias;
 
@@ -64,6 +65,7 @@ public class ListaAdaptados extends AppCompatActivity {
         radioGroupAdaptados = (RadioGroup)findViewById(R.id.radioGroupAdaptados);
         btnAdicionarAdaptado = (Button) findViewById(R.id.btnAdicionarAdaptado);
         btnProcurarrAdaptado = (Button) findViewById(R.id.btnProcurarrAdaptado);
+        btnAtualizarAdaptados = (Button) findViewById(R.id.btnAtualizarAdaptados);
         /**************************************************
          * MONTA O LIST VIEW E ADAPTER
          **************************************************/
@@ -143,18 +145,29 @@ public class ListaAdaptados extends AppCompatActivity {
             }
         });//faz a busca do codigo no banco e retorna o valor no array
 
+        /*
+        * METODO DE ATUALIZAÇÃO ONLINE
+        * */
+        btnAtualizarAdaptados.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                repositorioAcoes.DeletarLinhas("tipo_carro");
+                BancoOnlineSelect crud = new BancoOnlineSelect(ListaAdaptados.this);
+                crud.conectarAobanco(1);
+            }
+        });
+
         preferencias = new Preferencias(ListaAdaptados.this);
         //Registra o menu_alterar flutuante para a lista
         if(preferencias.getLogin() == 1){
         registerForContextMenu(listaAdptados);
         }else{
             btnAdicionarAdaptado.setVisibility(View.GONE);
-            TextView txtAdicionarAdaptado = (TextView)findViewById(R.id.txtAdicionarAdaptado);
-            txtAdicionarAdaptado.setText("");
         }
     }
 
     private void AdicionarDados(){
+        carros.clear();
         ArrayList<Carros> carrosRecebido = new ArrayList<>();
         carrosRecebido = repositorioAcoes.TodosAdaptados();
         for(int i = 0; i < carrosRecebido.size();){
@@ -253,7 +266,8 @@ public class ListaAdaptados extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         repositorioAcoes.DeletarCarrro(carroMenus.getId());
-                        finish();
+                        BancoOnlineDelete bancoOnlineDelete = new BancoOnlineDelete(ListaAdaptados.this);
+                        bancoOnlineDelete.conectarAobancoDeletar(1, (int)carroMenus.getId());
                     }
                 });
                 alerta.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
@@ -267,4 +281,52 @@ public class ListaAdaptados extends AppCompatActivity {
                 return super.onContextItemSelected(item);
         }
     }
+
+    /**]
+     *PARA A ATUALIZAR ESTA VIEW ATRAVEZ DE UMA CLASSE NAO IMPLEMENTADA E UMA THREAD SECUNDARIA RODANDO ATRAVÉZ DELA
+     */
+    public void AtualizarLista(){
+        runOnUiThread(new ListaAdaptados.AtualizarTextView("Post"));
+    }
+
+    private class AtualizarTextView implements Runnable {
+
+        //Caso queiramos passar algum dado passe por aqui deixei isso para vc lembrar no futuro seu burro
+        private String text;
+
+        public AtualizarTextView(final String text) {
+            this.text = text;
+        }
+
+        @Override
+        public void run() {
+            AdicionarDados();
+        }
+    }
+
+    /**]
+     *PARA A ATUALIZAR ESTA VIEW ATRAVEZ DE UMA CLASSE NAO IMPLEMENTADA E UMA THREAD SECUNDARIA RODANDO ATRAVÉZ DELA
+     * NESSA SEGUNDA PARTE EXECUTAMOS PARA TAMBEM O FECHAMENTO DO FRAGMENT PARA NAO FICAR POLUIDO A TELA!
+     */
+
+    public void InseridoBancoAposOnline(){
+        runOnUiThread(new ListaAdaptados.AtualizarAposInseridoOnline("Post"));
+    }
+
+    private class AtualizarAposInseridoOnline implements Runnable {
+
+        //Caso queiramos passar algum dado passe por aqui deixei isso para vc lembrar no futuro seu burro
+        private String text;
+
+        public AtualizarAposInseridoOnline(final String text) {
+            this.text = text;
+        }
+
+        @Override
+        public void run() {
+            RemoverFragment();
+        }
+    }
+
+    private void RemoverFragment(){AdicionarDados();onBackPressed();}
 }

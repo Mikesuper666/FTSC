@@ -33,11 +33,4 @@ public class Preferencias {
     {
         return sharedPreferences.getInt(CHAVE_LOGADO, 0);
     }//retorna quando chamado a id guardada dentro do indentificador
-
-
-    public void AnularDadosLogout()
-    {
-        editor.putString(CHAVE_LOGADO, null);
-        editor.commit();
-    }
 }

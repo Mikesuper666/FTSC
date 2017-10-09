@@ -16,6 +16,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import onuse.com.br.ftsc.BancoDados.BancoInterno;
+import onuse.com.br.ftsc.BancoDados.BancoOnlineInsert;
 import onuse.com.br.ftsc.BancoDados.RepositorioAcoes;
 import onuse.com.br.ftsc.Models.Carros;
 import onuse.com.br.ftsc.R;
@@ -49,12 +50,14 @@ public class AdaptadoFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if(ConfirmarCadastro()){
-                    BancoInterno bancoInterno = new BancoInterno(getActivity());
+                    BancoOnlineInsert bancoOnlineInsert = new BancoOnlineInsert(getActivity());
+                    bancoOnlineInsert.conectarAobancoInsersao(1, codigo, tipoCarro+"", adaptadoSN);
+                    /*BancoInterno bancoInterno = new BancoInterno(getActivity());
                     SQLiteDatabase conn = bancoInterno.getWritableDatabase();
                     RepositorioAcoes repositorioAcoes = new RepositorioAcoes(conn);
                     repositorioAcoes.InserirNovoCarro(codigo, tipoCarro,adaptadoSN);
                     Toast.makeText(getActivity(), "Gravado com sucesso!", Toast.LENGTH_LONG).show();
-                    getActivity().finish();
+                    getActivity().finish();*/
                 }
             }
         });

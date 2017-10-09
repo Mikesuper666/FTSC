@@ -23,8 +23,6 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import java.text.Collator;
 import java.util.ArrayList;
@@ -32,12 +30,12 @@ import java.util.Comparator;
 
 import onuse.com.br.ftsc.Adapter.ExcecoesAdapter;
 import onuse.com.br.ftsc.BancoDados.BancoInterno;
+import onuse.com.br.ftsc.BancoDados.BancoOnlineDelete;
+import onuse.com.br.ftsc.BancoDados.BancoOnlineSelect;
 import onuse.com.br.ftsc.BancoDados.RepositorioAcoes;
-import onuse.com.br.ftsc.Fragments.AdaptadoAlteracaoFragment;
 import onuse.com.br.ftsc.Fragments.ExcecaoAlteracaoFragment;
 import onuse.com.br.ftsc.Fragments.ExecaoFragment;
 import onuse.com.br.ftsc.Helper.Preferencias;
-import onuse.com.br.ftsc.Models.Carros;
 import onuse.com.br.ftsc.Models.Execoes;
 
 public class ListaExecoes extends AppCompatActivity {
@@ -46,7 +44,7 @@ public class ListaExecoes extends AppCompatActivity {
     private ArrayList<Execoes> execoes;
     private RadioButton radioNome, radioMatricula, radioExececao;
     private RadioGroup radioGroup;
-    private Button btnAdicionarExecaoFragment;
+    private Button btnAdicionarExecaoFragment, btnProcurarExecaoFragment, btnAtualizarExecaoFragment;
     private AutoCompleteTextView edtMatricula;
     private Preferencias preferencias;
 
@@ -65,6 +63,8 @@ public class ListaExecoes extends AppCompatActivity {
         radioExececao = (RadioButton)findViewById(R.id.radioExececao);
         radioGroup = (RadioGroup)findViewById(R.id.radioGroup);
         btnAdicionarExecaoFragment = (Button) findViewById(R.id.btnAdicionarExecaoFragment);
+        btnProcurarExecaoFragment = (Button) findViewById(R.id.btnProcurarExecaoFragment);
+        btnAtualizarExecaoFragment = (Button) findViewById(R.id.btnAtualizarExecaoFragment);
         /**************************************************
          * MONTA O LIST VIEW E ADAPTER
          **************************************************/
@@ -95,7 +95,6 @@ public class ListaExecoes extends AppCompatActivity {
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 Execoes execoesRecebido = repositorioAcoes.ResultadoMatricula(edtMatricula.getText().toString());
                 execoes.clear();
-
                 /*
                 Este metodo de if é o valor quando o edittext está vazio, ae eu reencho os valores
                  */
@@ -128,18 +127,38 @@ public class ListaExecoes extends AppCompatActivity {
             }
         });
 
+          /*
+        * METODO DE ATUALIZAÇÃO ONLINE
+        * */
+        btnAtualizarExecaoFragment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                repositorioAcoes.DeletarLinhas("d_execoes");
+                BancoOnlineSelect crud = new BancoOnlineSelect(ListaExecoes.this);
+                crud.conectarAobanco(2);
+            }
+        });
+
+        btnProcurarExecaoFragment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
         preferencias = new Preferencias(ListaExecoes.this);
         //Registra o menu_alterar flutuante para a lista
         if(preferencias.getLogin() == 1) {
             registerForContextMenu(listaExecoes);
         }else{
             btnAdicionarExecaoFragment.setVisibility(View.GONE);
-            TextView txtAdicionarExecao = (TextView)findViewById(R.id.txtAdicionarExecao);
-            txtAdicionarExecao.setText("");
         }
+
+
     }
 
-    private void AdicionarDados(){
+    public void AdicionarDados(){
+        execoes.clear();
         ArrayList<Execoes> execoesRecebido = new ArrayList<>();
         execoesRecebido = repositorioAcoes.TodasExecoes();
         for(int i = 0; i < execoesRecebido.size();){
@@ -241,7 +260,9 @@ public class ListaExecoes extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         repositorioAcoes.DeletarExecao(execoesParaEnviar.getId());
-                        finish();
+
+                        BancoOnlineDelete bancoOnlineDelete = new BancoOnlineDelete(ListaExecoes.this);
+                        bancoOnlineDelete.conectarAobancoDeletar(0, (int)execoesParaEnviar.getId());
                     }
                 });
                 alerta.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
@@ -255,4 +276,52 @@ public class ListaExecoes extends AppCompatActivity {
                 return super.onContextItemSelected(item);
         }
     }
+
+    /**]
+     *PARA A ATUALIZAR ESTA VIEW ATRAVEZ DE UMA CLASSE NAO IMPLEMENTADA E UMA THREAD SECUNDARIA RODANDO ATRAVÉZ DELA
+     */
+
+    public void AtualizarLista(){
+        runOnUiThread(new AtualizarTextView("Post"));
+    }
+
+    private class AtualizarTextView implements Runnable {
+
+        //Caso queiramos passar algum dado passe por aqui deixei isso para vc lembrar no futuro seu burro
+        private String text;
+
+        public AtualizarTextView(final String text) {
+            this.text = text;
+        }
+
+        @Override
+        public void run() {
+            AdicionarDados();
+        }
+    }
+
+    /**]
+     *PARA A ATUALIZAR ESTA VIEW ATRAVEZ DE UMA CLASSE NAO IMPLEMENTADA E UMA THREAD SECUNDARIA RODANDO ATRAVÉZ DELA
+     */
+
+    public void InseridoBancoAposOnline(){
+        runOnUiThread(new AtualizarAposInseridoOnline("Post"));
+    }
+
+    private class AtualizarAposInseridoOnline implements Runnable {
+
+        //Caso queiramos passar algum dado passe por aqui deixei isso para vc lembrar no futuro seu burro
+        private String text;
+
+        public AtualizarAposInseridoOnline(final String text) {
+            this.text = text;
+        }
+
+        @Override
+        public void run() {
+            RemoverFragment();
+        }
+    }
+
+    private void RemoverFragment(){AdicionarDados();onBackPressed();}
 }

@@ -49,7 +49,7 @@ public class ExcecoesAdapter extends ArrayAdapter<Execoes> {
 
             //seta valores nos componetes de tela
             execao = execoes.get(position);
-            textViewNome.setText("Nome: "+execao.getNome());
+            textViewNome.setText("Nome: "+execao.getNome().replace("_"," "));//se o nome receber um "_" underline faremos a troca por um espaço
             textMatricula.setText("Matrícula: "+execao.getId());
             if(execao.getTipoExecao() == 0){
                 imageConversa.setImageResource(R.drawable.d_barba);

@@ -14,6 +14,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import onuse.com.br.ftsc.BancoDados.BancoInterno;
+import onuse.com.br.ftsc.BancoDados.BancoOnlineDelete;
 import onuse.com.br.ftsc.BancoDados.RepositorioAcoes;
 import onuse.com.br.ftsc.Models.Carros;
 import onuse.com.br.ftsc.R;
@@ -61,12 +62,14 @@ public class AdaptadoAlteracaoFragment  extends Fragment {
             public void onClick(View view) {
                 tipoCarro = fragAlteracaoAdaptadoTipoCarro.getSelectedItemPosition();
                 adaptadoSN = fragAlteracaoAdaptadoAdaptadoSN.getSelectedItemPosition();
-                BancoInterno bancoInterno = new BancoInterno(getActivity());
+
+
+                /*BancoInterno bancoInterno = new BancoInterno(getActivity());
                 SQLiteDatabase conn = bancoInterno.getWritableDatabase();
                 RepositorioAcoes repositorioAcoes = new RepositorioAcoes(conn);
                 repositorioAcoes.AtualizarNovoCarro(codigo, tipoCarro, adaptadoSN);
                 Toast.makeText(getActivity(), "Alterado com sucesso!", Toast.LENGTH_LONG).show();
-                getActivity().finish();
+                getActivity().finish();*/
 
             }
         });

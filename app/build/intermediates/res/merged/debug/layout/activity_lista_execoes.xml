@@ -32,19 +32,26 @@
             android:textColorLink="@android:color/darker_gray"
             android:textSize="13sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Adicionar : "
-            android:id="@+id/txtAdicionarExecao"
-            android:textAlignment="center"
-            android:textSize="12sp"
-            android:textStyle="bold" />
+        <Button
+            android:id="@+id/btnProcurarExecaoFragment"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/d_procurar" />
+
+        <Button
+            android:id="@+id/btnAtualizarExecaoFragment"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/d_atualizar" />
 
         <Button
             android:id="@+id/btnAdicionarExecaoFragment"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:layout_marginRight="10dp"
             android:background="@drawable/d_adicionar" />
         </LinearLayout>
         <RadioGroup

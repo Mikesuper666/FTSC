@@ -1,44 +1,30 @@
 package onuse.com.br.ftsc;
 
 import android.Manifest;
-import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.content.res.TypedArray;
-import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.location.Location;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.net.Uri;
-import android.os.AsyncTask;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import com.github.chrisbanes.photoview.PhotoView;
 
 import onuse.com.br.ftsc.BancoDados.BancoInterno;
-import onuse.com.br.ftsc.BancoDados.CRUD;
-import onuse.com.br.ftsc.BancoDados.Conexao;
+import onuse.com.br.ftsc.BancoDados.BancoOnlineSelect;
 import onuse.com.br.ftsc.BancoDados.RepositorioAcoes;
 import onuse.com.br.ftsc.Helper.Permissoes;
 import onuse.com.br.ftsc.Models.Linha;
@@ -89,18 +75,7 @@ public class PrincipalActivity extends AppCompatActivity {
 
         img = getResources().obtainTypedArray(R.array.images_rotas);
 
-        //Configuração do autoCompleteText
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_dropdown_item_1line, repositorioAcoes.TodasRequisicoes(1,"nome_linha"));
-        edtNomeLinha = (AutoCompleteTextView)
-                findViewById(R.id.edtNomeLinha);
-        edtNomeLinha.setAdapter(adapter);
-
-        ArrayAdapter<String> adapterCodigo = new ArrayAdapter<String>(this,
-                android.R.layout.simple_dropdown_item_1line, repositorioAcoes.TodasRequisicoes(3,"nome_linha"));
-        edtCodigoLinha = (AutoCompleteTextView)
-                findViewById(R.id.edtCodigoLinha);
-        edtCodigoLinha.setAdapter(adapterCodigo);
+        ConfigurarAutoCompletarTexto();
 
         btnNomeLinha.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -203,11 +178,47 @@ public class PrincipalActivity extends AppCompatActivity {
         }
     }
 
-    public void DeletarLinhasAtuais() {
+    private void DeletarLinhasAtuais() {
 
-        repositorioAcoes.DeletarLinhas();
-        CRUD crud = new CRUD(PrincipalActivity.this);
-        crud.conectarAobanco();
+        repositorioAcoes.DeletarLinhas("nome_linha");
+        BancoOnlineSelect crud = new BancoOnlineSelect(PrincipalActivity.this);
+        crud.conectarAobanco(0);
     }
 
+    /**]
+     *PARA A ATUALIZAR ESTA VIEW ATRAVEZ DE UMA CLASSE NAO IMPLEMENTADA E UMA THREAD SECUNDARIA RODANDO ATRAVÉZ DELA
+     */
+    public void AtualizarLista(){
+        runOnUiThread(new PrincipalActivity.AtualizarTextView("Post"));
+    }
+
+    private class AtualizarTextView implements Runnable {
+
+        //Caso queiramos passar algum dado passe por aqui deixei isso para vc lembrar no futuro seu burro
+        private String text;
+
+        public AtualizarTextView(final String text) {
+            this.text = text;
+        }
+
+        @Override
+        public void run() {
+            ConfigurarAutoCompletarTexto();
+        }
+    }
+
+    private void ConfigurarAutoCompletarTexto(){
+        //Configuração do autoCompleteText
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_dropdown_item_1line, repositorioAcoes.TodasRequisicoes(1,"nome_linha"));
+        edtNomeLinha = (AutoCompleteTextView)
+                findViewById(R.id.edtNomeLinha);
+        edtNomeLinha.setAdapter(adapter);
+
+        ArrayAdapter<String> adapterCodigo = new ArrayAdapter<String>(this,
+                android.R.layout.simple_dropdown_item_1line, repositorioAcoes.TodasRequisicoes(3,"nome_linha"));
+        edtCodigoLinha = (AutoCompleteTextView)
+                findViewById(R.id.edtCodigoLinha);
+        edtCodigoLinha.setAdapter(adapterCodigo);
+    }
 }

@@ -224,6 +224,27 @@ public class RepositorioAcoes{
 
     }
 
+    public void AdicionarAdaptados(String id, String tipoCarro, String d_adaptado){
+
+        ContentValues values = new ContentValues();
+        values.put("_id", id );
+        values.put("tipoCarro", tipoCarro );
+        values.put("d_adaptado", d_adaptado );
+
+        conn.insertOrThrow("tipo_carro",null , values);
+
+    }
+
+    public void AdicionarExecao(String id, String nome, String tipoExecao)
+    {
+        ContentValues values = new ContentValues();
+        values.put("_id", id );
+        values.put("nome", nome );
+        values.put("tipo_execao", tipoExecao );
+
+        conn.insertOrThrow("d_execoes",null , values);
+    }
+
     public void InserirNovaExecao(int id, String nome, int tipoExecao)
     {
         ContentValues values = new ContentValues();
@@ -262,7 +283,7 @@ public class RepositorioAcoes{
         conn.delete("d_execoes", "_id= ?",new String[]{String.valueOf(id)});
     }
 
-    public void DeletarLinhas(){
-        conn.delete("nome_linha", "",null);
+    public void DeletarLinhas(String tabela){
+        conn.delete(tabela, "",null);
     }
 }
