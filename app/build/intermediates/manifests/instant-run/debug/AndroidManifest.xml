@@ -45,6 +45,9 @@
         <activity
             android:name="onuse.com.br.ftsc.ListaExecoes"
             android:screenOrientation="portrait" />
+        <activity
+            android:name="onuse.com.br.ftsc.RequisicaoWeb"
+            android:screenOrientation="portrait" />
 
         <provider
             android:name="com.android.tools.fd.runtime.InstantRunContentProvider"

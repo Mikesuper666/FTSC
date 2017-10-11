@@ -13,6 +13,7 @@ import android.widget.Toast;
 import onuse.com.br.ftsc.Helper.Preferencias;
 import onuse.com.br.ftsc.ListaAdaptados;
 import onuse.com.br.ftsc.ListaExecoes;
+import onuse.com.br.ftsc.LoginActivity;
 import onuse.com.br.ftsc.PrincipalActivity;
 
 /**
@@ -77,12 +78,12 @@ public class BancoOnlineSelect {
         @Override
         protected void onPostExecute(String resultado) {
 
+            dialogBaixando.dismiss();
             if (resultado == null) {
+                Toast.makeText(context, "Problema na conexao com o banco de dados!", Toast.LENGTH_LONG).show();
             } else if (resultado.contains("conexao_PHP_faliu")) {
-                dialogBaixando.dismiss();
                 Toast.makeText(context, "conexão sem retorno", Toast.LENGTH_LONG).show();
-            }else {
-                dialogBaixando.dismiss();
+            } else {
                 if(tabela == 0)
                     AdicionarLinhas(resultado);
                 else if(tabela == 1)

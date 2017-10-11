@@ -126,9 +126,20 @@
         android:textColor="@android:color/holo_red_light"
         android:id="@+id/txtCodigoLinha"/>
     </LinearLayout>
-    <com.github.chrisbanes.photoview.PhotoView
-        android:id="@+id/imagemRota"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_weight="1">
+        <com.github.chrisbanes.photoview.PhotoView
+            android:id="@+id/imagemRota"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/d_logo_original"/>
+        <ImageView
+            android:layout_gravity="right|bottom"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/buscarRota"
+            app:srcCompat="@drawable/d_rota"/>
+    </FrameLayout>
 </LinearLayout>

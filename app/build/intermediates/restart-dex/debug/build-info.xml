@@ -3,31 +3,34 @@
     abi="armeabi-v7a,armeabi"
     api-level="23"
     build-mode="FULL"
-    density="xxhdpi"
+    density="mdpi"
     format="10"
     plugin-version="2.3.3"
-    timestamp="1507527903849"
+    timestamp="1507677109239"
     token="3776420694476961829"
     verifier="FULL_BUILD_REQUESTED" >
 
     <task
         name="javac"
-        duration="5427" />
+        duration="4233" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="453" />
+        duration="279" />
     <task
         name="verifier"
-        duration="416" />
+        duration="156" />
 
+    <artifact
+        location="/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
+        type="SPLIT" />
     <artifact
         location="/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/split-apk/debug/slices/slice_1.apk"
         type="SPLIT" />
     <artifact
-        location="/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/split-apk/debug/slices/slice_2.apk"
+        location="/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/split-apk/debug/slices/slice_9.apk"
         type="SPLIT" />
     <artifact
         location="/home/maico/AndroidStudioProjects/FTSC/app/build/outputs/apk/app-debug.apk"
@@ -45,16 +48,13 @@
         location="/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
         type="SPLIT" />
     <artifact
+        location="/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/split-apk/debug/slices/slice_2.apk"
+        type="SPLIT" />
+    <artifact
         location="/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/split-apk/debug/dep/dependencies.apk"
         type="SPLIT" />
     <artifact
         location="/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
-        type="SPLIT" />
-    <artifact
-        location="/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
-        type="SPLIT" />
-    <artifact
-        location="/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/split-apk/debug/slices/slice_9.apk"
         type="SPLIT" />
     <artifact
         location="/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/split-apk/debug/slices/slice_8.apk"
@@ -62,13 +62,16 @@
 
     <build
         build-mode="FULL"
-        timestamp="1507527903849"
+        timestamp="1507677109239"
         verifier="FULL_BUILD_REQUESTED" >
+        <artifact
+            location="/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
+            type="SPLIT" />
         <artifact
             location="/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/split-apk/debug/slices/slice_1.apk"
             type="SPLIT" />
         <artifact
-            location="/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/split-apk/debug/slices/slice_2.apk"
+            location="/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/split-apk/debug/slices/slice_9.apk"
             type="SPLIT" />
         <artifact
             location="/home/maico/AndroidStudioProjects/FTSC/app/build/outputs/apk/app-debug.apk"
@@ -86,16 +89,13 @@
             location="/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
             type="SPLIT" />
         <artifact
+            location="/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/split-apk/debug/slices/slice_2.apk"
+            type="SPLIT" />
+        <artifact
             location="/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/split-apk/debug/dep/dependencies.apk"
             type="SPLIT" />
         <artifact
             location="/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
-            type="SPLIT" />
-        <artifact
-            location="/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
-            type="SPLIT" />
-        <artifact
-            location="/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/split-apk/debug/slices/slice_9.apk"
             type="SPLIT" />
         <artifact
             location="/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/split-apk/debug/slices/slice_8.apk"

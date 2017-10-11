@@ -15,6 +15,7 @@ import java.util.ArrayList;
 
 import onuse.com.br.ftsc.BancoDados.BancoInterno;
 import onuse.com.br.ftsc.BancoDados.BancoOnlineDelete;
+import onuse.com.br.ftsc.BancoDados.BancoOnlineUpdate;
 import onuse.com.br.ftsc.BancoDados.RepositorioAcoes;
 import onuse.com.br.ftsc.Models.Carros;
 import onuse.com.br.ftsc.R;
@@ -63,6 +64,8 @@ public class AdaptadoAlteracaoFragment  extends Fragment {
                 tipoCarro = fragAlteracaoAdaptadoTipoCarro.getSelectedItemPosition();
                 adaptadoSN = fragAlteracaoAdaptadoAdaptadoSN.getSelectedItemPosition();
 
+                BancoOnlineUpdate bancoOnlineUpdate = new BancoOnlineUpdate(getActivity());
+                bancoOnlineUpdate.ConectarBancoUpdate(1, codigo, ""+tipoCarro, adaptadoSN);
 
                 /*BancoInterno bancoInterno = new BancoInterno(getActivity());
                 SQLiteDatabase conn = bancoInterno.getWritableDatabase();

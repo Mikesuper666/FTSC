@@ -106,7 +106,8 @@
     <item>@drawable/velza_saopedro</item>
     <item>@drawable/velza_umbu_americana</item>
     <item>@drawable/jalvorada_p_alves</item>
-    <item>@drawable/saopedro_rui_ramos</item></integer-array>
+    <item>@drawable/saopedro_rui_ramos</item>
+    <item>@drawable/d_logo_original</item></integer-array>
 
     <integer-array name="images_execoes">
         <item>@drawable/d_bone</item>

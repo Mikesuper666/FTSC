@@ -17,6 +17,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import onuse.com.br.ftsc.BancoDados.BancoInterno;
+import onuse.com.br.ftsc.BancoDados.BancoOnlineUpdate;
 import onuse.com.br.ftsc.BancoDados.RepositorioAcoes;
 import onuse.com.br.ftsc.Models.Execoes;
 import onuse.com.br.ftsc.R;
@@ -59,12 +60,14 @@ public class ExcecaoAlteracaoFragment extends Fragment{
             public void onClick(View view) {
 
                 if (ConfirmarCadastro()) {
-                    BancoInterno bancoInterno = new BancoInterno(getActivity());
+                    BancoOnlineUpdate bancoOnlineUpdate = new BancoOnlineUpdate(getActivity());
+                    bancoOnlineUpdate.ConectarBancoUpdate(0, codigo, nome, tipoExecao);
+                    /*BancoInterno bancoInterno = new BancoInterno(getActivity());
                     SQLiteDatabase conn = bancoInterno.getWritableDatabase();
                     RepositorioAcoes repositorioAcoes = new RepositorioAcoes(conn);
                     repositorioAcoes.AtualizarExecao(codigo, nome, tipoExecao);
                     Toast.makeText(getActivity(), "Alterado com sucesso!", Toast.LENGTH_LONG).show();
-                    getActivity().finish();
+                    getActivity().finish();*/
                 }
             }
         });

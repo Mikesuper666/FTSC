@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/maico/AndroidStudioProjects/FTSC/app/src/main/AndroidManifest.xml:2:1-30:12
+ADDED from /home/maico/AndroidStudioProjects/FTSC/app/src/main/AndroidManifest.xml:2:1-31:12
 	package
 		ADDED from /home/maico/AndroidStudioProjects/FTSC/app/src/main/AndroidManifest.xml:3:5-32
 		INJECTED from /home/maico/AndroidStudioProjects/FTSC/app/src/main/AndroidManifest.xml
@@ -26,7 +26,7 @@ ADDED from /home/maico/AndroidStudioProjects/FTSC/app/src/main/AndroidManifest.x
 	android:name
 		ADDED from /home/maico/AndroidStudioProjects/FTSC/app/src/main/AndroidManifest.xml:6:22-64
 application
-ADDED from /home/maico/AndroidStudioProjects/FTSC/app/src/main/AndroidManifest.xml:7:5-28:19
+ADDED from /home/maico/AndroidStudioProjects/FTSC/app/src/main/AndroidManifest.xml:7:5-29:19
 MERGED from [com.android.support:appcompat-v7:26.0.0-alpha1] /home/maico/.android/build-cache/ec4f7e121041ecea9fb0051e2b07ff8714f211b2/output/AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:animated-vector-drawable:26.0.0-alpha1] /home/maico/.android/build-cache/b96d4b70ff42203d13ca9ec9bc0f817eb014932a/output/AndroidManifest.xml:26:5-20
 MERGED from [com.android.support:support-vector-drawable:26.0.0-alpha1] /home/maico/.android/build-cache/2c953a54c931cb8d0f377e39cd367a6965b0a96a/output/AndroidManifest.xml:26:5-20
@@ -88,6 +88,12 @@ ADDED from /home/maico/AndroidStudioProjects/FTSC/app/src/main/AndroidManifest.x
 		ADDED from /home/maico/AndroidStudioProjects/FTSC/app/src/main/AndroidManifest.xml:27:48-84
 	android:name
 		ADDED from /home/maico/AndroidStudioProjects/FTSC/app/src/main/AndroidManifest.xml:27:19-47
+activity#onuse.com.br.ftsc.RequisicaoWeb
+ADDED from /home/maico/AndroidStudioProjects/FTSC/app/src/main/AndroidManifest.xml:28:9-97
+	android:screenOrientation
+		ADDED from /home/maico/AndroidStudioProjects/FTSC/app/src/main/AndroidManifest.xml:28:49-85
+	android:name
+		ADDED from /home/maico/AndroidStudioProjects/FTSC/app/src/main/AndroidManifest.xml:28:19-48
 uses-sdk
 INJECTED from /home/maico/AndroidStudioProjects/FTSC/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:appcompat-v7:26.0.0-alpha1] /home/maico/.android/build-cache/ec4f7e121041ecea9fb0051e2b07ff8714f211b2/output/AndroidManifest.xml:21:5-23:78

@@ -33,7 +33,7 @@ public class PrincipalActivity extends AppCompatActivity {
     private Button btnNomeLinha, btnCodigoLinha;
     private TextView txtCodigoLinha, txtNomeLinha;
     private AutoCompleteTextView edtNomeLinha, edtCodigoLinha;
-    private ImageView btnAdaptados, btnExcecoes, btnCompartilhar, btnAtualizarDados;
+    private ImageView btnAdaptados, btnExcecoes, btnCompartilhar, btnAtualizarDados, buscarRota;
     private PhotoView imagemRota;
     private TypedArray img;
     private int numeroImagem = 0;
@@ -66,6 +66,7 @@ public class PrincipalActivity extends AppCompatActivity {
         btnExcecoes = (ImageView)findViewById(R.id.btnExcecoes);
         btnCompartilhar = (ImageView) findViewById(R.id.btnCompartilhar);
         btnAtualizarDados = (ImageView) findViewById(R.id.btnAtualizarDados);
+        buscarRota = (ImageView) findViewById(R.id.buscarRota);
         imagemRota = (PhotoView) findViewById(R.id.imagemRota);
 
         bancoInterno = new BancoInterno(this);
@@ -127,6 +128,14 @@ public class PrincipalActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(PrincipalActivity.this, ListaExecoes.class);
+                startActivity(i);
+            }
+        });
+
+        buscarRota.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(PrincipalActivity.this, RequisicaoWeb.class);
                 startActivity(i);
             }
         });

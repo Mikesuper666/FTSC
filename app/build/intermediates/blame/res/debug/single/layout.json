@@ -92,6 +92,10 @@
         "source": "/home/maico/AndroidStudioProjects/FTSC/app/src/main/res/layout/activity_login.xml"
     },
     {
+        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/layout/fragment_login.xml",
+        "source": "/home/maico/AndroidStudioProjects/FTSC/app/src/main/res/layout/fragment_login.xml"
+    },
+    {
         "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/layout/abc_action_menu_layout.xml",
         "source": "/home/maico/.android/build-cache/ec4f7e121041ecea9fb0051e2b07ff8714f211b2/output/res/layout/abc_action_menu_layout.xml"
     },
@@ -186,6 +190,10 @@
     {
         "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/layout/notification_action_tombstone.xml",
         "source": "/home/maico/.android/build-cache/ec4f7e121041ecea9fb0051e2b07ff8714f211b2/output/res/layout/notification_action_tombstone.xml"
+    },
+    {
+        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/layout/activity_web.xml",
+        "source": "/home/maico/AndroidStudioProjects/FTSC/app/src/main/res/layout/activity_web.xml"
     },
     {
         "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/layout/notification_template_icon_group.xml",

@@ -25,6 +25,7 @@
         </activity>
         <activity android:name=".ListaAdaptados" android:screenOrientation="portrait"></activity>
         <activity android:name=".ListaExecoes" android:screenOrientation="portrait"></activity>
+        <activity android:name=".RequisicaoWeb" android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
