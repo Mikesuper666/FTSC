@@ -2,6 +2,7 @@ package onuse.com.br.ftsc;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.support.annotation.IdRes;
@@ -20,6 +21,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -34,6 +36,7 @@ import onuse.com.br.ftsc.BancoDados.BancoOnlineDelete;
 import onuse.com.br.ftsc.BancoDados.BancoOnlineSelect;
 import onuse.com.br.ftsc.BancoDados.RepositorioAcoes;
 import onuse.com.br.ftsc.Fragments.ExcecaoAlteracaoFragment;
+import onuse.com.br.ftsc.Fragments.ExecaoConsultaFragment;
 import onuse.com.br.ftsc.Fragments.ExecaoFragment;
 import onuse.com.br.ftsc.Helper.Preferencias;
 import onuse.com.br.ftsc.Models.Execoes;
@@ -44,7 +47,8 @@ public class ListaExecoes extends AppCompatActivity {
     private ArrayList<Execoes> execoes;
     private RadioButton radioNome, radioMatricula, radioExececao;
     private RadioGroup radioGroup;
-    private Button btnAdicionarExecaoFragment, btnProcurarExecaoFragment, btnAtualizarExecaoFragment;
+    private Button btnAdicionarExecaoFragment, btnProcurarExecaoFragment;
+    private ImageView btnAtualizarExecaoFragment;
     private AutoCompleteTextView edtMatricula;
     private Preferencias preferencias;
 
@@ -64,7 +68,7 @@ public class ListaExecoes extends AppCompatActivity {
         radioGroup = (RadioGroup)findViewById(R.id.radioGroup);
         btnAdicionarExecaoFragment = (Button) findViewById(R.id.btnAdicionarExecaoFragment);
         btnProcurarExecaoFragment = (Button) findViewById(R.id.btnProcurarExecaoFragment);
-        btnAtualizarExecaoFragment = (Button) findViewById(R.id.btnAtualizarExecaoFragment);
+        btnAtualizarExecaoFragment = (ImageView) findViewById(R.id.btnAtualizarExecaoFragment);
         /**************************************************
          * MONTA O LIST VIEW E ADAPTER
          **************************************************/
@@ -133,9 +137,7 @@ public class ListaExecoes extends AppCompatActivity {
         btnAtualizarExecaoFragment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                repositorioAcoes.DeletarLinhas("d_execoes");
-                BancoOnlineSelect crud = new BancoOnlineSelect(ListaExecoes.this);
-                crud.conectarAobanco(2);
+                AtualizarView();
             }
         });
 
@@ -154,7 +156,36 @@ public class ListaExecoes extends AppCompatActivity {
             btnAdicionarExecaoFragment.setVisibility(View.GONE);
         }
 
+        listaExecoes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
 
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                Fragment execaoConsultaFragment = new ExecaoConsultaFragment();
+                transaction.add(R.id.conteudoFragmentExecoes, execaoConsultaFragment, "ExecaoConsultaFragment");
+                transaction.addToBackStack(null); //Linha super importante para  o retorno do fragment
+                if(fragmentManager.findFragmentByTag("ExecaoConsultaFragment") == null) {
+
+                    Execoes execoesConsulta = execoes.get(position);
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("CODIGO", (int) execoesConsulta.getId());
+                    bundle.putInt("EXECAO", execoesConsulta.getTipoExecao());
+                    bundle.putString("NOME", execoesConsulta.getNome());
+                    bundle.putString("FUNCAO", execoesConsulta.getNome());
+                    bundle.putString("HORARIO", execoesConsulta.getNome());
+                    execaoConsultaFragment
+                            .setArguments(bundle);
+                    transaction.commit();
+                }
+            }
+        });
+    }
+
+    private void AtualizarView(){
+        repositorioAcoes.DeletarLinhas("d_execoes");
+        BancoOnlineSelect crud = new BancoOnlineSelect(ListaExecoes.this);
+        crud.conectarAobanco(2);
     }
 
     public void AdicionarDados(){
@@ -323,5 +354,5 @@ public class ListaExecoes extends AppCompatActivity {
         }
     }
 
-    private void RemoverFragment(){AdicionarDados();onBackPressed();}
+    private void RemoverFragment(){AdicionarDados();onBackPressed(); AtualizarView();}
 }

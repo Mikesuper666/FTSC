@@ -1,48 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="@color/colorPrimaryBackGround"
+    android:background="@color/paleta_azul_3"
     tools:context="onuse.com.br.ftsc.PrincipalActivity">
-    <LinearLayout
+
+    <include layout="@layout/widget_toolbar" />
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:orientation="horizontal">
-        <ImageView
-            android:id="@+id/btnAtualizarDados"
-            android:layout_width="0dp"
-            android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+        <!--LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/d_atualizar" />
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnExcecoes"
-            app:srcCompat="@drawable/d_execoes"/>
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnAdaptados"
-            app:srcCompat="@drawable/d_adaptado"/>
-        <ImageView
-            android:id="@+id/btnCompartilhar"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/d_compartilhar" />
-    </LinearLayout>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="DIGITE A LINHA OU CÓDIGO!"
-        android:textStyle="bold"
-        android:textAlignment="center"/>
+            android:background="@color/colorPrimary"
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/btnAtualizarDados"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/d_atualizar" />
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnExcecoes"
+                app:srcCompat="@drawable/d_execoes"/>
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnAdaptados"
+                app:srcCompat="@drawable/d_adaptado"/>
+            <ImageView
+                android:id="@+id/btnCompartilhar"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/d_compartilhar" />
+        </LinearLayout-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -53,79 +60,47 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="LINHA"/>
+            android:orientation="horizontal"
+            android:layout_margin="10dp">
             <AutoCompleteTextView
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:id="@+id/edtNomeLinha"/>
+                android:hint="Digite a Linha"
+                android:textAlignment="center"
+                android:id="@+id/edtNomeLinha"
+                android:background="@drawable/d_border_edt"/>
             <Button
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                android:layout_marginLeft="-20dp"
                 android:background="@drawable/d_procurar"
                 android:id="@+id/btnNomeLinha"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="CÓDIGO"/>
+            android:orientation="horizontal"
+            android:layout_margin="10dp">
             <AutoCompleteTextView
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:inputType="number"
-                android:id="@+id/edtCodigoLinha"/>
-
+                android:hint="Digite o Código"
+                android:textAlignment="center"
+                android:id="@+id/edtCodigoLinha"
+                android:background="@drawable/d_border_edt"/>
             <Button
                 android:id="@+id/btnCodigoLinha"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                android:layout_marginLeft="-20dp"
                 android:background="@drawable/d_procurar"/>
         </LinearLayout>
         </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="RESULTADO: "
-            android:textStyle="bold"
-            android:textAlignment="center"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="LINHA!"
-            android:textColor="@android:color/holo_red_light"
-            android:id="@+id/txtNomeLinha"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="CÓDIGOS: "
-            android:textStyle="bold"/>
-        <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="CÓDIGO!"
-        android:textColor="@android:color/holo_red_light"
-        android:id="@+id/txtCodigoLinha"/>
-    </LinearLayout>
+
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -133,13 +108,31 @@
         <com.github.chrisbanes.photoview.PhotoView
             android:id="@+id/imagemRota"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/d_logo_original"/>
-        <ImageView
+            android:layout_height="match_parent"/>
+        <ImageButton
             android:layout_gravity="right|bottom"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:id="@+id/buscarRota"
-            app:srcCompat="@drawable/d_rota"/>
+            android:id="@+id/btn_att_revelar"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/d_atualizar" />
+
+        <ImageButton
+            android:layout_gravity="left|bottom"
+            android:id="@+id/btn_compartilhar_revelar"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/d_compartilhar" />
     </FrameLayout>
-</LinearLayout>
+        </LinearLayout>
+
+        <io.codetail.widget.RevealFrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+
+            <include layout="@layout/widget_painel" />
+
+        </io.codetail.widget.RevealFrameLayout>
+    </FrameLayout>
+</FrameLayout>

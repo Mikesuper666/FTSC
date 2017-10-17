@@ -31,11 +31,11 @@ import onuse.com.br.ftsc.R;
 public class ExecaoFragment  extends Fragment {
 
     private EditText fragExecoesNome, fragExecoesCodigo;
-    private Spinner fragExecoesTipoExecao;
+    private Spinner fragExecoesTipoExecao, fragExecoesFuncao, fragExecoesHorario;
     private ImageView fragExecoesAdicionar, fragExecoesCancelar;
 
     //captura dos dados
-    private int codigo, tipoExecao;
+    private int codigo, tipoExecao, funcao, horario;
     private String nome;
 
 
@@ -48,6 +48,8 @@ public class ExecaoFragment  extends Fragment {
         fragExecoesNome = view.findViewById(R.id.fragExecoesNome);
         fragExecoesCodigo = view.findViewById(R.id.fragExecoesCodigo);
         fragExecoesTipoExecao = view.findViewById(R.id.fragExecoesTipoExecao);
+        fragExecoesFuncao = view.findViewById(R.id.fragExecoesFuncao);
+        fragExecoesHorario = view.findViewById(R.id.fragExecoesHorario);
         fragExecoesAdicionar = view.findViewById(R.id.fragExecoesAdicionar);
         fragExecoesCancelar = view.findViewById(R.id.fragExecoesCancelar);
 
@@ -56,7 +58,7 @@ public class ExecaoFragment  extends Fragment {
             public void onClick(View view) {
                 if(ConfirmarCadastro()){
                     BancoOnlineInsert bancoOnlineInsert = new BancoOnlineInsert(getActivity());
-                    bancoOnlineInsert.conectarAobancoInsersao(0, codigo, nome, tipoExecao);
+                    bancoOnlineInsert.conectarAobancoInsersao(0, codigo, nome, tipoExecao, funcao, horario);
                     /*BancoInterno bancoInterno = new BancoInterno(getActivity());
                     SQLiteDatabase conn = bancoInterno.getWritableDatabase();
                     RepositorioAcoes repositorioAcoes = new RepositorioAcoes(conn);
@@ -70,10 +72,10 @@ public class ExecaoFragment  extends Fragment {
 
         /*
         * Obrigatorio para modificação das cores do spinnner
-        * */
+        * *
         SpinnerCustomizado spinnerCustomizado = new SpinnerCustomizado();
         spinnerCustomizado.Spinner(getActivity(), fragExecoesTipoExecao);
-        /**
+        **
          * ***********************************************************************
          */
 
@@ -99,6 +101,8 @@ public class ExecaoFragment  extends Fragment {
         //pega o numero da exeção
         tipoExecao = fragExecoesTipoExecao.getSelectedItemPosition();
         nome = fragExecoesNome.getText().toString();
+        funcao = fragExecoesFuncao.getSelectedItemPosition();
+        horario = fragExecoesFuncao.getSelectedItemPosition();
         if(nome.equals("") || nome == null){
             fragExecoesNome.setError("Porfavor digite um nome!");
             return false;

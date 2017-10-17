@@ -43,7 +43,7 @@ public class BancoOnlineUpdate {
                     tabela = 0;
                     break;
                 case 1:
-                    url = "http://maicoheleno.890m.com/tcc/update-adaptados.php?id="+codigo+"&nome="+param1+"&tipoexecao="+param2;
+                    url = "http://maicoheleno.890m.com/tcc/update-adaptados.php?id="+codigo+"&tipoCarro="+param1+"&d_adaptado="+param2;
                     tabela = 1;
                     break;
                 case 2:
@@ -66,7 +66,7 @@ public class BancoOnlineUpdate {
         protected void onPreExecute() {
             super.onPreExecute();
             dialogBaixando = new ProgressDialog(context);
-            dialogBaixando.setMessage("Baixando dados e atualizando...");
+            dialogBaixando.setMessage("Atualizando dados...");
             dialogBaixando.setCancelable(false);
             dialogBaixando.show();
         }

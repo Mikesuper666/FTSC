@@ -20,6 +20,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -45,7 +46,8 @@ public class ListaAdaptados extends AppCompatActivity {
     private RadioButton radioTipoCarro, radioAdaptados, radioCodigoCarro;
     private RadioGroup radioGroupAdaptados;
     private ListView listaAdptados;
-    private Button btnAdicionarAdaptado, btnProcurarrAdaptado, btnAtualizarAdaptados;
+    private Button btnAdicionarAdaptado, btnProcurarrAdaptado;
+    private ImageView btnAtualizarAdaptados;
     private AutoCompleteTextView edtCodigo;
     private Preferencias preferencias;
 
@@ -65,7 +67,7 @@ public class ListaAdaptados extends AppCompatActivity {
         radioGroupAdaptados = (RadioGroup)findViewById(R.id.radioGroupAdaptados);
         btnAdicionarAdaptado = (Button) findViewById(R.id.btnAdicionarAdaptado);
         btnProcurarrAdaptado = (Button) findViewById(R.id.btnProcurarrAdaptado);
-        btnAtualizarAdaptados = (Button) findViewById(R.id.btnAtualizarAdaptados);
+        btnAtualizarAdaptados = (ImageView) findViewById(R.id.btnAtualizarAdaptados);
         /**************************************************
          * MONTA O LIST VIEW E ADAPTER
          **************************************************/
@@ -151,9 +153,7 @@ public class ListaAdaptados extends AppCompatActivity {
         btnAtualizarAdaptados.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                repositorioAcoes.DeletarLinhas("tipo_carro");
-                BancoOnlineSelect crud = new BancoOnlineSelect(ListaAdaptados.this);
-                crud.conectarAobanco(1);
+               AtualizarView();
             }
         });
 
@@ -164,6 +164,12 @@ public class ListaAdaptados extends AppCompatActivity {
         }else{
             btnAdicionarAdaptado.setVisibility(View.GONE);
         }
+    }
+
+    private void AtualizarView(){
+        repositorioAcoes.DeletarLinhas("tipo_carro");
+        BancoOnlineSelect crud = new BancoOnlineSelect(ListaAdaptados.this);
+        crud.conectarAobanco(1);
     }
 
     private void AdicionarDados(){
@@ -328,5 +334,5 @@ public class ListaAdaptados extends AppCompatActivity {
         }
     }
 
-    private void RemoverFragment(){AdicionarDados();onBackPressed();}
+    private void RemoverFragment(){AdicionarDados();onBackPressed(); AtualizarView();}
 }

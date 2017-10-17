@@ -1,34 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/conteudoFragmentExecoes"
     tools:context="onuse.com.br.ftsc.ListaExecoes"
-    android:background="@color/colorPrimaryBackGround">
+    android:background="@color/paleta_azul_3">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="?attr/actionBarSize"
         android:background="@color/colorPrimary"
-        android:gravity="right"
+        android:gravity="center|right"
         android:orientation="horizontal"
         android:paddingLeft="5dp"
         android:paddingRight="5dp">
+        <Button
+            android:id="@+id/btnAdicionarExecaoFragment"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/d_icon_bus" />
+
         <AutoCompleteTextView
             android:id="@+id/procurarMatriculaExecao"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="Digite a matricula"
-            android:inputType="number"
+            android:hint="Mátricula - Nome"
+            android:textAlignment="center"
+            android:background="@drawable/d_border_edt"
             android:maxLines="1"
+            android:inputType="number"
             android:maxLength="6"
-            android:textAllCaps="false"
             android:textColorLink="@android:color/darker_gray"
             android:textSize="13sp" />
 
@@ -36,23 +43,8 @@
             android:id="@+id/btnProcurarExecaoFragment"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="-20dp"
             android:background="@drawable/d_procurar" />
-
-        <Button
-            android:id="@+id/btnAtualizarExecaoFragment"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:background="@drawable/d_atualizar" />
-
-        <Button
-            android:id="@+id/btnAdicionarExecaoFragment"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/d_adicionar" />
         </LinearLayout>
         <RadioGroup
             android:id="@+id/radioGroup"
@@ -84,14 +76,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Execeção" />
+
         </RadioGroup>
 
-        <ListView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/listaExecoes"
-            android:dividerHeight="0dp"
-            android:layout_gravity="center_horizontal">
-        </ListView>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="20dp"
+                android:id="@+id/listaExecoes"
+                android:background="@color/colorBranco"
+                android:divider="@null">
+            </ListView>
+            <ImageButton
+                android:layout_gravity="right|bottom"
+                android:id="@+id/btnAtualizarExecaoFragment"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/d_atualizar" />
+
+        </FrameLayout>
         </LinearLayout>
 </FrameLayout>

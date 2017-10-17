@@ -46,28 +46,28 @@ public class AdaptadosAdapter extends ArrayAdapter<Carros> {
             //Recuperar elementos da tela
             TextView codigocarroAdaptado = (TextView)view.findViewById(R.id.codigocarroAdaptado); //Armazena o nome no textview
             TextView nomeAdaptado = (TextView)view.findViewById(R.id.nomeAdaptados); //Armazena a ultima conversa no textview
-            ImageView imageAdaptado = (ImageView) view.findViewById(R.id.imagemAdaptados);
+            //ImageView imageAdaptado = (ImageView) view.findViewById(R.id.imagemAdaptados);
             ImageView imagemCarroAdaptado = (ImageView) view.findViewById(R.id.imagemcarroAdaptado);
 
             //seta valores nos componetes de tela
             carro = carros.get(position);
-            codigocarroAdaptado.setText("Código: "+carro.getId());
+            codigocarroAdaptado.setText(""+carro.getId());
 
             if(carro.getTipoCarro() == 0){
-                imageAdaptado.setImageResource(R.drawable.d_cmt);
-                nomeAdaptado.setText("Tipo: CMT");
+                //imageAdaptado.setImageResource(R.drawable.d_cmt);
+                nomeAdaptado.setText("CMT");
             }else if(carro.getTipoCarro() == 1){
-                imageAdaptado.setImageResource(R.drawable.d_4portas);
-                nomeAdaptado.setText("Tipo: 4 Portas");
+                //imageAdaptado.setImageResource(R.drawable.d_4portas);
+                nomeAdaptado.setText("4 Portas");
             }else if(carro.getTipoCarro() == 2){
-                imageAdaptado.setImageResource(R.drawable.d_toco);
-                nomeAdaptado.setText("Tipo: Toco");
+                //imageAdaptado.setImageResource(R.drawable.d_toco);
+                nomeAdaptado.setText("Toco");
             }else if(carro.getTipoCarro() == 3){
-                imageAdaptado.setImageResource(R.drawable.d_articulado);
-                nomeAdaptado.setText("Tipo: Articulado");
+                //imageAdaptado.setImageResource(R.drawable.d_articulado);
+                nomeAdaptado.setText("Articulado");
             }else if(carro.getTipoCarro() == 4){
-                imageAdaptado.setImageResource(R.drawable.d_toco);
-                nomeAdaptado.setText("Tipo: Lotação/Micro");
+                //imageAdaptado.setImageResource(R.drawable.d_toco);
+                nomeAdaptado.setText("Lotação/Micro");
             }
 
             if(carro.getAdaptado() == 0){

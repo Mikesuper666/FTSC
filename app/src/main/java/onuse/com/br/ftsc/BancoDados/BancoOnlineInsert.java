@@ -32,7 +32,7 @@ public class BancoOnlineInsert {
         carros = new Carros();
     }
 
-    public void conectarAobancoInsersao(int numeroTabela, int idRecebido, String nomeRecebido, int execaoRecebido) {
+    public void conectarAobancoInsersao(int numeroTabela, int idRecebido, String nomeRecebido, int execaoRecebido, int funcao, int horario) {
         ConnectivityManager connMgr = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         /*
@@ -45,7 +45,7 @@ public class BancoOnlineInsert {
 
             switch (numeroTabela){
                 case 0:
-                    url = "http://maicoheleno.890m.com/tcc/insert-execao.php?id="+idRecebido+"&nome="+nomeRecebido.replace(" ","_")+"&tipoexecao="+execaoRecebido;
+                    url = "http://maicoheleno.890m.com/tcc/insert-execao.php?id="+idRecebido+"&nome="+nomeRecebido.replace(" ","_")+"&tipoexecao="+execaoRecebido+"&funcao="+funcao+"&horario="+horario;
                     execoes.setId(idRecebido);
                     execoes.setNome(nomeRecebido);
                     execoes.setTipoExecao(execaoRecebido);

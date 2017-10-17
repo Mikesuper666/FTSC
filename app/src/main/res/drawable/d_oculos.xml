@@ -4,9 +4,10 @@
     android:viewportHeight="504"
     android:width="50dp"
     android:height="50dp">
+
     <path
         android:pathData="M504 252A252 252 0 0 1 252 504 252 252 0 0 1 0 252 252 252 0 0 1 252 0 252 252 0 0 1 504 252Z"
-        android:fillColor="#BDBDBD" />
+        android:fillColor="@color/paleta_azul_3" />
     <group
         android:scaleX="22.27273"
         android:scaleY="22.27273"

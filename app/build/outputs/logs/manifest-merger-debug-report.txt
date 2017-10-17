@@ -36,6 +36,7 @@ MERGED from [com.android.support:support-fragment:26.0.0-alpha1] /home/maico/.an
 MERGED from [com.android.support:support-core-ui:26.0.0-alpha1] /home/maico/.android/build-cache/ca662a543e4cf97d9188a498b5e9aa599dfcefff/output/AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-core-utils:26.0.0-alpha1] /home/maico/.android/build-cache/48accf68e752fb94d0237996ea750e84e6971600/output/AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-compat:26.0.0-alpha1] /home/maico/.android/build-cache/f52d7ddb6a603b3461c47dd2023f54eda6d50e32/output/AndroidManifest.xml:29:5-20
+MERGED from [com.github.ozodrukh:CircularReveal:2.0.1] /home/maico/.android/build-cache/57fb09203a6754646c2ee44944b4a6f4394313d0/output/AndroidManifest.xml:10:5-20
 	android:label
 		ADDED from /home/maico/AndroidStudioProjects/FTSC/app/src/main/AndroidManifest.xml:10:9-41
 	android:supportsRtl
@@ -45,7 +46,7 @@ MERGED from [com.android.support:support-compat:26.0.0-alpha1] /home/maico/.andr
 	android:allowBackup
 		ADDED from /home/maico/AndroidStudioProjects/FTSC/app/src/main/AndroidManifest.xml:8:9-35
 	android:icon
-		ADDED from /home/maico/AndroidStudioProjects/FTSC/app/src/main/AndroidManifest.xml:9:9-41
+		ADDED from /home/maico/AndroidStudioProjects/FTSC/app/src/main/AndroidManifest.xml:9:9-40
 	android:theme
 		ADDED from /home/maico/AndroidStudioProjects/FTSC/app/src/main/AndroidManifest.xml:13:9-40
 activity#onuse.com.br.ftsc.MainActivity
@@ -106,6 +107,7 @@ MERGED from [com.android.support:support-core-ui:26.0.0-alpha1] /home/maico/.and
 MERGED from [com.github.chrisbanes:PhotoView:2.1.3] /home/maico/.android/build-cache/8fa274f6bb5c7d95b30127c6ee05cad6888ce7cc/output/AndroidManifest.xml:8:5-10:41
 MERGED from [com.android.support:support-core-utils:26.0.0-alpha1] /home/maico/.android/build-cache/48accf68e752fb94d0237996ea750e84e6971600/output/AndroidManifest.xml:21:5-23:61
 MERGED from [com.android.support:support-compat:26.0.0-alpha1] /home/maico/.android/build-cache/f52d7ddb6a603b3461c47dd2023f54eda6d50e32/output/AndroidManifest.xml:21:5-23:58
+MERGED from [com.github.ozodrukh:CircularReveal:2.0.1] /home/maico/.android/build-cache/57fb09203a6754646c2ee44944b4a6f4394313d0/output/AndroidManifest.xml:6:5-8:41
 	tools:overrideLibrary
 		ADDED from [com.android.support:appcompat-v7:26.0.0-alpha1] /home/maico/.android/build-cache/ec4f7e121041ecea9fb0051e2b07ff8714f211b2/output/AndroidManifest.xml:23:9-75
 	android:targetSdkVersion

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/conteudoFragmentLogin"
-    android:background="@color/colorPrimaryBackGround"
+    android:background="@color/paleta_azul_3"
     android:orientation="vertical">
 <LinearLayout
     android:layout_width="match_parent"
@@ -15,86 +15,89 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        app:srcCompat="@drawable/d_logo" />
+        app:srcCompat="@drawable/d_logo_original" />
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.7"
-        android:layout_margin="20dp"
-        android:gravity="center"
-        android:isScrollContainer="false"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/edtEmail"
-            android:background="@drawable/d_border_login"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:maxLength="30"
-            android:maxLines="1"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
             android:gravity="center"
-            android:ems="10"
-            android:hint="Digite o seu Usuário"
-            android:inputType="textEmailAddress"
-            android:textColor="@color/colorBranco" />
+            android:background="@color/paleta_azul_1"
+            android:isScrollContainer="false"
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/edtSenha"
-            android:background="@drawable/d_border_login"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:maxLength="10"
-            android:maxLines="1"
-            android:ems="10"
-            android:hint="Digite a senha"
-            android:inputType="textPassword"
-            android:textAlignment="center"
-            android:textColor="@color/colorBranco" />
+            <EditText
+                android:id="@+id/edtEmail"
+                android:background="@drawable/d_border_edt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="5dp"
+                android:maxLength="30"
+                android:maxLines="1"
+                android:gravity="center"
+                android:ems="10"
+                android:hint="Digite o seu Usuário"
+                android:inputType="textCapSentences"
+                android:textColor="@color/colorBranco" />
+
+            <EditText
+                android:id="@+id/edtSenha"
+                android:background="@drawable/d_border_edt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:maxLength="10"
+                android:maxLines="1"
+                android:ems="10"
+                android:hint="Digite a senha"
+                android:inputType="textPassword"
+                android:textAlignment="center"
+                android:textColor="@color/colorBranco" />
+
+            <TextView
+                android:id="@+id/txtLogarVisitante"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:onClick="Cadastrar"
+                android:text="Entrar como visitante"
+                android:textAlignment="center"
+                android:textColor="@android:color/white" />
+
+        </LinearLayout>
+
 
         <Button
             android:id="@+id/btnLogar"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:background="@drawable/d_border_login"
-            android:text="Logar" />
+            android:layout_gravity="bottom|right"
+            android:background="@drawable/d_key" />
 
-        <TextView
-            android:id="@+id/txtLogarVisitante"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.5"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:onClick="Cadastrar"
-            android:text="Entrar como visitante"
-            android:textAlignment="center"
-            android:textColor="@android:color/holo_blue_dark" />
-
-    </LinearLayout>
-    <TextView
+    </FrameLayout>
+    <ImageView
         android:id="@+id/txtModificarSenha"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAlignment="textEnd"
-        android:textColor="@android:color/holo_blue_dark"
-        android:text="modificar a senha"/>
-
+        android:layout_gravity="bottom|left"
+        android:src="@drawable/d_config"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="5dp"/>
 
 </LinearLayout>
 </FrameLayout>

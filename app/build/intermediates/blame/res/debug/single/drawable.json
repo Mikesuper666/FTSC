@@ -1,11 +1,11 @@
 [
     {
-        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable/japarecida_servidao001.jpg",
-        "source": "/home/maico/AndroidStudioProjects/FTSC/app/src/main/res/drawable/japarecida_servidao001.jpg"
-    },
-    {
         "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable/abc_btn_radio_material.xml",
         "source": "/home/maico/.android/build-cache/ec4f7e121041ecea9fb0051e2b07ff8714f211b2/output/res/drawable/abc_btn_radio_material.xml"
+    },
+    {
+        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable/japarecida_servidao001.jpg",
+        "source": "/home/maico/AndroidStudioProjects/FTSC/app/src/main/res/drawable/japarecida_servidao001.jpg"
     },
     {
         "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable/abc_item_background_holo_dark.xml",
@@ -170,10 +170,6 @@
     {
         "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable/umbu.jpg",
         "source": "/home/maico/AndroidStudioProjects/FTSC/app/src/main/res/drawable/umbu.jpg"
-    },
-    {
-        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable/border_layout.xml",
-        "source": "/home/maico/AndroidStudioProjects/FTSC/app/src/main/res/drawable/border_layout.xml"
     },
     {
         "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable/saopedro_ceasa.jpg",
@@ -612,6 +608,10 @@
         "source": "/home/maico/.android/build-cache/ec4f7e121041ecea9fb0051e2b07ff8714f211b2/output/res/drawable/abc_ic_menu_overflow_material.xml"
     },
     {
+        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable/d_border_edt.xml",
+        "source": "/home/maico/AndroidStudioProjects/FTSC/app/src/main/res/drawable/d_border_edt.xml"
+    },
+    {
         "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable/abc_vector_test.xml",
         "source": "/home/maico/.android/build-cache/ec4f7e121041ecea9fb0051e2b07ff8714f211b2/output/res/drawable/abc_vector_test.xml"
     },
@@ -650,6 +650,10 @@
     {
         "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable/intersul001.jpg",
         "source": "/home/maico/AndroidStudioProjects/FTSC/app/src/main/res/drawable/intersul001.jpg"
+    },
+    {
+        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable/d_border_circular.xml",
+        "source": "/home/maico/AndroidStudioProjects/FTSC/app/src/main/res/drawable/d_border_circular.xml"
     },
     {
         "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable/alv_via002.jpg",

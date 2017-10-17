@@ -10,6 +10,7 @@ import java.util.List;
 import onuse.com.br.ftsc.Models.Carros;
 import onuse.com.br.ftsc.Models.Execoes;
 import onuse.com.br.ftsc.Models.Linha;
+import onuse.com.br.ftsc.Models.Ocorrencias;
 import onuse.com.br.ftsc.Models.Tabela;
 
 /**
@@ -171,6 +172,8 @@ public class RepositorioAcoes{
                 e.setId(cursor.getLong(0));
                 e.setNome(cursor.getString(1));
                 e.setTipoExecao(cursor.getInt(2));
+                e.setFuncao(cursor.getInt(3));
+                e.setHorario(cursor.getInt(4));
 
                 execoes.add(i, e);
 
@@ -201,6 +204,37 @@ public class RepositorioAcoes{
         }
 
         return carros;
+    }
+
+    public ArrayList<Ocorrencias> TodasOcorrencias(int matriculaFunc){
+
+        Cursor cursor = conn.query("ocorrencias", new String[]{"matricula_fiscal","ocorrencia"}, "matricula_func=?", new String[]{String.valueOf(matriculaFunc)}, null, null, null);
+
+        ArrayList<Ocorrencias> ocorrencia = new ArrayList<>();
+        int i = 0;
+        if (cursor.moveToFirst()) {
+            do {
+                Ocorrencias e = new Ocorrencias();
+                e.setMatricula_fiscal(cursor.getInt(0));
+                e.setOcorrencia(cursor.getString(1));
+
+                ocorrencia.add(i, e);
+
+                i++;
+            } while (cursor.moveToNext());
+        }
+
+        return ocorrencia;
+    }
+
+    public void InserirNovaOcorrencia(int matriculaFunc, int matriculaFical, String ocorrencia)
+    {
+        ContentValues values = new ContentValues();
+        values.put("matricula_func", matriculaFunc );
+        values.put("matricula_fiscal", matriculaFical );
+        values.put("ocorrencia", ocorrencia );
+
+        conn.insertOrThrow("ocorrencias",null , values);
     }
 
     public void InserirNovoCarro(int id, int tipoCarro, int adaptadoSn)
@@ -235,12 +269,14 @@ public class RepositorioAcoes{
 
     }
 
-    public void AdicionarExecao(String id, String nome, String tipoExecao)
+    public void AdicionarExecao(String id, String nome, String tipoExecao, String funcao, String horario)
     {
         ContentValues values = new ContentValues();
         values.put("_id", id );
         values.put("nome", nome );
         values.put("tipo_execao", tipoExecao );
+        values.put("funcao", funcao );
+        values.put("horario", horario );
 
         conn.insertOrThrow("d_execoes",null , values);
     }

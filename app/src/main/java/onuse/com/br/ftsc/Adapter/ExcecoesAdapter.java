@@ -43,23 +43,25 @@ public class ExcecoesAdapter extends ArrayAdapter<Execoes> {
             view = layoutInflater.inflate(R.layout.widget_execoes, parent, false);
 
             //Recuperar elementos da tela
-            TextView textViewNome = (TextView)view.findViewById(R.id.nomeExecoes); //Armazena o nome no textview
-            TextView textMatricula = (TextView)view.findViewById(R.id.matriculaExeçoes); //Armazena a ultima conversa no textview
-            ImageView imageConversa = (ImageView) view.findViewById(R.id.imagemExecoes);
+            TextView textViewNome = view.findViewById(R.id.nomeExecoes); //Armazena o nome no textview
+            TextView textMatricula = view.findViewById(R.id.matriculaExeçoes); //Armazena a ultima conversa no textview
+            ImageView imageConversa =  view.findViewById(R.id.imagemExecoes);
 
             //seta valores nos componetes de tela
             execao = execoes.get(position);
-            textViewNome.setText("Nome: "+execao.getNome().replace("_"," "));//se o nome receber um "_" underline faremos a troca por um espaço
-            textMatricula.setText("Matrícula: "+execao.getId());
+            textViewNome.setText(""+execao.getNome().replace("_"," "));//se o nome receber um "_" underline faremos a troca por um espaço
+            textMatricula.setText(""+execao.getId());
             if(execao.getTipoExecao() == 0){
+                imageConversa.setImageResource(R.drawable.d_nenhuma);
+            }else if(execao.getTipoExecao() == 1) {
                 imageConversa.setImageResource(R.drawable.d_barba);
-            }else if(execao.getTipoExecao() == 1){
-                imageConversa.setImageResource(R.drawable.d_bone);
             }else if(execao.getTipoExecao() == 2){
-                imageConversa.setImageResource(R.drawable.d_oculos);
+                    imageConversa.setImageResource(R.drawable.d_bone);
             }else if(execao.getTipoExecao() == 3){
-                imageConversa.setImageResource(R.drawable.d_cabelo);
+                imageConversa.setImageResource(R.drawable.d_oculos);
             }else if(execao.getTipoExecao() == 4){
+                imageConversa.setImageResource(R.drawable.d_cabelo);
+            }else if(execao.getTipoExecao() == 5){
                 imageConversa.setImageResource(R.drawable.d_uniforme);
             }
         }

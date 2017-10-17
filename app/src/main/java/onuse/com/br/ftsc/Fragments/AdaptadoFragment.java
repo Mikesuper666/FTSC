@@ -51,7 +51,7 @@ public class AdaptadoFragment extends Fragment {
             public void onClick(View view) {
                 if(ConfirmarCadastro()){
                     BancoOnlineInsert bancoOnlineInsert = new BancoOnlineInsert(getActivity());
-                    bancoOnlineInsert.conectarAobancoInsersao(1, codigo, tipoCarro+"", adaptadoSN);
+                    bancoOnlineInsert.conectarAobancoInsersao(1, codigo, tipoCarro+"", adaptadoSN,0,0);
                     /*BancoInterno bancoInterno = new BancoInterno(getActivity());
                     SQLiteDatabase conn = bancoInterno.getWritableDatabase();
                     RepositorioAcoes repositorioAcoes = new RepositorioAcoes(conn);

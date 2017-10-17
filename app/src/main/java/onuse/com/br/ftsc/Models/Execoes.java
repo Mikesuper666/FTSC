@@ -8,6 +8,8 @@ public class Execoes {
     private long id;
     private String nome;
     private int tipoExecao;
+    private int funcao;
+    private int horario;
 
     public Execoes()
     {
@@ -36,5 +38,21 @@ public class Execoes {
 
     public void setTipoExecao(int tipoExecao) {
         this.tipoExecao = tipoExecao;
+    }
+
+    public int getFuncao() {
+        return funcao;
+    }
+
+    public void setFuncao(int funcao) {
+        this.funcao = funcao;
+    }
+
+    public int getHorario() {
+        return horario;
+    }
+
+    public void setHorario(int horario) {
+        this.horario = horario;
     }
 }

@@ -6,57 +6,55 @@
         android:layout_width="match_parent"
         android:layout_height="10mm"
         android:orientation="horizontal">
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_gravity="center_vertical"
+        android:background="@color/paleta_azul_3"
+        android:orientation="horizontal">
 
-        <ImageView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/imagemAdaptados"
-            android:padding="7dp"
-            android:layout_width="10mm"
-            android:layout_height="10mm"
+        <TextView
+            android:id="@+id/codigocarroAdaptado"
+            android:layout_width="0dp"
+            android:layout_weight="0.25"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:text="7001"
+            android:textAlignment="center"
+            android:textSize="18sp" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.05"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:textAlignment="center"
+            android:text="|"
+            android:textStyle="bold"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/nomeAdaptados"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
             android:layout_gravity="center"
-            app:srcCompat="@android:drawable/sym_def_app_icon" />
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="0.8"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/nomeAdaptados"
-                    android:layout_width="match_parent"
-                    android:layout_height="6mm"
-                    android:layout_weight="1"
-                    android:gravity="bottom|left"
-                    android:maxLines="1"
-                    android:text="Nome sobrenome"
-                    android:textSize="23sp" />
-
-                <TextView
-                    android:id="@+id/codigocarroAdaptado"
-                    android:layout_width="match_parent"
-                    android:layout_height="3mm"
-                    android:layout_weight="1"
-                    android:maxLines="1"
-                    android:text="conver aqui ou assunto nesse max"
-                    android:textSize="13sp" />
-            </LinearLayout>
-            <ImageView
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/imagemcarroAdaptado"
-                android:padding="7dp"
-                android:layout_width="10mm"
-                android:layout_height="10mm"
-                android:layout_gravity="center"
-                app:srcCompat="@android:drawable/sym_def_app_icon" />
-        </LinearLayout>
-
+            android:text="Tipo de onibus"
+            android:textSize="14sp"/>
     </LinearLayout>
+    <ImageView
+        android:id="@+id/imagemcarroAdaptado"
+        android:layout_marginBottom="3dp"
+        android:layout_marginTop="3dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:layout_marginLeft="-10dp"
+        android:layout_marginRight="5dp"
+        android:src="@drawable/d_arrow"/>
+</LinearLayout>
+
 
 </LinearLayout>

@@ -110,8 +110,11 @@
     <item>@drawable/d_logo_original</item></integer-array>
 
     <integer-array name="images_execoes">
+        <item>@drawable/d_nenhuma</item>
+        <item>@drawable/d_barba</item>
         <item>@drawable/d_bone</item>
         <item>@drawable/d_oculos</item>
-        <item>@drawable/d_barba</item>
+        <item>@drawable/d_cabelo</item>
+        <item>@drawable/d_uniforme</item>
     </integer-array>
 </resources>

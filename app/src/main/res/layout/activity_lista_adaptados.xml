@@ -4,7 +4,7 @@
     android:id="@+id/conteudoFragment"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/colorPrimaryBackGround"
+    android:background="@color/paleta_azul_3"
     android:layout_height="match_parent"
     tools:context="onuse.com.br.ftsc.ListaAdaptados">
 
@@ -15,9 +15,9 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="?attr/actionBarSize"
             android:background="@color/colorPrimary"
-            android:gravity="right"
+            android:gravity="center|right"
             android:orientation="horizontal"
             android:paddingLeft="5dp"
             android:paddingRight="5dp">
@@ -32,6 +32,7 @@
                 android:maxLines="1"
                 android:maxLength="4"
                 android:textAllCaps="false"
+                android:background="@drawable/d_border_edt"
                 android:textColorLink="@android:color/darker_gray"
                 android:textSize="13sp" />
 
@@ -39,23 +40,15 @@
                 android:id="@+id/btnProcurarrAdaptado"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="-20dp"
                 android:background="@drawable/d_procurar" />
-
-            <Button
-                android:id="@+id/btnAtualizarAdaptados"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
-                android:background="@drawable/d_atualizar" />
 
             <Button
                 android:id="@+id/btnAdicionarAdaptado"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginRight="10dp"
-                android:background="@drawable/d_adicionar" />
+                android:background="@drawable/d_icon_bus" />
         </LinearLayout>
         <RadioGroup
             android:id="@+id/radioGroupAdaptados"
@@ -98,10 +91,25 @@
                 android:text="Código"
                 android:textSize="12sp" />
         </RadioGroup>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
         <ListView
             android:id="@+id/listaAdaptados"
+            android:background="@color/colorBranco"
+            android:layout_margin="20dp"
+            android:divider="@null"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+        <ImageButton
+            android:layout_gravity="right|bottom"
+            android:id="@+id/btnAtualizarAdaptados"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/d_atualizar" />
+        </FrameLayout>
     </LinearLayout>
 
 </FrameLayout>

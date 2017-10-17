@@ -1,55 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="10mm"
-        android:orientation="horizontal">
-
-        <ImageView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/imagemExecoes"
-            android:padding="7dp"
-            android:layout_width="10mm"
-            android:layout_height="10mm"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal"
+        android:background="@color/paleta_azul_3">
+        <TextView
+            android:id="@+id/matriculaExeçoes"
+            android:layout_width="0dp"
+            android:layout_weight="0.25"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:text="4001"
+            android:textAlignment="center"
+            android:textSize="18sp" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.05"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:textAlignment="center"
+            android:text="|"
+            android:textStyle="bold"
+            android:textSize="20sp" />
+        <TextView
+            android:id="@+id/nomeExecoes"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
             android:layout_gravity="center"
-            app:srcCompat="@android:drawable/sym_def_app_icon" />
+            android:text="Nome completo do funcionario"
+            android:textSize="14sp" />
 
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="0.8"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/nomeExecoes"
-                    android:layout_width="match_parent"
-                    android:layout_height="6mm"
-                    android:layout_weight="1"
-                    android:gravity="bottom|left"
-                    android:maxLines="1"
-                    android:text="Nome sobrenome"
-                    android:textSize="23sp" />
-
-                <TextView
-                    android:id="@+id/matriculaExeçoes"
-                    android:layout_width="match_parent"
-                    android:layout_height="3mm"
-                    android:layout_weight="1"
-                    android:maxLines="1"
-                    android:text="conver aqui ou assunto nesse max"
-                    android:textSize="13sp" />
-
-            </LinearLayout>
-            </LinearLayout>
-
-            </LinearLayout>
+    </LinearLayout>
+    <ImageView
+        android:layout_marginBottom="3dp"
+        android:layout_marginTop="3dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:id="@+id/imagemExecoes"
+        android:layout_marginLeft="-10dp"
+        android:layout_marginRight="5dp"
+        android:src="@drawable/d_arrow"/>
 
 </LinearLayout>

@@ -51,7 +51,7 @@ public class BancoOnlineSelect {
                     tabela = 1;
                     break;
                 case 2:
-                    url = "http://maicoheleno.890m.com/tcc/select-execao.php";
+                    url = "http://maicoheleno.890m.com/tcc/select-execao2.php";
                     tabela = 2;
                     break;
             }
@@ -173,6 +173,8 @@ public class BancoOnlineSelect {
                 String id = null;
                 String nome = null;
                 String tipo_execao = null;
+                String funcao = null;
+                String horario = null;
                 String execoesMisturados[] = execoes.split("__");
                 if (execoes != null) {
                     for (int i = 0; i < execoesMisturados.length;) {
@@ -186,7 +188,11 @@ public class BancoOnlineSelect {
                             nome = execoesMisturados[i];
                             i++;
                             tipo_execao = execoesMisturados[i];
-                            repositorioAcoes.AdicionarExecao(id, nome, tipo_execao);
+                            i++;
+                            funcao = execoesMisturados[i];
+                            i++;
+                            horario = execoesMisturados[i];
+                            repositorioAcoes.AdicionarExecao(id, nome, tipo_execao,funcao,horario);
                             i++;
                         }
                     }

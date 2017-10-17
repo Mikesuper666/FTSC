@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,7 +23,8 @@ import onuse.com.br.ftsc.Helper.Preferencias;
  */
 
 public class LoginActivity extends AppCompatActivity {
-    private TextView txtLogarVisitante, txtModificarSenha;
+    private TextView txtLogarVisitante;
+    private ImageView txtModificarSenha;
     private Button btnLogar;
     private EditText edtSenha, edtEmail;
     private Preferencias preferencias;
@@ -31,12 +33,12 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         txtLogarVisitante = (TextView)findViewById(R.id.txtLogarVisitante);
-        txtModificarSenha = (TextView)findViewById(R.id.txtModificarSenha);
+        txtModificarSenha = (ImageView)findViewById(R.id.txtModificarSenha);
         btnLogar = (Button)findViewById(R.id.btnLogar);
         edtSenha = (EditText)findViewById(R.id.edtSenha);
         edtEmail = (EditText)findViewById(R.id.edtEmail);
         preferencias = new Preferencias(LoginActivity.this);
-        preferencias.SalvarLogin(0);
+        preferencias.SalvarLogin(1,9999);
 
         txtLogarVisitante.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,7 +103,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void LoginSucesso(){
 
-        preferencias.SalvarLogin(1); Intent intent = new Intent(LoginActivity.this, PrincipalActivity.class);
+        preferencias.SalvarLogin(1, 9999); Intent intent = new Intent(LoginActivity.this, PrincipalActivity.class);
         startActivity(intent);
         finish();
     }

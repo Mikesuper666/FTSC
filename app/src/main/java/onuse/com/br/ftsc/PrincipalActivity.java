@@ -1,6 +1,8 @@
 package onuse.com.br.ftsc;
 
 import android.Manifest;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.TypedArray;
@@ -9,15 +11,22 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Build;
 import android.provider.MediaStore;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
@@ -29,17 +38,20 @@ import onuse.com.br.ftsc.BancoDados.RepositorioAcoes;
 import onuse.com.br.ftsc.Helper.Permissoes;
 import onuse.com.br.ftsc.Models.Linha;
 
-public class PrincipalActivity extends AppCompatActivity {
+public class PrincipalActivity extends AppCompatActivity implements View.OnClickListener {
     private Button btnNomeLinha, btnCodigoLinha;
-    private TextView txtCodigoLinha, txtNomeLinha;
     private AutoCompleteTextView edtNomeLinha, edtCodigoLinha;
     private ImageView btnAdaptados, btnExcecoes, btnCompartilhar, btnAtualizarDados, buscarRota;
     private PhotoView imagemRota;
     private TypedArray img;
-    private int numeroImagem = 0;
+    private String linhaString, codigoString;
     //variaiveis do bando de dados
     private BancoInterno bancoInterno;
     private SQLiteDatabase conn;
+
+    private LinearLayout revelar_itens;
+    private boolean esconder = true;
+    private ImageButton btn_att_revelar, btn_execoes_revelar, btn_adaptados_revelar, btn_compartilhar_revelar;
 
     //variaveis de ação e gettesetter
     private RepositorioAcoes repositorioAcoes;
@@ -57,95 +69,114 @@ public class PrincipalActivity extends AppCompatActivity {
         //Valida as permissoes na classe estatica
         Permissoes.validaPermissoes(1, this, permissoesNecessarias);
 
-        txtCodigoLinha = (TextView)findViewById(R.id.txtCodigoLinha);
-        txtNomeLinha = (TextView)findViewById(R.id.txtNomeLinha);
 
-        btnNomeLinha = (Button)findViewById(R.id.btnNomeLinha);
-        btnCodigoLinha = (Button)findViewById(R.id.btnCodigoLinha);
-        btnAdaptados = (ImageView)findViewById(R.id.btnAdaptados);
-        btnExcecoes = (ImageView)findViewById(R.id.btnExcecoes);
-        btnCompartilhar = (ImageView) findViewById(R.id.btnCompartilhar);
-        btnAtualizarDados = (ImageView) findViewById(R.id.btnAtualizarDados);
-        buscarRota = (ImageView) findViewById(R.id.buscarRota);
         imagemRota = (PhotoView) findViewById(R.id.imagemRota);
 
         bancoInterno = new BancoInterno(this);
         conn = bancoInterno.getWritableDatabase();
         repositorioAcoes = new RepositorioAcoes(conn);
 
-
         img = getResources().obtainTypedArray(R.array.images_rotas);
 
+        //configurar a imagem inicial
+        linha.setImagem(109);
+        imagemRota.setImageResource(img.getResourceId(linha.getImagem(), -1));
+
         ConfigurarAutoCompletarTexto();
+        IniciarComponentes();
+        ConfigurarComponentesIniciais();
+    }
 
-        btnNomeLinha.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                linha = repositorioAcoes.ResultadoNome(edtNomeLinha.getText().toString());
+    private void IniciarComponentes() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-                if(linha.getNome_linha() !=null) {
-                    txtNomeLinha.setText(linha.getNome_linha());
-                    txtCodigoLinha.setText(linha.getCodigoLinha());
-                    imagemRota.setImageResource(img.getResourceId(linha.getImagem(), -1));
-                }else{
-                    txtNomeLinha.setText("CÓDIGO NÃO ENCONTRADO!");
-                }
-            }
-        });
+        revelar_itens = (LinearLayout) findViewById(R.id.revelar_itens);
+        revelar_itens.setVisibility(View.GONE);
 
-        btnCodigoLinha.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                linha = repositorioAcoes.Resultado(edtCodigoLinha.getText().toString());
+        btn_att_revelar = (ImageButton) findViewById(R.id.btn_att_revelar);
+        btn_execoes_revelar = (ImageButton) findViewById(R.id.btn_execoes_revelar);
+        btn_adaptados_revelar = (ImageButton) findViewById(R.id.btn_adaptados_revelar);
+        btn_compartilhar_revelar = (ImageButton) findViewById(R.id.btn_compartilhar_revelar);
 
-                if(linha.getNome_linha() !=null) {
-                    txtNomeLinha.setText(linha.getNome_linha());
-                    txtCodigoLinha.setText(linha.getCodigoLinha());
-                    imagemRota.setImageResource(img.getResourceId(linha.getImagem(), -1));
-                }else{
-                    txtNomeLinha.setText("CÓDIGO NÃO ENCONTRADO!");
-                }
-            }
-        });
+        btn_att_revelar.setOnClickListener(this);
+        btn_execoes_revelar.setOnClickListener(this);
+        btn_adaptados_revelar.setOnClickListener(this);
+        btn_compartilhar_revelar.setOnClickListener(this);
+    }
 
-        btnAtualizarDados.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //DELETA O BANCO ATUAL OFFLINE DE LIINHAS
+    @Override
+    public void onClick(View view) {
+        EsconderView();
+        switch (view.getId()) {
+
+            case R.id.btn_att_revelar:
                 DeletarLinhasAtuais();
-            }
-        });
-
-        btnAdaptados.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(PrincipalActivity.this, ListaAdaptados.class);
-                startActivity(i);
-            }
-        });
-
-        btnExcecoes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(PrincipalActivity.this, ListaExecoes.class);
-                startActivity(i);
-            }
-        });
-
-        buscarRota.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(PrincipalActivity.this, RequisicaoWeb.class);
-                startActivity(i);
-            }
-        });
-
-        btnCompartilhar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+                break;
+            case R.id.btn_execoes_revelar:
+                Intent ie = new Intent(PrincipalActivity.this, ListaExecoes.class);
+                startActivity(ie);
+                break;
+            case R.id.btn_adaptados_revelar:
+                Intent ia = new Intent(PrincipalActivity.this, ListaAdaptados.class);
+                startActivity(ia);
+                break;
+            case R.id.btn_compartilhar_revelar:
                 Compartilhar();
-            }
-        });
+                break;
+        }
+    }
+
+    private void EsconderView() {
+        if (revelar_itens.getVisibility() == View.VISIBLE) {
+            revelar_itens.setVisibility(View.GONE);
+            esconder = true;
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+
+            case R.id.menu_opcoes:
+
+                int cx = (revelar_itens.getLeft() + revelar_itens.getRight());
+                int cy = revelar_itens.getTop();
+                int radius = Math.max(revelar_itens.getWidth(), revelar_itens.getHeight());
+
+                if (esconder) {
+                    Animator anim = android.view.ViewAnimationUtils.createCircularReveal(revelar_itens, cx, cy, 0, radius);
+                    revelar_itens.setVisibility(View.VISIBLE);
+                    anim.start();
+                    esconder = false;
+                } else {
+                    Animator anim = android.view.ViewAnimationUtils.createCircularReveal(revelar_itens, cx, cy, radius, 0);
+                    anim.addListener(new AnimatorListenerAdapter() {
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            super.onAnimationEnd(animation);
+                            revelar_itens.setVisibility(View.INVISIBLE);
+                            esconder = true;
+                        }
+                    });
+                    anim.start();
+                }
+
+                return true;
+
+            case android.R.id.home:
+                supportFinishAfterTransition();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -173,7 +204,7 @@ public class PrincipalActivity extends AppCompatActivity {
 
     private void Compartilhar() {
         Drawable mDrawable = imagemRota.getDrawable();
-        if (mDrawable != null) {
+        if (mDrawable != null && linha.getImagem() != 109) {
             Bitmap mBitmap = ((BitmapDrawable) mDrawable).getBitmap();
 
             String path = MediaStore.Images.Media.insertImage(getContentResolver(), mBitmap, "Image Description", null);
@@ -182,7 +213,7 @@ public class PrincipalActivity extends AppCompatActivity {
             Intent intent = new Intent(Intent.ACTION_SEND);
             intent.setType("image/jpeg");
             intent.putExtra(Intent.EXTRA_STREAM, uri);
-            intent.putExtra(Intent.EXTRA_TEXT, "Código: "+txtNomeLinha.getText().toString()+" Linha: "+txtCodigoLinha.getText().toString());
+            intent.putExtra(Intent.EXTRA_TEXT, "Código: "+linhaString+" Linha: "+codigoString);
             startActivity(Intent.createChooser(intent, "Share Image"));
         }
     }
@@ -229,5 +260,92 @@ public class PrincipalActivity extends AppCompatActivity {
         edtCodigoLinha = (AutoCompleteTextView)
                 findViewById(R.id.edtCodigoLinha);
         edtCodigoLinha.setAdapter(adapterCodigo);
+    }
+
+    private void ConfigurarComponentesIniciais(){
+        btnNomeLinha = (Button)findViewById(R.id.btnNomeLinha);
+        btnCodigoLinha = (Button)findViewById(R.id.btnCodigoLinha);
+        buscarRota = (ImageView) findViewById(R.id.buscarRota);
+
+        btnNomeLinha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                linha = repositorioAcoes.ResultadoNome(edtNomeLinha.getText().toString());
+
+                if(linha.getNome_linha() !=null) {
+                    edtNomeLinha.setText(linha.getNome_linha());
+                    edtCodigoLinha.setText(linha.getCodigoLinha());
+                    linhaString = edtNomeLinha.getText().toString();
+                    codigoString = edtCodigoLinha.getText().toString();
+                    imagemRota.setImageResource(img.getResourceId(linha.getImagem(), -1));
+                }else{
+                    edtNomeLinha.setText("CÓDIGO NÃO ENCONTRADO!");
+                }
+            }
+        });
+
+        btnCodigoLinha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                linha = repositorioAcoes.Resultado(edtCodigoLinha.getText().toString());
+
+                if(linha.getNome_linha() !=null) {
+                    edtNomeLinha.setText(linha.getNome_linha());
+                    edtCodigoLinha.setText(linha.getCodigoLinha());
+                    linhaString = edtNomeLinha.getText().toString();
+                    codigoString = edtCodigoLinha.getText().toString();
+                    imagemRota.setImageResource(img.getResourceId(linha.getImagem(), -1));
+                }else{
+                    edtNomeLinha.setText("CÓDIGO NÃO ENCONTRADO!");
+                }
+            }
+        });
+
+        buscarRota.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                bundle.putString("LINHA", edtNomeLinha.getText().toString());
+                Intent i = new Intent(PrincipalActivity.this, RequisicaoWeb.class);
+                i.putExtras(bundle);
+                startActivity(i);
+            }
+        });
+
+        /*btnAdaptados = (ImageView)findViewById(R.id.btnAdaptados);
+        btnExcecoes = (ImageView)findViewById(R.id.btnExcecoes);
+        btnCompartilhar = (ImageView) findViewById(R.id.btnCompartilhar);
+        btnAtualizarDados = (ImageView) findViewById(R.id.btnAtualizarDados);*/
+
+        /*btnAtualizarDados.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //DELETA O BANCO ATUAL OFFLINE DE LIINHAS
+                DeletarLinhasAtuais();
+            }
+        });*/
+
+        /*btnAdaptados.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(PrincipalActivity.this, ListaAdaptados.class);
+                startActivity(i);
+            }
+        });*/
+
+        /*btnExcecoes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(PrincipalActivity.this, ListaExecoes.class);
+                startActivity(i);
+            }
+        });*/
+
+        /*btnCompartilhar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Compartilhar();
+            }
+        });*/
     }
 }

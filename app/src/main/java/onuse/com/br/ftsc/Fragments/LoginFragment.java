@@ -53,7 +53,7 @@ public class LoginFragment extends Fragment {
                     Toast.makeText(getActivity(), "Senha ou email com campo vazio!", Toast.LENGTH_LONG).show();
                 }else{
                     BancoOnlineLogin bancoOnlineLogin = new BancoOnlineLogin(getActivity());
-                    bancoOnlineLogin.conectarAobanco(1, nome, senha, senhaNova);
+                    bancoOnlineLogin.conectarAobanco(1, nome, senha, senhaNova.trim());
                 }
             }
         });

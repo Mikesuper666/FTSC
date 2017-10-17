@@ -39,6 +39,7 @@
                 android:maxLines="1"
                 android:maxLength="30"
                 android:id="@+id/fragLoginNome"
+                android:inputType="textCapSentences"
                 android:textColor="@color/colorBranco"
                 android:textColorHint="@android:color/darker_gray"
                 android:hint="Digite o nome"/>
