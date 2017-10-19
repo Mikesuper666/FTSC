@@ -54,6 +54,14 @@ public class BancoOnlineSelect {
                     url = "http://maicoheleno.890m.com/tcc/select-execao2.php";
                     tabela = 2;
                     break;
+                case 3:
+                    url = "http://maicoheleno.890m.com/tcc/select-ocorrencias.php";
+                    tabela = 3;
+                    break;
+                case 4:
+                    url = "http://maicoheleno.890m.com/tcc/select-carros-ocorrencias.php";
+                    tabela = 4;
+                    break;
             }
             parametros = "";
 
@@ -90,6 +98,10 @@ public class BancoOnlineSelect {
                     AdicionarAdaptados(resultado);
                 else if(tabela == 2)
                     AdicionarExecoes(resultado);
+                else if(tabela == 3)
+                    AdicionarOcorrencias(resultado);
+                else if(tabela == 4)
+                    AdicionarCarrosOcorrencias(resultado);
                 else
                     Toast.makeText(context, "Esta tabela não foi encontrada", Toast.LENGTH_LONG).show();
             }
@@ -193,6 +205,76 @@ public class BancoOnlineSelect {
                             i++;
                             horario = execoesMisturados[i];
                             repositorioAcoes.AdicionarExecao(id, nome, tipo_execao,funcao,horario);
+                            i++;
+                        }
+                    }
+                }
+            }
+        }).start();
+    }
+
+    private void AdicionarOcorrencias(final String ocorrencias){
+        bancoInterno = new BancoInterno(context);
+        conn = bancoInterno.getWritableDatabase();
+        repositorioAcoes = new RepositorioAcoes(conn);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                String id = null;
+                String matricula_func = null;
+                String matricula_fiscal = null;
+                String ocorrencia = null;
+                String execoesMisturados[] = ocorrencias.split("__");
+                if (ocorrencias != null) {
+                    for (int i = 0; i < execoesMisturados.length;) {
+
+                        if (execoesMisturados[i].contains("^")) {
+                            InterfaceAtualizacao();
+                            break;
+                        } else if(i < execoesMisturados.length){
+                            id = execoesMisturados[i];
+                            i++;
+                            matricula_func = execoesMisturados[i];
+                            i++;
+                            matricula_fiscal = execoesMisturados[i];
+                            i++;
+                            ocorrencia = execoesMisturados[i];
+                            repositorioAcoes.AdicionarOcorrencias(id, matricula_func, matricula_fiscal,ocorrencia.replace("_-", " "));
+                            i++;
+                        }
+                    }
+                }
+            }
+        }).start();
+    }
+
+    private void AdicionarCarrosOcorrencias(final String ocorrencias){
+        bancoInterno = new BancoInterno(context);
+        conn = bancoInterno.getWritableDatabase();
+        repositorioAcoes = new RepositorioAcoes(conn);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                String id = null;
+                String codigo = null;
+                String matricula_fiscal = null;
+                String ocorrencia = null;
+                String execoesMisturados[] = ocorrencias.split("__");
+                if (ocorrencias != null) {
+                    for (int i = 0; i < execoesMisturados.length;) {
+
+                        if (execoesMisturados[i].contains("^")) {
+                            InterfaceAtualizacao();
+                            break;
+                        } else if(i < execoesMisturados.length){
+                            id = execoesMisturados[i];
+                            i++;
+                            codigo = execoesMisturados[i];
+                            i++;
+                            matricula_fiscal = execoesMisturados[i];
+                            i++;
+                            ocorrencia = execoesMisturados[i];
+                            repositorioAcoes.AdicionarCarrosOcorrencias(id, codigo, matricula_fiscal,ocorrencia.replace("_-", " "));
                             i++;
                         }
                     }

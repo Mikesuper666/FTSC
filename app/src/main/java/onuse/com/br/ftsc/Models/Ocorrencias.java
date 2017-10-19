@@ -5,20 +5,18 @@ package onuse.com.br.ftsc.Models;
  */
 
 public class Ocorrencias {
-    private long id;
+    private String id;
     private int matricula_func;
     private int matricula_fiscal;
     private String ocorrencia;
 
-    public Ocorrencias() {
-        id = 0;
-    }
+    public Ocorrencias() {}
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

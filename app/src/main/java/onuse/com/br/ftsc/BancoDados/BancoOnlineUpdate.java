@@ -20,18 +20,13 @@ public class BancoOnlineUpdate {
     private Context context;
     private String url, parametros;
     private ProgressDialog dialogBaixando;
-    private BancoInterno bancoInterno;
-    private SQLiteDatabase conn;
     private int tabela;
-
-    //variaveis de ação e gettesetter
-    private RepositorioAcoes repositorioAcoes;
 
     public BancoOnlineUpdate(Context context) {
         this.context = context;
     }
 
-    public void ConectarBancoUpdate(int numeroTabela, int codigo, String param1, int param2) {
+    public void ConectarBancoUpdate(int numeroTabela, int codigo, String param1, int param2, int param3, int param4) {
         ConnectivityManager connMgr = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
 
@@ -39,7 +34,7 @@ public class BancoOnlineUpdate {
 
             switch (numeroTabela){
                 case 0:
-                    url = "http://maicoheleno.890m.com/tcc/update-execao.php?id="+codigo+"&nome="+param1.replace(" ","_")+"&tipoexecao="+param2;
+                    url = "http://maicoheleno.890m.com/tcc/update-execao2.php?id="+codigo+"&nome="+param1.replace(" ","_")+"&tipoexecao="+param2+"&funcao="+param3+"&horario="+param4;
                     tabela = 0;
                     break;
                 case 1:

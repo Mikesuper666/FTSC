@@ -14,6 +14,17 @@
         <item>6h</item>
         <item>7h20</item>
     </string-array>
+    <integer-array name="imagens_adaptado">
+        <item>@drawable/d_toco</item>
+        <item>@drawable/d_adaptado</item>
+    </integer-array>
+    <integer-array name="imagens_tipocarro">
+        <item>@drawable/d_cmt</item>
+        <item>@drawable/d_4portas</item>
+        <item>@drawable/d_toco</item>
+        <item>@drawable/d_articulado</item>
+        <item>@drawable/d_toco</item>
+    </integer-array>
     <integer-array name="images_execoes">
         <item>@drawable/d_nenhuma</item>
         <item>@drawable/d_barba</item>

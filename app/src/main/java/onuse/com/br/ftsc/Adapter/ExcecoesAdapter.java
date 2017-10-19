@@ -51,7 +51,7 @@ public class ExcecoesAdapter extends ArrayAdapter<Execoes> {
             execao = execoes.get(position);
             textViewNome.setText(""+execao.getNome().replace("_"," "));//se o nome receber um "_" underline faremos a troca por um espaço
             textMatricula.setText(""+execao.getId());
-            if(execao.getTipoExecao() == 0){
+           /* if(execao.getTipoExecao() == 0){
                 imageConversa.setImageResource(R.drawable.d_nenhuma);
             }else if(execao.getTipoExecao() == 1) {
                 imageConversa.setImageResource(R.drawable.d_barba);
@@ -63,7 +63,7 @@ public class ExcecoesAdapter extends ArrayAdapter<Execoes> {
                 imageConversa.setImageResource(R.drawable.d_cabelo);
             }else if(execao.getTipoExecao() == 5){
                 imageConversa.setImageResource(R.drawable.d_uniforme);
-            }
+            }*/
         }
         return view;
     }

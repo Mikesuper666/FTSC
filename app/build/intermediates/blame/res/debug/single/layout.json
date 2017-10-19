@@ -76,6 +76,10 @@
         "source": "/home/maico/.android/build-cache/ec4f7e121041ecea9fb0051e2b07ff8714f211b2/output/res/layout/abc_screen_toolbar.xml"
     },
     {
+        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/layout/activity_mapazoom.xml",
+        "source": "/home/maico/AndroidStudioProjects/FTSC/app/src/main/res/layout/activity_mapazoom.xml"
+    },
+    {
         "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/layout/widget_painel.xml",
         "source": "/home/maico/AndroidStudioProjects/FTSC/app/src/main/res/layout/widget_painel.xml"
     },
@@ -214,6 +218,10 @@
     {
         "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/layout/notification_template_icon_group.xml",
         "source": "/home/maico/.android/build-cache/ec4f7e121041ecea9fb0051e2b07ff8714f211b2/output/res/layout/notification_template_icon_group.xml"
+    },
+    {
+        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/layout/fragment_consulta_adaptados.xml",
+        "source": "/home/maico/AndroidStudioProjects/FTSC/app/src/main/res/layout/fragment_consulta_adaptados.xml"
     },
     {
         "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/layout/fragment_execoes.xml",

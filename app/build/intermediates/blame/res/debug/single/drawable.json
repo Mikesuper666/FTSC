@@ -1,11 +1,11 @@
 [
     {
-        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable/abc_btn_radio_material.xml",
-        "source": "/home/maico/.android/build-cache/ec4f7e121041ecea9fb0051e2b07ff8714f211b2/output/res/drawable/abc_btn_radio_material.xml"
-    },
-    {
         "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable/japarecida_servidao001.jpg",
         "source": "/home/maico/AndroidStudioProjects/FTSC/app/src/main/res/drawable/japarecida_servidao001.jpg"
+    },
+    {
+        "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable/abc_btn_radio_material.xml",
+        "source": "/home/maico/.android/build-cache/ec4f7e121041ecea9fb0051e2b07ff8714f211b2/output/res/drawable/abc_btn_radio_material.xml"
     },
     {
         "merged": "/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/res/merged/debug/drawable/abc_item_background_holo_dark.xml",

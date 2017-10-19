@@ -11,6 +11,7 @@ import onuse.com.br.ftsc.Models.Carros;
 import onuse.com.br.ftsc.Models.Execoes;
 import onuse.com.br.ftsc.Models.Linha;
 import onuse.com.br.ftsc.Models.Ocorrencias;
+import onuse.com.br.ftsc.Models.OcorrenciasCarros;
 import onuse.com.br.ftsc.Models.Tabela;
 
 /**
@@ -208,15 +209,16 @@ public class RepositorioAcoes{
 
     public ArrayList<Ocorrencias> TodasOcorrencias(int matriculaFunc){
 
-        Cursor cursor = conn.query("ocorrencias", new String[]{"matricula_fiscal","ocorrencia"}, "matricula_func=?", new String[]{String.valueOf(matriculaFunc)}, null, null, null);
+        Cursor cursor = conn.query("ocorrencias", new String[]{"_id","matricula_fiscal","ocorrencia"}, "matricula_func=?", new String[]{String.valueOf(matriculaFunc)}, null, null, null);
 
         ArrayList<Ocorrencias> ocorrencia = new ArrayList<>();
         int i = 0;
         if (cursor.moveToFirst()) {
             do {
                 Ocorrencias e = new Ocorrencias();
-                e.setMatricula_fiscal(cursor.getInt(0));
-                e.setOcorrencia(cursor.getString(1));
+                e.setId(cursor.getString(0));
+                e.setMatricula_fiscal(cursor.getInt(1));
+                e.setOcorrencia(cursor.getString(2));
 
                 ocorrencia.add(i, e);
 
@@ -227,14 +229,48 @@ public class RepositorioAcoes{
         return ocorrencia;
     }
 
-    public void InserirNovaOcorrencia(int matriculaFunc, int matriculaFical, String ocorrencia)
+    public ArrayList<OcorrenciasCarros> TodasOcorrenciasCarros(int codigo){
+
+        Cursor cursor = conn.query("carro_ocorrencias", new String[]{"_id","matricula_fiscal","ocorrencia"}, "codigo=?", new String[]{String.valueOf(codigo)}, null, null, null);
+
+        ArrayList<OcorrenciasCarros> ocorrencia = new ArrayList<>();
+        int i = 0;
+        if (cursor.moveToFirst()) {
+            do {
+                OcorrenciasCarros e = new OcorrenciasCarros();
+                e.setId(cursor.getString(0));
+                e.setMatricula_fiscal(cursor.getInt(1));
+                e.setOcorrencia(cursor.getString(2));
+
+                ocorrencia.add(i, e);
+
+                i++;
+            } while (cursor.moveToNext());
+        }
+
+        return ocorrencia;
+    }
+
+    public void InserirNovaOcorrencia(String id, int matriculaFunc, int matriculaFical, String ocorrencia)
     {
         ContentValues values = new ContentValues();
+        values.put("_id", id );
         values.put("matricula_func", matriculaFunc );
         values.put("matricula_fiscal", matriculaFical );
         values.put("ocorrencia", ocorrencia );
 
         conn.insertOrThrow("ocorrencias",null , values);
+    }
+
+    public void InserirOcorrenciaCarros(String id, int codigo, int matriculaFical, String ocorrencia)
+    {
+        ContentValues values = new ContentValues();
+        values.put("_id", id );
+        values.put("codigo", codigo );
+        values.put("matricula_fiscal", matriculaFical );
+        values.put("ocorrencia", ocorrencia );
+
+        conn.insertOrThrow("carro_ocorrencias",null , values);
     }
 
     public void InserirNovoCarro(int id, int tipoCarro, int adaptadoSn)
@@ -281,6 +317,28 @@ public class RepositorioAcoes{
         conn.insertOrThrow("d_execoes",null , values);
     }
 
+    public void AdicionarOcorrencias(String id, String matricula_func, String matricula_fiscal, String ocorrencia)
+    {
+        ContentValues values = new ContentValues();
+        values.put("_id", id );
+        values.put("matricula_func", matricula_func );
+        values.put("matricula_fiscal", matricula_fiscal );
+        values.put("ocorrencia", ocorrencia );
+
+        conn.insertOrThrow("ocorrencias ",null , values);
+    }
+
+    public void AdicionarCarrosOcorrencias(String id, String codigo, String matricula_fiscal, String ocorrencia)
+    {
+        ContentValues values = new ContentValues();
+        values.put("_id", id );
+        values.put("codigo", codigo );
+        values.put("matricula_fiscal", matricula_fiscal );
+        values.put("ocorrencia", ocorrencia );
+
+        conn.insertOrThrow("carro_ocorrencias ",null , values);
+    }
+
     public void InserirNovaExecao(int id, String nome, int tipoExecao)
     {
         ContentValues values = new ContentValues();
@@ -317,6 +375,16 @@ public class RepositorioAcoes{
     public void DeletarExecao(long id)
     {
         conn.delete("d_execoes", "_id= ?",new String[]{String.valueOf(id)});
+    }
+
+    public void DeletarOcorrencia(String id)
+    {
+        conn.delete("ocorrencias", "_id= ?",new String[]{String.valueOf(id)});
+    }
+
+    public void DeletarCarroOcorrencia(String id)
+    {
+        conn.delete("carro_ocorrencias", "_id= ?",new String[]{id});
     }
 
     public void DeletarLinhas(String tabela){

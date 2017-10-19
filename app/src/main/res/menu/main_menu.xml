@@ -4,7 +4,7 @@
 
     <item
         android:id="@+id/menu_opcoes"
-        android:icon="@drawable/d_logo"
+        android:icon="@drawable/d_menu"
         android:title="Media"
         app:showAsAction="ifRoom" />
 

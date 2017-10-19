@@ -58,9 +58,32 @@ public class BancoOnlineInsert {
                     carros.setAdaptado(execaoRecebido);
                     tabela = 1;
                     break;
+
+            }
+            parametros = "";
+            new InserirDados().execute(url);
+        }
+    }
+
+    public void InserirOcorrencias(int numeroTabela, String idRecebido, int codigo, int matriculaFiscal, String ocorrencia) {
+        ConnectivityManager connMgr = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        /*
+        *PARA CADA TABELA RECEBENOS UM NUMERO INTEIRO
+        * 0 PARA EXEÇÕES
+        * 1 PARA ADAPTADOS
+        * 2 PARA AS LINHAS (NÃO PREVIAMENTE IMPLMENTADO NESTA VERSAO)
+         */
+        if (networkInfo != null && networkInfo.isConnected()) {
+
+            switch (numeroTabela) {
                 case 2:
-                    url = "http://maicoheleno.890m.com/tcc/insert-execao.php?id="+idRecebido+"&nome="+nomeRecebido+"&tipoexecao="+execaoRecebido;
+                    url = "http://maicoheleno.890m.com/tcc/insert-ocorrencia.php?id="+idRecebido+"&matricula_func="+codigo+"&matricula_fiscal="+matriculaFiscal+"&ocorrencia="+ocorrencia;
                     tabela = 2;
+                    break;
+                case 3:
+                    url = "http://maicoheleno.890m.com/tcc/insert-carros-ocorrencia.php?id="+idRecebido+"&codigo="+codigo+"&matricula_fiscal="+matriculaFiscal+"&ocorrencia="+ocorrencia;
+                    tabela = 3;
                     break;
             }
             parametros = "";
@@ -99,9 +122,13 @@ public class BancoOnlineInsert {
                     if (tabela == 0) {
                         repositorioAcoes.InserirNovaExecao((int)execoes.getId(), execoes.getNome(), execoes.getTipoExecao());
                         ((ListaExecoes) context).InseridoBancoAposOnline();
-                    }else if(tabela == 1){
-                        repositorioAcoes.InserirNovoCarro((int)carros.getId(), carros.getTipoCarro(), carros.getAdaptado());
+                    }else if(tabela == 1) {
+                        repositorioAcoes.InserirNovoCarro((int) carros.getId(), carros.getTipoCarro(), carros.getAdaptado());
                         ((ListaAdaptados) context).InseridoBancoAposOnline();
+                    }else if(tabela == 2){
+                          //nada acontece aqui por enquanto
+                    }else if(tabela == 3){
+                    //nada acontece aqui por enquanto
                     }else{
                         ((PrincipalActivity) context).AtualizarLista();
                     }

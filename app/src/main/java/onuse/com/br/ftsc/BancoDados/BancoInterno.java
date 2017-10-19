@@ -247,7 +247,7 @@ public class BancoInterno extends SQLiteOpenHelper {
 
         db.execSQL(
                 "CREATE TABLE if not EXISTS ocorrencias " +
-                        "(_id INTEGER AUTO_INCREMENT," +
+                        "(_id VARCHAR(50)," +
                         "matricula_func INTEGER(11)," +
                         "matricula_fiscal INTEGER(11)," +
                         "ocorrencia VARCHAR(50),"+
@@ -281,6 +281,15 @@ public class BancoInterno extends SQLiteOpenHelper {
                         "(_id INTEGER AUTO_INCREMENT," +
                         "tipoCarro INTEGER (11)," +
                         "d_adaptado INTEGER(11),"+
+                        "PRIMARY KEY (_id));"
+        );
+
+        db.execSQL(
+                "CREATE TABLE if not EXISTS carro_ocorrencias " +
+                        "(_id VARCHAR(50)," +
+                        "codigo INTEGER(11)," +
+                        "matricula_fiscal INTEGER(11)," +
+                        "ocorrencia VARCHAR(50),"+
                         "PRIMARY KEY (_id));"
         );
 

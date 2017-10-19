@@ -31,7 +31,7 @@ public class HoraAtual {
 
     public static String Horario()
     {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
 
         Date data = new Date();
 

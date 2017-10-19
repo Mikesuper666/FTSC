@@ -1,10 +1,14 @@
 package onuse.com.br.ftsc.Fragments;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,9 +27,13 @@ import java.util.Comparator;
 
 import onuse.com.br.ftsc.Adapter.OcorrenciaAdapter;
 import onuse.com.br.ftsc.BancoDados.BancoInterno;
+import onuse.com.br.ftsc.BancoDados.BancoOnlineDelete;
+import onuse.com.br.ftsc.BancoDados.BancoOnlineInsert;
 import onuse.com.br.ftsc.BancoDados.BancoOnlineUpdate;
 import onuse.com.br.ftsc.BancoDados.RepositorioAcoes;
+import onuse.com.br.ftsc.Helper.HoraAtual;
 import onuse.com.br.ftsc.Helper.Preferencias;
+import onuse.com.br.ftsc.ListaExecoes;
 import onuse.com.br.ftsc.Models.Execoes;
 import onuse.com.br.ftsc.Models.Ocorrencias;
 import onuse.com.br.ftsc.R;
@@ -37,10 +45,10 @@ import onuse.com.br.ftsc.R;
 public class ExcecaoAlteracaoFragment extends Fragment{
     private TextView fragAlteracaoExecaoCodigo;
     private EditText fragAlteracaoExecaoNome, fragAlteracaoOcorrenciaEdit;
-    private Spinner fragAlteracaoAdaptadoExecaoTipo;
+    private Spinner fragAlteracaoAdaptadoExecaoTipo, fragAlteracaoFuncao, fragAlteracaoHorario;
     private ImageView fragAlteracaoExecaoAdicionar, fragAlteracaoExecaoCancelar, fragAlteracaoOcorrenciaBtn;
     //captura dos dados
-    private int codigo, tipoExecao;
+    private int codigo, tipoExecao, funcao, horario;
     private String nome;
 
     private ListView listaOcorrencias;
@@ -66,6 +74,8 @@ public class ExcecaoAlteracaoFragment extends Fragment{
         fragAlteracaoOcorrenciaBtn = view.findViewById(R.id.fragAlteracaoOcorrenciaBtn);
         fragAlteracaoExecaoNome = view.findViewById(R.id.fragAlteracaoExecaoNome);
         fragAlteracaoAdaptadoExecaoTipo = view.findViewById(R.id.fragAlteracaoAdaptadoExecaoTipo);
+        fragAlteracaoFuncao = view.findViewById(R.id.fragAlteracaoFuncao);
+        fragAlteracaoHorario = view.findViewById(R.id.fragAlteracaoHorario);
         fragAlteracaoExecaoAdicionar = view.findViewById(R.id.fragAlteracaoExecaoAdicionar);
         fragAlteracaoExecaoCancelar = view.findViewById(R.id.fragAlteracaoExecaoCancelar);
 
@@ -92,6 +102,8 @@ public class ExcecaoAlteracaoFragment extends Fragment{
         codigo = getArguments().getInt("CODIGO");
         tipoExecao = getArguments().getInt("EXECAO");
         nome = getArguments().getString("NOME");
+        funcao = getArguments().getInt("FUNCAO");
+        horario = getArguments().getInt("HORARIO");
 
         fragAlteracaoExecaoCodigo.setText(""+codigo);
         fragAlteracaoExecaoNome.setText(nome.replace("_"," "));
@@ -101,7 +113,7 @@ public class ExcecaoAlteracaoFragment extends Fragment{
 
                 if (ConfirmarCadastro()) {
                     BancoOnlineUpdate bancoOnlineUpdate = new BancoOnlineUpdate(getActivity());
-                    bancoOnlineUpdate.ConectarBancoUpdate(0, codigo, nome, tipoExecao);
+                    bancoOnlineUpdate.ConectarBancoUpdate(0, codigo, nome, tipoExecao, funcao, horario);
                     /*BancoInterno bancoInterno = new BancoInterno(getActivity());
                     SQLiteDatabase conn = bancoInterno.getWritableDatabase();
                     RepositorioAcoes repositorioAcoes = new RepositorioAcoes(conn);
@@ -115,12 +127,15 @@ public class ExcecaoAlteracaoFragment extends Fragment{
         fragAlteracaoOcorrenciaBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    Preferencias preferencias = new Preferencias(getActivity());
-                    int matriculaFiscal = preferencias.getMatricula();
-                    String ocorrencia = fragAlteracaoOcorrenciaEdit.getText().toString();
-                    repositorioAcoes.InserirNovaOcorrencia(codigo, matriculaFiscal, ocorrencia);
-                    AdicionarDados();
-                    fragAlteracaoOcorrenciaEdit.setText("");
+                Preferencias preferencias = new Preferencias(getActivity());
+                int matriculaFiscal = preferencias.getMatricula();
+
+                String ocorrencia = fragAlteracaoOcorrenciaEdit.getText().toString();
+                BancoOnlineInsert bancoOnlineInsert = new BancoOnlineInsert(getActivity());
+                bancoOnlineInsert.InserirOcorrencias(2, HoraAtual.Horario(), codigo, matriculaFiscal, ocorrencia.replace(" ", "_-"));
+                repositorioAcoes.InserirNovaOcorrencia(HoraAtual.Horario(), codigo, matriculaFiscal, ocorrencia);
+                AdicionarDados();
+                fragAlteracaoOcorrenciaEdit.setText("");
             }
         });
 
@@ -130,6 +145,35 @@ public class ExcecaoAlteracaoFragment extends Fragment{
         SpinnerCustomizado spinnerCustomizado = new SpinnerCustomizado();
         spinnerCustomizado.Spinner(getActivity(), fragAlteracaoAdaptadoExecaoTipo);
         //***********************************************************************/
+
+             /*
+          METODO PARA DELETAR UMS OCORRENCIA
+              */
+        listaOcorrencias.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                final Ocorrencias ocorrenciaRecebido = ocorrencias.get(position);
+                AlertDialog.Builder alerta = new AlertDialog.Builder(getActivity());
+                alerta.setTitle("Deletar essa ocorrência");
+                alerta.setMessage("Você tem certeza que deseja deletar esta ocorrência?\n "+ ocorrenciaRecebido.getOcorrencia());
+                alerta.setPositiveButton("Deletar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        BancoOnlineDelete bancoOnlineDelete = new BancoOnlineDelete(getActivity());
+                        bancoOnlineDelete.DeletarOcorrencias(3, ocorrenciaRecebido.getId());
+                        repositorioAcoes.DeletarOcorrencia(ocorrenciaRecebido.getId());
+                        AdicionarDados();
+                    }
+                });
+                alerta.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+                alerta.show();
+            }
+        });
 
         AdicionarDados();
 
@@ -149,6 +193,8 @@ public class ExcecaoAlteracaoFragment extends Fragment{
 
 
         tipoExecao = fragAlteracaoAdaptadoExecaoTipo.getSelectedItemPosition();
+        funcao = fragAlteracaoFuncao.getSelectedItemPosition();
+        horario = fragAlteracaoHorario.getSelectedItemPosition();
         nome = fragAlteracaoExecaoNome.getText().toString();
         fragAlteracaoAdaptadoExecaoTipo.setSelection(tipoExecao);
 

@@ -43,6 +43,8 @@ public class ExecaoConsultaFragment extends Fragment {
 
     //variaveis de ação e gettesetter
     private RepositorioAcoes repositorioAcoes;
+
+    private String[] funcao_arrays, horario_arrays, permissao_arrays;
     public ExecaoConsultaFragment() {
         // Required empty public constructor
     }
@@ -63,7 +65,11 @@ public class ExecaoConsultaFragment extends Fragment {
         TextView fragConsultaExecaoNome = view.findViewById(R.id.fragConsultaExecaoNome);
         TextView fragConsultaAdaptadoExecaoTipo = view.findViewById(R.id.fragConsultaAdaptadoExecaoTipo);
         TextView fragConsultaFuncao = view.findViewById(R.id.fragConsultaFuncao);
-
+        TextView fragConsultaoHorario = view.findViewById(R.id.fragConsultaoHorario);
+        //declaração de arrays de xmls
+        funcao_arrays = getActivity().getResources().getStringArray(R.array.funcao_array);
+        permissao_arrays = getActivity().getResources().getStringArray(R.array.permissao_para);
+        horario_arrays = getActivity().getResources().getStringArray(R.array.horario_array);
         /************************
          * Ligação para o banco de dados interno
          **********************************/
@@ -93,25 +99,11 @@ public class ExecaoConsultaFragment extends Fragment {
 
         fragConsultaExecaoNome.setText(nome.replace("_"," "));
         fragConsultaExecaoCodigo.setText(codigo+"");
-        if(tipoExecao == 0)
-            fragConsultaAdaptadoExecaoTipo.setText("Nenhuma");
-        else if(tipoExecao == 1)
-            fragConsultaAdaptadoExecaoTipo.setText("Barba");
-        else if(tipoExecao == 2)
-            fragConsultaAdaptadoExecaoTipo.setText("Boné");
-        else if(tipoExecao == 3)
-            fragConsultaAdaptadoExecaoTipo.setText("Óculos escuros");
-        else if(tipoExecao == 3)
-            fragConsultaAdaptadoExecaoTipo.setText("Uniforme diferenciado");
 
-        if(funcao == 0)
-            fragConsultaFuncao.setText("Cobrador");
-        else if(funcao == 1)
-            fragConsultaFuncao.setText("Fiscalização");
-        else if(funcao == 2)
-            fragConsultaFuncao.setText("Motorista");
-        else if(funcao == 3)
-            fragConsultaFuncao.setText("Outros");
+        //Todos arrays anteriomente declarados recebem os dados finais de tradução aqui
+        fragConsultaAdaptadoExecaoTipo.setText(permissao_arrays[tipoExecao]);
+        fragConsultaFuncao.setText(funcao_arrays[funcao]);
+        fragConsultaoHorario.setText(horario_arrays[horario]);
         //retorna a view
         return view;
         }

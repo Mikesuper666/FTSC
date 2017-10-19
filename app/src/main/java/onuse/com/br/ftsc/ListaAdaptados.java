@@ -36,9 +36,12 @@ import onuse.com.br.ftsc.BancoDados.BancoOnlineDelete;
 import onuse.com.br.ftsc.BancoDados.BancoOnlineSelect;
 import onuse.com.br.ftsc.BancoDados.RepositorioAcoes;
 import onuse.com.br.ftsc.Fragments.AdaptadoAlteracaoFragment;
+import onuse.com.br.ftsc.Fragments.AdaptadoConsultaFragment;
 import onuse.com.br.ftsc.Fragments.AdaptadoFragment;
+import onuse.com.br.ftsc.Fragments.ExecaoConsultaFragment;
 import onuse.com.br.ftsc.Helper.Preferencias;
 import onuse.com.br.ftsc.Models.Carros;
+import onuse.com.br.ftsc.Models.Execoes;
 
 public class ListaAdaptados extends AppCompatActivity {
     private ArrayAdapter<Carros> arrayAdapter;
@@ -164,6 +167,29 @@ public class ListaAdaptados extends AppCompatActivity {
         }else{
             btnAdicionarAdaptado.setVisibility(View.GONE);
         }
+
+        listaAdptados.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                Fragment adaptadoConsultaFragment = new AdaptadoConsultaFragment();
+                transaction.add(R.id.conteudoFragment, adaptadoConsultaFragment, "AdaptadoConsultaFragment");
+                transaction.addToBackStack(null); //Linha super importante para  o retorno do fragment
+                if(fragmentManager.findFragmentByTag("AdaptadoConsultaFragment") == null) {
+
+                    Carros carrosConsulta = carros.get(position);
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("CODIGO", (int) carrosConsulta.getId());
+                    bundle.putInt("TIPOCARRO", carrosConsulta.getTipoCarro());
+                    bundle.putInt("ADAPTADO", carrosConsulta.getAdaptado());
+                    adaptadoConsultaFragment
+                            .setArguments(bundle);
+                    transaction.commit();
+                }
+            }
+        });
     }
 
     private void AtualizarView(){
@@ -307,6 +333,11 @@ public class ListaAdaptados extends AppCompatActivity {
         @Override
         public void run() {
             AdicionarDados();
+            AdicionarDados();
+            //nessa parte forçaremos a atualizao das ocorrencias
+            repositorioAcoes.DeletarLinhas("carro_ocorrencias");
+            BancoOnlineSelect bancoOnlineSelect = new BancoOnlineSelect(ListaAdaptados.this);
+            bancoOnlineSelect.conectarAobanco(4);
         }
     }
 

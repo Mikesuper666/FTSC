@@ -172,8 +172,8 @@ public class ListaExecoes extends AppCompatActivity {
                     bundle.putInt("CODIGO", (int) execoesConsulta.getId());
                     bundle.putInt("EXECAO", execoesConsulta.getTipoExecao());
                     bundle.putString("NOME", execoesConsulta.getNome());
-                    bundle.putString("FUNCAO", execoesConsulta.getNome());
-                    bundle.putString("HORARIO", execoesConsulta.getNome());
+                    bundle.putInt("FUNCAO", execoesConsulta.getFuncao());
+                    bundle.putInt("HORARIO", execoesConsulta.getHorario());
                     execaoConsultaFragment
                             .setArguments(bundle);
                     transaction.commit();
@@ -278,6 +278,8 @@ public class ListaExecoes extends AppCompatActivity {
                     bundle.putInt("CODIGO", Integer.parseInt(""+execoesParaEnviar.getId()));
                     bundle.putInt("EXECAO", execoesParaEnviar.getTipoExecao());
                     bundle.putString("NOME", execoesParaEnviar.getNome());
+                    bundle.putInt("FUNCAO", execoesParaEnviar.getFuncao());
+                    bundle.putInt("HORARIO", execoesParaEnviar.getHorario());
                     excecaoAlteracaoFragment.setArguments(bundle);
                 }
 
@@ -328,6 +330,10 @@ public class ListaExecoes extends AppCompatActivity {
         @Override
         public void run() {
             AdicionarDados();
+            //nessa parte forçaremos a atualizao das ocorrencias
+            repositorioAcoes.DeletarLinhas("ocorrencias");
+            BancoOnlineSelect bancoOnlineSelect = new BancoOnlineSelect(ListaExecoes.this);
+            bancoOnlineSelect.conectarAobanco(3);
         }
     }
 

@@ -57,10 +57,37 @@ public class BancoOnlineDelete {
                     url = "http://maicoheleno.890m.com/tcc/delete-linhas.php?id="+idRecebido;
                     tabela = 2;
                     break;
+
             }
             parametros = "";
             new DeletarDados().execute(url);
         }
+    }
+
+    public void DeletarOcorrencias(int numeroTabela, String id){
+        ConnectivityManager connMgr = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        /*
+        *PARA CADA TABELA RECEBENOS UM NUMERO INTEIRO
+        * 0 PARA EXEÇÕES
+        * 1 PARA ADAPTADOS
+        * 2 PARA AS LINHAS (NÃO PREVIAMENTE IMPLMENTADO NESTA VERSAO)
+         */
+        if (networkInfo != null && networkInfo.isConnected()) {
+
+            switch (numeroTabela) {
+                case 3:
+                    url = "http://maicoheleno.890m.com/tcc/delete-ocorrencia.php?id="+id;
+                    tabela = 3;
+                    break;
+                case 4:
+                    url = "http://maicoheleno.890m.com/tcc/delete-carros-ocorrencia.php?id=" + id;
+                    tabela = 4;
+                    break;
+            }
+        }
+        parametros = "";
+        new DeletarDados().execute(url);
     }
 
     private class DeletarDados extends AsyncTask<String, Void, String> {
@@ -92,6 +119,10 @@ public class BancoOnlineDelete {
                         ((ListaExecoes) context).AtualizarLista();
                     } else if (tabela == 1) {
                         ((ListaAdaptados) context).AtualizarLista();
+                    } else if (tabela == 3) {
+                        //nao faz nada
+                    } else if (tabela == 4) {
+                        //nao faz nada
                     } else {
                         ((PrincipalActivity) context).AtualizarLista();
                     }

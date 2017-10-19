@@ -14,40 +14,58 @@
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:layout_margin="10dp"
-        android:background="@drawable/d_border_edt"
+        android:background="@color/paleta_azul_5"
         android:orientation="vertical">
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="2dp"
             android:textAlignment="center"
             android:textStyle="bold"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/black"
             android:text="Adicionar um novo carro!" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorBranco"/>
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="0dp"
             android:orientation="horizontal"
             android:layout_weight="1"
             android:gravity="center_vertical">
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
-                android:textStyle="bold"
-                android:textColor="@android:color/white"
+                android:textColor="@android:color/black"
                 android:text="Código:" />
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/colorBranco"/>
+
             <EditText
-                android:layout_width="wrap_content"
+                android:layout_margin="2dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:maxLines="1"
                 android:maxLength="4"
-                android:textColor="@android:color/white"
+                android:textColor="@android:color/black"
+                android:textColorHint="@android:color/darker_gray"
+                android:background="@drawable/d_border_circular"
                 android:id="@+id/fragAdaptadoCodigo"
                 android:hint="Digite o cógigo"/>
 
             </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorBranco"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -55,21 +73,31 @@
             android:layout_weight="1"
             android:gravity="center_vertical">
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
-                android:textStyle="bold"
-                android:textColor="@android:color/white"
+                android:textColor="@android:color/black"
                 android:text="Tipo de carro:" />
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/colorBranco"/>
 
             <Spinner
-                android:layout_width="wrap_content"
+                android:layout_margin="2dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:drawSelectorOnTop="true"
-                android:textColor="@android:color/white"
+                android:background="@drawable/d_border_circular"
                 android:entries="@array/tipos_carros"
-                android:id="@+id/fragAdaptadoTipoCarro"></Spinner>
+                android:id="@+id/fragAdaptadoTipoCarro"/>
         </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorBranco"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -77,21 +105,32 @@
             android:layout_weight="1"
             android:gravity="center_vertical">
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
-                android:textStyle="bold"
-                android:textColor="@android:color/white"
+                android:textColor="@android:color/black"
                 android:text="Adaptado" />
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/colorBranco"/>
             <Spinner
-                android:layout_width="wrap_content"
+                android:layout_margin="2dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:drawSelectorOnTop="true"
-                android:textColor="@android:color/white"
+                android:background="@drawable/d_border_circular"
                 android:entries="@array/adaptado_sn"
-                android:id="@+id/fragAdaptadoAdaptadoSN"></Spinner>
+                android:id="@+id/fragAdaptadoAdaptadoSN"/>
         </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorBranco"/>
         <LinearLayout
+            android:layout_margin="2dp"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:orientation="horizontal"
@@ -100,13 +139,13 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:src="@drawable/d_adicionar"
+                android:src="@drawable/d_save"
                 android:id="@+id/fragAdaptadoAdicionar"/>
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:src="@drawable/d_cancelar"
+                android:src="@drawable/d_arrow2"
                 android:id="@+id/fragAdaptadoCancelar"/>
         </LinearLayout>
     </LinearLayout>

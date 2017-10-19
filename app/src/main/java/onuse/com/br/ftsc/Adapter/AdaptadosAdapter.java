@@ -71,9 +71,9 @@ public class AdaptadosAdapter extends ArrayAdapter<Carros> {
             }
 
             if(carro.getAdaptado() == 0){
-                imagemCarroAdaptado.setImageResource(R.drawable.d_ncadeirante);
+                imagemCarroAdaptado.setImageResource(R.drawable.d_arrow);
             }else if(carro.getAdaptado() == 1){
-                imagemCarroAdaptado.setImageResource(R.drawable.d_cadeirante);
+                imagemCarroAdaptado.setImageResource(R.drawable.d_adaptado);
             }
         }
         return view;

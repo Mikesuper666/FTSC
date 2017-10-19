@@ -117,4 +117,17 @@
         <item>@drawable/d_cabelo</item>
         <item>@drawable/d_uniforme</item>
     </integer-array>
+
+    <integer-array name="imagens_tipocarro">
+        <item>@drawable/d_cmt</item>
+        <item>@drawable/d_4portas</item>
+        <item>@drawable/d_toco</item>
+        <item>@drawable/d_articulado</item>
+        <item>@drawable/d_toco</item>
+    </integer-array>
+
+    <integer-array name="imagens_adaptado">
+        <item>@drawable/d_toco</item>
+        <item>@drawable/d_adaptado</item>
+    </integer-array>
 </resources>

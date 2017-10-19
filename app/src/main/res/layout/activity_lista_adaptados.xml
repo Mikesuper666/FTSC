@@ -22,6 +22,13 @@
             android:paddingLeft="5dp"
             android:paddingRight="5dp">
 
+            <Button
+                android:id="@+id/btnAdicionarAdaptado"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/d_icon_bus" />
+
             <AutoCompleteTextView
                 android:id="@+id/procurarCodigoAdaptado"
                 android:layout_width="0dp"
@@ -42,13 +49,6 @@
                 android:layout_height="40dp"
                 android:layout_marginLeft="-20dp"
                 android:background="@drawable/d_procurar" />
-
-            <Button
-                android:id="@+id/btnAdicionarAdaptado"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/d_icon_bus" />
         </LinearLayout>
         <RadioGroup
             android:id="@+id/radioGroupAdaptados"

@@ -32,7 +32,8 @@
         </activity>
         <activity
             android:name="onuse.com.br.ftsc.LoginActivity"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -41,12 +42,17 @@
         </activity>
         <activity
             android:name="onuse.com.br.ftsc.ListaAdaptados"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name="onuse.com.br.ftsc.ListaExecoes"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name="onuse.com.br.ftsc.RequisicaoWeb"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="onuse.com.br.ftsc.MapaZoom"
             android:screenOrientation="portrait" />
     </application>
 

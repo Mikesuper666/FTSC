@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:layout_margin="15dp"
-        android:background="@color/paleta_azul_4"
+        android:background="@color/paleta_azul_5"
         android:elevation="5dp"
         android:orientation="vertical">
         <TextView
