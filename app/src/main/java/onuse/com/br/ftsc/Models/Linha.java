@@ -1,5 +1,7 @@
 package onuse.com.br.ftsc.Models;
 
+import android.graphics.drawable.Drawable;
+
 /**
  * Created by maico on 28/09/17.
  */
@@ -7,8 +9,9 @@ package onuse.com.br.ftsc.Models;
 public class Linha {
     private long id;
     private String nome_linha;
-    private int imagem;
+    private int imagem, imagemDestino;
     private String codigoLinha;
+    private static Drawable mapaImagem;
 
     public Linha()
     {
@@ -43,7 +46,23 @@ public class Linha {
         return codigoLinha;
     }
 
+    public int getImagemDestino() {
+        return imagemDestino;
+    }
+
+    public void setImagemDestino(int imagemDestino) {
+        this.imagemDestino = imagemDestino;
+    }
+
     public void setCodigoLinha(String codigoLinha) {
         this.codigoLinha = codigoLinha;
+    }
+
+    public static Drawable getMapaImagem() {
+        return mapaImagem;
+    }
+
+    public static void setMapaImagem(Drawable mapaImagem) {
+        Linha.mapaImagem = mapaImagem;
     }
 }

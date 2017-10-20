@@ -28,9 +28,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-
-import com.github.chrisbanes.photoview.PhotoView;
+import android.widget.Toast;
 
 import onuse.com.br.ftsc.BancoDados.BancoInterno;
 import onuse.com.br.ftsc.BancoDados.BancoOnlineSelect;
@@ -41,17 +39,18 @@ import onuse.com.br.ftsc.Models.Linha;
 public class PrincipalActivity extends AppCompatActivity implements View.OnClickListener {
     private Button btnNomeLinha, btnCodigoLinha;
     private AutoCompleteTextView edtNomeLinha, edtCodigoLinha;
-    private ImageView btnAdaptados, btnExcecoes, btnCompartilhar, btnAtualizarDados, buscarRota;
-    private PhotoView imagemRota;
+    private ImageView buscarRota, imagemRota;
     private TypedArray img;
     private String linhaString, codigoString;
+    private int imagemAlvorada, imagemDestino;
+    private ImageButton btn_att_revelar, btn_execoes_revelar, btn_adaptados_revelar, btn_compartilhar_revelar;
+    private Button navAlvorada, navDestino;
+    private LinearLayout revelar_itens;
+    private boolean esconder = true;
+
     //variaiveis do bando de dados
     private BancoInterno bancoInterno;
     private SQLiteDatabase conn;
-
-    private LinearLayout revelar_itens;
-    private boolean esconder = true;
-    private ImageButton btn_att_revelar, btn_execoes_revelar, btn_adaptados_revelar, btn_compartilhar_revelar;
 
     //variaveis de ação e gettesetter
     private RepositorioAcoes repositorioAcoes;
@@ -69,22 +68,12 @@ public class PrincipalActivity extends AppCompatActivity implements View.OnClick
         //Valida as permissoes na classe estatica
         Permissoes.validaPermissoes(1, this, permissoesNecessarias);
 
-
-        imagemRota = (PhotoView) findViewById(R.id.imagemRota);
-
         bancoInterno = new BancoInterno(this);
         conn = bancoInterno.getWritableDatabase();
         repositorioAcoes = new RepositorioAcoes(conn);
 
-        img = getResources().obtainTypedArray(R.array.images_rotas);
-
-        //configurar a imagem inicial
-        linha.setImagem(109);
-        imagemRota.setImageResource(img.getResourceId(linha.getImagem(), -1));
-
         ConfigurarAutoCompletarTexto();
         IniciarComponentes();
-        ConfigurarComponentesIniciais();
     }
 
     private void IniciarComponentes() {
@@ -98,11 +87,29 @@ public class PrincipalActivity extends AppCompatActivity implements View.OnClick
         btn_execoes_revelar = (ImageButton) findViewById(R.id.btn_execoes_revelar);
         btn_adaptados_revelar = (ImageButton) findViewById(R.id.btn_adaptados_revelar);
         btn_compartilhar_revelar = (ImageButton) findViewById(R.id.btn_compartilhar_revelar);
+        btnNomeLinha = (Button)findViewById(R.id.btnNomeLinha);
+        btnCodigoLinha = (Button)findViewById(R.id.btnCodigoLinha);
+        buscarRota = (ImageView) findViewById(R.id.buscarRota);
+        imagemRota = (ImageView) findViewById(R.id.imagemRota);
+        navAlvorada = (Button) findViewById(R.id.navAlvorada);
+        navDestino = (Button) findViewById(R.id.navDestino);
 
         btn_att_revelar.setOnClickListener(this);
         btn_execoes_revelar.setOnClickListener(this);
         btn_adaptados_revelar.setOnClickListener(this);
         btn_compartilhar_revelar.setOnClickListener(this);
+        btnNomeLinha.setOnClickListener(this);
+        btnCodigoLinha.setOnClickListener(this);
+        buscarRota.setOnClickListener(this);
+        navAlvorada.setOnClickListener(this);
+        navDestino.setOnClickListener(this);
+        revelar_itens.setOnClickListener(this);
+        imagemRota.setOnClickListener(this);
+
+        //configurar a imagem inicial
+        img = getResources().obtainTypedArray(R.array.images_rotas);
+        imagemAlvorada = 109;
+        imagemDestino = 109; //as variaveis recebem valores padrao do logo de imagem
     }
 
     @Override
@@ -124,6 +131,39 @@ public class PrincipalActivity extends AppCompatActivity implements View.OnClick
             case R.id.btn_compartilhar_revelar:
                 Compartilhar();
                 break;
+            case R.id.navAlvorada:
+                navAlvorada.setTextColor(getResources().getColor(R.color.paleta_azul_11));
+                navDestino.setTextColor(getResources().getColor(R.color.paleta_azul_9));
+                imagemRota.setImageResource(img.getResourceId(imagemAlvorada, -1));
+                break;
+            case R.id.navDestino:
+                navDestino.setTextColor(getResources().getColor(R.color.paleta_azul_11));
+                navAlvorada.setTextColor(getResources().getColor(R.color.paleta_azul_9));
+                imagemRota.setImageResource(img.getResourceId(imagemDestino, -1));
+                break;
+            case R.id.btnNomeLinha://RECEBE DO BANCO INTERNO A INFORMAÇÃO
+                linha = repositorioAcoes.ResultadoNome(edtNomeLinha.getText().toString());
+                ConfiguraImagemElabel();
+                break;
+            case R.id.btnCodigoLinha://RECEBE DO BANCO INTERNO A INFORMAÇÃO
+                linha = repositorioAcoes.Resultado(edtCodigoLinha.getText().toString());
+                ConfiguraImagemElabel();
+                break;
+            case R.id.buscarRota:
+                Bundle bundle = new Bundle();
+                bundle.putString("LINHA", edtNomeLinha.getText().toString());
+                Intent requisicaoweb = new Intent(PrincipalActivity.this, RequisicaoWeb.class);
+                requisicaoweb.putExtras(bundle);
+                startActivity(requisicaoweb);
+                break;
+            case R.id.imagemRota:
+                Intent i = new Intent(PrincipalActivity.this, MapaZoom.class);
+                Drawable bitmapDrawable = imagemRota.getDrawable();
+
+                linha.setMapaImagem(bitmapDrawable);
+                startActivity(i);
+                break;
+
         }
     }
 
@@ -138,7 +178,6 @@ public class PrincipalActivity extends AppCompatActivity implements View.OnClick
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
-
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -181,30 +220,34 @@ public class PrincipalActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onBackPressed() {
+        if(esconder) {
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+            alertDialog.setTitle("Sair do aplicativo");
+            alertDialog.setMessage("Você tem certeza que deseja sair?");
+            alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    finish();
+                    return;
+                }
+            });
+            alertDialog.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
 
-        AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
-        alertDialog.setTitle("Sair do aplicativo");
-        alertDialog.setMessage("Você tem certeza que deseja sair?");
-        alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                finish();
-                return;
-            }
-        });
-        alertDialog.setNegativeButton("Não", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
+                }
+            });
 
-            }
-        });
-
-        AlertDialog alert = alertDialog.create();
-        alert.show();
+            AlertDialog alert = alertDialog.create();
+            alert.show();
+        }else{
+            EsconderView();
+        }
     }
 
     private void Compartilhar() {
         Drawable mDrawable = imagemRota.getDrawable();
-        if (mDrawable != null && linha.getImagem() != 109) {
+
+        if (!mDrawable.getCurrent().toString().contains("Vector")) {
             Bitmap mBitmap = ((BitmapDrawable) mDrawable).getBitmap();
 
             String path = MediaStore.Images.Media.insertImage(getContentResolver(), mBitmap, "Image Description", null);
@@ -214,7 +257,7 @@ public class PrincipalActivity extends AppCompatActivity implements View.OnClick
             intent.setType("image/jpeg");
             intent.putExtra(Intent.EXTRA_STREAM, uri);
             intent.putExtra(Intent.EXTRA_TEXT, "Código: "+linhaString+" Linha: "+codigoString);
-            startActivity(Intent.createChooser(intent, "Share Image"));
+            startActivity(Intent.createChooser(intent, "Compartilhar esta imagem"));
         }
     }
 
@@ -262,90 +305,19 @@ public class PrincipalActivity extends AppCompatActivity implements View.OnClick
         edtCodigoLinha.setAdapter(adapterCodigo);
     }
 
-    private void ConfigurarComponentesIniciais(){
-        btnNomeLinha = (Button)findViewById(R.id.btnNomeLinha);
-        btnCodigoLinha = (Button)findViewById(R.id.btnCodigoLinha);
-        buscarRota = (ImageView) findViewById(R.id.buscarRota);
-
-        btnNomeLinha.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                linha = repositorioAcoes.ResultadoNome(edtNomeLinha.getText().toString());
-
-                if(linha.getNome_linha() !=null) {
-                    edtNomeLinha.setText(linha.getNome_linha());
-                    edtCodigoLinha.setText(linha.getCodigoLinha());
-                    linhaString = edtNomeLinha.getText().toString();
-                    codigoString = edtCodigoLinha.getText().toString();
-                    imagemRota.setImageResource(img.getResourceId(linha.getImagem(), -1));
-                }else{
-                    edtNomeLinha.setText("CÓDIGO NÃO ENCONTRADO!");
-                }
-            }
-        });
-
-        btnCodigoLinha.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                linha = repositorioAcoes.Resultado(edtCodigoLinha.getText().toString());
-
-                if(linha.getNome_linha() !=null) {
-                    edtNomeLinha.setText(linha.getNome_linha());
-                    edtCodigoLinha.setText(linha.getCodigoLinha());
-                    linhaString = edtNomeLinha.getText().toString();
-                    codigoString = edtCodigoLinha.getText().toString();
-                    imagemRota.setImageResource(img.getResourceId(linha.getImagem(), -1));
-                }else{
-                    edtNomeLinha.setText("CÓDIGO NÃO ENCONTRADO!");
-                }
-            }
-        });
-
-        buscarRota.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Bundle bundle = new Bundle();
-                bundle.putString("LINHA", edtNomeLinha.getText().toString());
-                Intent i = new Intent(PrincipalActivity.this, RequisicaoWeb.class);
-                i.putExtras(bundle);
-                startActivity(i);
-            }
-        });
-
-        /*btnAdaptados = (ImageView)findViewById(R.id.btnAdaptados);
-        btnExcecoes = (ImageView)findViewById(R.id.btnExcecoes);
-        btnCompartilhar = (ImageView) findViewById(R.id.btnCompartilhar);
-        btnAtualizarDados = (ImageView) findViewById(R.id.btnAtualizarDados);*/
-
-        /*btnAtualizarDados.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //DELETA O BANCO ATUAL OFFLINE DE LIINHAS
-                DeletarLinhasAtuais();
-            }
-        });*/
-
-        /*btnAdaptados.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(PrincipalActivity.this, ListaAdaptados.class);
-                startActivity(i);
-            }
-        });*/
-
-        /*btnExcecoes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(PrincipalActivity.this, ListaExecoes.class);
-                startActivity(i);
-            }
-        });*/
-
-        /*btnCompartilhar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Compartilhar();
-            }
-        });*/
+    private void ConfiguraImagemElabel(){
+        if(linha.getNome_linha() !=null) {
+            navAlvorada.setTextColor(getResources().getColor(R.color.paleta_azul_11));
+            navDestino.setTextColor(getResources().getColor(R.color.paleta_azul_9));
+            imagemAlvorada = linha.getImagem();
+            imagemDestino = linha.getImagemDestino();
+            edtNomeLinha.setText(linha.getNome_linha());
+            edtCodigoLinha.setText(linha.getCodigoLinha());
+            linhaString = edtNomeLinha.getText().toString();
+            codigoString = edtCodigoLinha.getText().toString();
+            imagemRota.setImageResource(img.getResourceId(linha.getImagem(), -1));
+        }else{
+            Toast.makeText(PrincipalActivity.this,"LINHA NÃO ENCONTRADA!",Toast.LENGTH_LONG).show();
+        }
     }
 }

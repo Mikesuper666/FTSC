@@ -6,11 +6,13 @@
     android:orientation="vertical"
     android:isScrollContainer="false"
     android:gravity="center_vertical"
+    android:id="@+id/corpoAdaptado"
     tools:context="onuse.com.br.ftsc.Fragments.AdaptadoFragment">
 
 
 
     <LinearLayout
+        android:id="@+id/corpoAdaptado2"
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:layout_margin="10dp"
@@ -134,17 +136,18 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:orientation="horizontal"
+            android:gravity="center"
             android:layout_weight="1">
             <ImageView
-                android:layout_width="0dp"
+                android:layout_marginRight="25dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:src="@drawable/d_save"
                 android:id="@+id/fragAdaptadoAdicionar"/>
             <ImageView
-                android:layout_width="0dp"
+                android:layout_marginLeft="25dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:src="@drawable/d_arrow2"
                 android:id="@+id/fragAdaptadoCancelar"/>
         </LinearLayout>

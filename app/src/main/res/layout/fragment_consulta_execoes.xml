@@ -3,10 +3,12 @@
     android:layout_height="match_parent"
     android:background="@android:color/transparent"
     android:orientation="vertical"
+    android:id="@+id/corpoExecaoConsultar"
     android:gravity="center_vertical">
 
 
     <LinearLayout
+        android:id="@+id/corpoExecaoConsultar2"
         android:layout_width="match_parent"
         android:layout_height="350dp"
         android:layout_margin="15dp"

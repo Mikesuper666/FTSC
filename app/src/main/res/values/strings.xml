@@ -7,6 +7,7 @@
         <item>Toco</item>
         <item>Articulado</item>
         <item>Lotação/Micro</item>
+        <item>Alongado</item>
     </string-array>
 
     <string-array name="adaptado_sn">
@@ -18,9 +19,6 @@
         <item>Nenhuma</item>
         <item>Barba</item>
         <item>Boné</item>
-        <item>Óculos escuros</item>
-        <item>Cabelo comprido</item>
-        <item>Uniforme diferenciado</item>
     </string-array>
 
     <string-array name="funcao_array">

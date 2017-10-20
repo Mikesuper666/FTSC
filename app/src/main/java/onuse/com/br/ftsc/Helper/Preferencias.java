@@ -15,6 +15,7 @@ public class Preferencias {
     private SharedPreferences.Editor editor;
 
     private String CHAVE_LOGADO = "logado";
+    private String CHAVE_NOME = "nome";
     private String CHAVE_MATRICULA = "matricula";
 
     public Preferencias(Context contextoParametro)
@@ -24,9 +25,10 @@ public class Preferencias {
         editor = sharedPreferences.edit();
     }
 
-    public void SalvarLogin(int logado, int matricula)
+    public void SalvarLogin(int logado, int matricula, String nome)
     {
         editor.putInt(CHAVE_LOGADO, logado);
+        editor.putString(CHAVE_NOME, nome);
         editor.putInt(CHAVE_MATRICULA, matricula);
         editor.commit();
     }
@@ -39,5 +41,10 @@ public class Preferencias {
     public int getMatricula()
     {
         return sharedPreferences.getInt(CHAVE_MATRICULA, 0);
+    }//retorna quando chamado a matricula guardada dentro do indentificador
+
+    public String getNome()
+    {
+        return sharedPreferences.getString(CHAVE_NOME, null);
     }//retorna quando chamado a matricula guardada dentro do indentificador
 }

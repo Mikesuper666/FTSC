@@ -22,7 +22,7 @@ public class BancoOnlineLogin {
         this.context = context;
     }
 
-    public void conectarAobanco(int metodoLogin, String usuario, String senha, String senhanova) {
+    public void conectarAobanco(int metodoLogin, String matricula, String senha, String senhanova) {
         ConnectivityManager connMgr = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
 
@@ -30,10 +30,10 @@ public class BancoOnlineLogin {
 
             switch (metodoLogin){
                 case 0:
-                    url = "http://maicoheleno.890m.com/tcc/select-login.php?usuario="+usuario+"&senha="+senha;
+                    url = "http://maicoheleno.890m.com/tcc/select-login.php?matricula="+matricula+"&senha="+senha;
                     break;
                 case 1:
-                    url = "http://maicoheleno.890m.com/tcc/update-login.php?usuario="+usuario+"&senha="+senha+"&senhanova="+senhanova;
+                    url = "http://maicoheleno.890m.com/tcc/update-login.php?matricula="+matricula+"&senha="+senha+"&senhanova="+senhanova;
                     break;
             }
             parametros = "";
@@ -66,11 +66,40 @@ public class BancoOnlineLogin {
             } else if (resultado.contains("login_invalido")) {
                 Toast.makeText(context, "Login ou senha inválido", Toast.LENGTH_LONG).show();
             } else if (resultado.contains("login_sucesso")) {
-                Toast.makeText(context, "Login Efetuado com sucesso!", Toast.LENGTH_LONG).show();
-                ((LoginActivity) context).AtualizarLista();
+                ProcessarLogin(resultado);
             } else if (resultado.contains("alterou")) {
                 Toast.makeText(context, "Senha alterada com sucesso!", Toast.LENGTH_LONG).show();
                 ((LoginActivity) context).AtualizarSenha();
+            }
+        }
+
+        private void ProcessarLogin(final String resultado){
+
+            String id = null;
+            String matricula = null;
+            String nome = null;
+            String bloqueado = null;
+            String linhasMisturadas[] = resultado.split("__");
+            if (resultado != null) {
+                for (int i = 1; i < linhasMisturadas.length;) {
+
+                    if (linhasMisturadas[i].contains("^")) {
+                        if(bloqueado.equals("0"))
+                            ((LoginActivity) context).AtualizarLista(matricula, nome);
+                        else
+                            Toast.makeText(context, "Desculpe "+nome+" contate o administrador para resolver  o motivo de seu bloqueio!", Toast.LENGTH_LONG).show();
+                        break;
+                    } else if(i < linhasMisturadas.length){
+                        id = linhasMisturadas[i];
+                        i++;
+                        nome = linhasMisturadas[i];
+                        i++;
+                        matricula = linhasMisturadas[i];
+                        i++;
+                        bloqueado = linhasMisturadas[i];
+                        i++;
+                    }
+                }
             }
         }
     }

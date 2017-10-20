@@ -5,9 +5,11 @@
     android:gravity="center_vertical"
     android:background="@android:color/transparent"
     android:orientation="vertical"
+    android:id="@+id/corpoExecao"
     tools:context="onuse.com.br.ftsc.Fragments.ExecaoFragment">
 
     <LinearLayout
+        android:id="@+id/corpoExecao2"
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:layout_margin="10dp"
@@ -126,17 +128,18 @@
             android:layout_height="0dp"
             android:orientation="horizontal"
             android:layout_marginBottom="2dp"
+            android:gravity="center"
             android:layout_weight="1">
             <ImageView
-                android:layout_width="0dp"
+                android:layout_marginRight="25dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:src="@drawable/d_save"
                 android:id="@+id/fragExecoesAdicionar"/>
             <ImageView
-                android:layout_width="0dp"
+                android:layout_marginLeft="25dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:src="@drawable/d_arrow2"
                 android:id="@+id/fragExecoesCancelar"/>
         </LinearLayout>

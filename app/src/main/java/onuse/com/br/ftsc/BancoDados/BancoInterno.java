@@ -22,6 +22,7 @@ public class BancoInterno extends SQLiteOpenHelper {
                         "(_id INTEGER AUTO_INCREMENT," +
                         "linha VARCHAR (100)," +
                         "imagem INTEGER(11),"+
+                        "imagem_destino INTEGER(11),"+
                         "codigos VARCHAR(50)," +
                         "PRIMARY KEY (_id));"
         );

@@ -67,15 +67,14 @@ public class RepositorioAcoes{
             linha.setId(cursor.getLong(0));
             linha.setNome_linha(cursor.getString(1));
             linha.setImagem(cursor.getInt(2));
-            linha.setCodigoLinha(cursor.getString(3));
+            linha.setImagemDestino(cursor.getInt(3));
+            linha.setCodigoLinha(cursor.getString(4));
 
         }
         return linha;
     }
 
     public Linha ResultadoNome(String nome){
-        //Cursor cursor = conn.query("nome_linha",new String[]{"_id", "linha"}, "linha LIKE '%=?%'", new String[]{nome}, null, null, null);
-
         //pega o array de strngs com a pesquisa
         String[] a = new String[]{nome};
         //adicionamos "%" porque quermos todas pesquisas
@@ -90,7 +89,8 @@ public class RepositorioAcoes{
             linha.setId(c.getLong(0));
             linha.setNome_linha(c.getString(1));
             linha.setImagem(c.getInt(2));
-            linha.setCodigoLinha(c.getString(3));
+            linha.setImagemDestino(c.getInt(3));
+            linha.setCodigoLinha(c.getString(4));
 
         }
         return linha;
@@ -283,11 +283,12 @@ public class RepositorioAcoes{
         conn.insertOrThrow("tipo_carro",null , values);
     }
 
-    public void AdicionarLinha(String nome_linha, String imagem, String codigos){
+    public void AdicionarLinha(String nome_linha, String imagem, String imagemDestino, String codigos){
 
         ContentValues values = new ContentValues();
         values.put("linha", nome_linha );
         values.put("imagem", imagem );
+        values.put("imagem_destino", imagemDestino );
         values.put("codigos", codigos );
 
         conn.insertOrThrow("nome_linha",null , values);

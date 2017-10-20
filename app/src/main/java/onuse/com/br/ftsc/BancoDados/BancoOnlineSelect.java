@@ -51,7 +51,7 @@ public class BancoOnlineSelect {
                     tabela = 1;
                     break;
                 case 2:
-                    url = "http://maicoheleno.890m.com/tcc/select-execao2.php";
+                    url = "http://maicoheleno.890m.com/tcc/select-execao.php";
                     tabela = 2;
                     break;
                 case 3:
@@ -118,6 +118,7 @@ public class BancoOnlineSelect {
             public void run() {
                 String nomeLinha = null;
                 String imagem = null;
+                String imagemDestino = null;
                 String codigo = null;
                 String linhasMisturadas[] = linhas.split("__");
                 if (linhas != null) {
@@ -131,8 +132,10 @@ public class BancoOnlineSelect {
                             i++;
                             imagem = linhasMisturadas[i];
                             i++;
+                            imagemDestino = linhasMisturadas[i];
+                            i++;
                             codigo = linhasMisturadas[i];
-                            repositorioAcoes.AdicionarLinha(nomeLinha, imagem, codigo);
+                            repositorioAcoes.AdicionarLinha(nomeLinha, imagem, imagemDestino, codigo);
                             i++;
                         }
                     }

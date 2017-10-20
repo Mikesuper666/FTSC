@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -27,10 +28,12 @@ import onuse.com.br.ftsc.Adapter.OcorrenciaCarrosAdapter;
 import onuse.com.br.ftsc.BancoDados.BancoInterno;
 import onuse.com.br.ftsc.BancoDados.BancoOnlineDelete;
 import onuse.com.br.ftsc.BancoDados.BancoOnlineInsert;
+import onuse.com.br.ftsc.BancoDados.BancoOnlineLogin;
 import onuse.com.br.ftsc.BancoDados.BancoOnlineUpdate;
 import onuse.com.br.ftsc.BancoDados.RepositorioAcoes;
 import onuse.com.br.ftsc.Helper.HoraAtual;
 import onuse.com.br.ftsc.Helper.Preferencias;
+import onuse.com.br.ftsc.LoginActivity;
 import onuse.com.br.ftsc.Models.Ocorrencias;
 import onuse.com.br.ftsc.Models.OcorrenciasCarros;
 import onuse.com.br.ftsc.R;
@@ -120,13 +123,17 @@ public class AdaptadoAlteracaoFragment  extends Fragment {
             public void onClick(View view) {
                 Preferencias preferencias = new Preferencias(getActivity());
                 int matriculaFiscal = preferencias.getMatricula();
-
                 String ocorrencia = fragAlteracaoOcorrenciaAdaptado.getText().toString();
-                BancoOnlineInsert bancoOnlineInsert = new BancoOnlineInsert(getActivity());
-                bancoOnlineInsert.InserirOcorrencias(3, HoraAtual.Horario(), codigo, matriculaFiscal, ocorrencia.replace(" ", "_-"));
-                repositorioAcoes.InserirOcorrenciaCarros(HoraAtual.Horario(), codigo, matriculaFiscal, ocorrencia);
-                AdicionarDados();
-                fragAlteracaoOcorrenciaAdaptado.setText("");
+
+                if(ocorrencia.equals("")){
+                    Toast.makeText(getActivity(), "Escreva uma ocorrência!", Toast.LENGTH_LONG).show();
+                }else{
+                    BancoOnlineInsert bancoOnlineInsert = new BancoOnlineInsert(getActivity());
+                    bancoOnlineInsert.InserirOcorrencias(3, HoraAtual.Horario(), codigo, matriculaFiscal, ocorrencia.replace(" ", "_-"));
+                    repositorioAcoes.InserirOcorrenciaCarros(HoraAtual.Horario(), codigo, matriculaFiscal, ocorrencia);
+                    AdicionarDados();
+                    fragAlteracaoOcorrenciaAdaptado.setText("");
+                }
             }
         });
 
@@ -164,6 +171,23 @@ public class AdaptadoAlteracaoFragment  extends Fragment {
                     }
                 });
                 alerta.show();
+            }
+        });
+
+        LinearLayout corpoAdaptadoAlterar = view.findViewById(R.id.corpoAdaptadoAlterar);
+        LinearLayout corpoAdaptadoAlterar2 = view.findViewById(R.id.corpoAdaptadoAlterar2);
+
+        corpoAdaptadoAlterar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
+        corpoAdaptadoAlterar2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
             }
         });
 

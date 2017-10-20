@@ -43,9 +43,9 @@
                 android:maxLines="1"
                 android:gravity="center"
                 android:ems="10"
-                android:hint="Digite o seu Usuário"
-                android:inputType="textCapSentences"
-                android:textColor="@color/colorBranco" />
+                android:hint="Digite a matrícula"
+                android:inputType="number"
+                android:textColor="@android:color/black"  />
 
             <EditText
                 android:id="@+id/edtSenha"
@@ -62,14 +62,14 @@
                 android:hint="Digite a senha"
                 android:inputType="textPassword"
                 android:textAlignment="center"
-                android:textColor="@color/colorBranco" />
+                android:textColor="@android:color/black" />
 
             <TextView
                 android:id="@+id/txtLogarVisitante"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:onClick="Cadastrar"
                 android:text="Entrar como visitante"
                 android:textAlignment="center"
@@ -80,8 +80,8 @@
 
         <Button
             android:id="@+id/btnLogar"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginTop="5dp"

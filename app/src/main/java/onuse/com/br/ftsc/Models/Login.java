@@ -6,6 +6,7 @@ package onuse.com.br.ftsc.Models;
 
 public class Login {
     private int id;
+    private int matricula;
     private String usuario, senha;
 
     public Login()
@@ -27,6 +28,14 @@ public class Login {
 
     public void setUsuario(String usuario) {
         this.usuario = usuario;
+    }
+
+    public int getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(int matricula) {
+        this.matricula = matricula;
     }
 
     public String getSenha() {

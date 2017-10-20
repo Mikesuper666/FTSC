@@ -30,6 +30,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:textColor="@color/colorBranco"
                 android:text="Procurar Ruas" />
         </LinearLayout>
 
@@ -50,6 +51,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:textColor="@color/colorBranco"
                 android:text="Pessoas" />
         </LinearLayout>
 
@@ -70,9 +72,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:textColor="@color/colorBranco"
                 android:text="Carros" />
         </LinearLayout>
-
     </LinearLayout>
-
 </LinearLayout>

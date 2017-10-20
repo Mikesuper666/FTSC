@@ -61,7 +61,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_margin="10dp">
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
             <AutoCompleteTextView
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -81,6 +83,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:layout_marginTop="5dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp">
             <AutoCompleteTextView
@@ -106,6 +109,14 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
+
+        <ImageView
+            android:layout_margin="20dp"
+            android:id="@+id/imagemRota"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/d_logo_original"/>
+
         <LinearLayout
             android:layout_marginTop="5dp"
             android:layout_width="match_parent"
@@ -116,22 +127,19 @@
                 android:id="@+id/navAlvorada"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/d_border_circular"
+                android:textColor="@color/paleta_azul_11"
+                android:background="@drawable/d_border_edt"
                 android:text="Alvorada"/>
             <Button
                 android:layout_marginLeft="10dp"
                 android:id="@+id/navDestino"
+                android:textColor="@color/paleta_azul_9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/d_border_circular"
+                android:background="@drawable/d_border_edt"
                 android:text="Destino"/>
         </LinearLayout>
 
-        <com.github.chrisbanes.photoview.PhotoView
-            android:layout_marginTop="10dp"
-            android:id="@+id/imagemRota"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
         <ImageButton
             android:layout_gravity="right|bottom"
             android:id="@+id/btn_att_revelar"

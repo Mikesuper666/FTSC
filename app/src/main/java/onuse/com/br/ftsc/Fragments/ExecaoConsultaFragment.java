@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -104,6 +105,24 @@ public class ExecaoConsultaFragment extends Fragment {
         fragConsultaAdaptadoExecaoTipo.setText(permissao_arrays[tipoExecao]);
         fragConsultaFuncao.setText(funcao_arrays[funcao]);
         fragConsultaoHorario.setText(horario_arrays[horario]);
+
+        LinearLayout corpoExecaoConsultar = view.findViewById(R.id.corpoExecaoConsultar);
+        LinearLayout corpoExecaoConsultar2 = view.findViewById(R.id.corpoExecaoConsultar2);
+
+        corpoExecaoConsultar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
+        corpoExecaoConsultar2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
         //retorna a view
         return view;
         }

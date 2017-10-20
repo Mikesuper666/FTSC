@@ -17,6 +17,7 @@ import onuse.com.br.ftsc.BancoDados.BancoOnlineSelect;
 import onuse.com.br.ftsc.Fragments.AdaptadoFragment;
 import onuse.com.br.ftsc.Fragments.LoginFragment;
 import onuse.com.br.ftsc.Helper.Preferencias;
+import onuse.com.br.ftsc.Models.Login;
 
 /**
  * Created by maico on 06/10/17.
@@ -28,6 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button btnLogar;
     private EditText edtSenha, edtEmail;
     private Preferencias preferencias;
+    private Login login = new Login();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
         edtSenha = (EditText)findViewById(R.id.edtSenha);
         edtEmail = (EditText)findViewById(R.id.edtEmail);
         preferencias = new Preferencias(LoginActivity.this);
-        preferencias.SalvarLogin(1,9999);
+        preferencias.SalvarLogin(0, 0, "");/////////////////////////////////////////////////////////////<<<<<<<<<<<<<<<
 
         txtLogarVisitante.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,7 +84,9 @@ public class LoginActivity extends AppCompatActivity {
      *PARA A ATUALIZAR ESTA VIEW ATRAVEZ DE UMA CLASSE NAO IMPLEMENTADA E UMA THREAD SECUNDARIA RODANDO ATRAVÉZ DELA
      * RECEBEMOS O RETORNO DO BANCO SE FOR POSITIVO E CONCLUIMOS A AÇÃO AQUI!!!
      */
-    public void AtualizarLista(){
+    public void AtualizarLista(String matricula, String nome){
+        login.setMatricula(Integer.parseInt(matricula));
+        login.setUsuario(nome);
         runOnUiThread(new LoginActivity.AtualizarTextView("Post"));
     }
 
@@ -103,7 +107,9 @@ public class LoginActivity extends AppCompatActivity {
 
     private void LoginSucesso(){
 
-        preferencias.SalvarLogin(1, 9999); Intent intent = new Intent(LoginActivity.this, PrincipalActivity.class);
+        preferencias.SalvarLogin(1, login.getMatricula(), login.getUsuario());
+        Toast.makeText(LoginActivity.this, "Bem vindo "+login.getUsuario()+"!", Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(LoginActivity.this, PrincipalActivity.class);
         startActivity(intent);
         finish();
     }

@@ -16,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -105,6 +106,9 @@ public class ExcecaoAlteracaoFragment extends Fragment{
         funcao = getArguments().getInt("FUNCAO");
         horario = getArguments().getInt("HORARIO");
 
+        fragAlteracaoFuncao.setSelection(funcao);
+        fragAlteracaoAdaptadoExecaoTipo.setSelection(tipoExecao);
+        fragAlteracaoHorario.setSelection(horario);
         fragAlteracaoExecaoCodigo.setText(""+codigo);
         fragAlteracaoExecaoNome.setText(nome.replace("_"," "));
         fragAlteracaoExecaoAdicionar.setOnClickListener(new View.OnClickListener() {
@@ -129,16 +133,37 @@ public class ExcecaoAlteracaoFragment extends Fragment{
             public void onClick(View view) {
                 Preferencias preferencias = new Preferencias(getActivity());
                 int matriculaFiscal = preferencias.getMatricula();
-
                 String ocorrencia = fragAlteracaoOcorrenciaEdit.getText().toString();
-                BancoOnlineInsert bancoOnlineInsert = new BancoOnlineInsert(getActivity());
-                bancoOnlineInsert.InserirOcorrencias(2, HoraAtual.Horario(), codigo, matriculaFiscal, ocorrencia.replace(" ", "_-"));
-                repositorioAcoes.InserirNovaOcorrencia(HoraAtual.Horario(), codigo, matriculaFiscal, ocorrencia);
-                AdicionarDados();
-                fragAlteracaoOcorrenciaEdit.setText("");
+
+                if(ocorrencia.equals("")){
+                    Toast.makeText(getActivity(), "Escreva uma ocorrência!", Toast.LENGTH_LONG).show();
+                }else {
+                    BancoOnlineInsert bancoOnlineInsert = new BancoOnlineInsert(getActivity());
+                    bancoOnlineInsert.InserirOcorrencias(2, HoraAtual.Horario(), codigo, matriculaFiscal, ocorrencia.replace(" ", "_-"));
+                    repositorioAcoes.InserirNovaOcorrencia(HoraAtual.Horario(), codigo, matriculaFiscal, ocorrencia);
+                    AdicionarDados();
+                    fragAlteracaoOcorrenciaEdit.setText("");
+                }
             }
         });
 
+
+        LinearLayout corpoExecaoAlterar = view.findViewById(R.id.corpoExecaoAlterar);
+        LinearLayout corpoExecaoAlterar2 = view.findViewById(R.id.corpoExecaoAlterar2);
+
+        corpoExecaoAlterar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
+        corpoExecaoAlterar2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
              /*
         * Obrigatorio para modificação das cores do spinnner
 

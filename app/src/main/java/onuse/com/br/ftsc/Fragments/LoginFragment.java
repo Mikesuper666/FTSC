@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -55,6 +56,23 @@ public class LoginFragment extends Fragment {
                     BancoOnlineLogin bancoOnlineLogin = new BancoOnlineLogin(getActivity());
                     bancoOnlineLogin.conectarAobanco(1, nome, senha, senhaNova.trim());
                 }
+            }
+        });
+
+        LinearLayout corpoLogin = view.findViewById(R.id.corpoLogin);
+        LinearLayout corpoLogin2 = view.findViewById(R.id.corpoLogin2);
+
+        corpoLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
+        corpoLogin2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
             }
         });
         return view;

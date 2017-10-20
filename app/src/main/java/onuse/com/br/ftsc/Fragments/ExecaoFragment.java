@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -69,7 +70,22 @@ public class ExecaoFragment  extends Fragment {
             }
         });
 
+        LinearLayout corpoExecao = view.findViewById(R.id.corpoExecao);
+        LinearLayout corpoExecao2 = view.findViewById(R.id.corpoExecao2);
 
+        corpoExecao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
+        corpoExecao2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
         /*
         * Obrigatorio para modificação das cores do spinnner
         * *

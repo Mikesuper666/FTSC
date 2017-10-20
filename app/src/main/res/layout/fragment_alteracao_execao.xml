@@ -3,9 +3,11 @@
     android:layout_height="match_parent"
     android:background="@android:color/transparent"
     android:orientation="vertical"
+    android:id="@+id/corpoExecaoAlterar"
     android:gravity="center_vertical">
 
     <LinearLayout
+        android:id="@+id/corpoExecaoAlterar2"
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:layout_margin="15dp"
@@ -180,18 +182,19 @@
             android:layout_marginBottom="5dp"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:gravity="center"
             android:orientation="horizontal"
             android:layout_weight="1">
             <ImageView
-                android:layout_width="0dp"
+                android:layout_marginRight="25dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:src="@drawable/d_save"
                 android:id="@+id/fragAlteracaoExecaoAdicionar"/>
             <ImageView
-                android:layout_width="0dp"
+                android:layout_marginLeft="25dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:src="@drawable/d_arrow2"
                 android:id="@+id/fragAlteracaoExecaoCancelar"/>
         </LinearLayout>
