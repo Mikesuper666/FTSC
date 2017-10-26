@@ -1,7 +1,0 @@
-#Fri Oct 20 16:25:49 BRST 2017
-base.0=/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_eb48de376dd74cd6949b073b89dcbcd085a87074
-renamed.1=classes2.dex
-renamed.0=classes.dex
-file.1=/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_c114ac0857f15906e6ac33e0f3bf2345a0892d75/classes.dex
-base.1=/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_c114ac0857f15906e6ac33e0f3bf2345a0892d75
-file.0=/home/maico/AndroidStudioProjects/FTSC/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_eb48de376dd74cd6949b073b89dcbcd085a87074/classes.dex
