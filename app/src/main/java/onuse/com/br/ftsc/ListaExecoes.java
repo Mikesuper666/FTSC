@@ -98,7 +98,7 @@ public class ListaExecoes extends AppCompatActivity {
         repositorioAcoes = new RepositorioAcoes(conn);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_dropdown_item_1line, repositorioAcoes.TodasRequisicoes(0,"d_execoes"));
+                android.R.layout.simple_dropdown_item_1line, repositorioAcoes.ResultadoProcurarFuncionarios("d_execoes"));
         edtMatricula = (AutoCompleteTextView)findViewById(R.id.procurarMatriculaExecao);
         edtMatricula.setAdapter(adapter);
 

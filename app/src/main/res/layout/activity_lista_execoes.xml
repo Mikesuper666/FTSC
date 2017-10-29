@@ -34,8 +34,8 @@
             android:textAlignment="center"
             android:background="@drawable/d_border_edt"
             android:maxLines="1"
-            android:inputType="number"
-            android:maxLength="6"
+            android:inputType="textCapSentences"
+            android:maxLength="40"
             android:textColorLink="@android:color/darker_gray"
             android:textSize="13sp" />
 
@@ -52,7 +52,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/d_border_circular"
             android:layout_marginRight="5dp"
-            android:visibility="gone"
+
             android:text="Deletar"/>
 
         <TextView
@@ -68,7 +68,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:alwaysDrawnWithCache="true"
-            android:checkedButton="@+id/radioNome"
+            android:checkedButton="@id/radioNome"
             android:clickable="false"
             android:orientation="horizontal">
 

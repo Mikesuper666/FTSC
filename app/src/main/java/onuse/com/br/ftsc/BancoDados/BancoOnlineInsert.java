@@ -23,13 +23,9 @@ public class BancoOnlineInsert {
     private String url, parametros;
     private ProgressDialog dialogBaixando;
     private int tabela;
-    private Execoes execoes;
-    private Carros carros;
 
     public BancoOnlineInsert(Context context) {
         this.context = context;
-        execoes = new Execoes();
-        carros = new Carros();
     }
 
     public void conectarAobancoInsersao(int numeroTabela, int idRecebido, String nomeRecebido, int execaoRecebido, int funcao, int horario) {
@@ -46,16 +42,10 @@ public class BancoOnlineInsert {
             switch (numeroTabela){
                 case 0:
                     url = "http://maicoheleno.890m.com/tcc/insert-execao.php?id="+idRecebido+"&nome="+nomeRecebido.replace(" ","_")+"&tipoexecao="+execaoRecebido+"&funcao="+funcao+"&horario="+horario;
-                    execoes.setId(idRecebido);
-                    execoes.setNome(nomeRecebido);
-                    execoes.setTipoExecao(execaoRecebido);
                     tabela = 0;
                     break;
                 case 1:
-                    url = "http://maicoheleno.890m.com/tcc/insert-adaptados.php?id="+idRecebido+"&nome="+nomeRecebido+"&tipoexecao="+execaoRecebido;
-                    carros.setId(idRecebido);
-                    carros.setTipoCarro(Integer.parseInt(nomeRecebido));
-                    carros.setAdaptado(execaoRecebido);
+                    url = "http://maicoheleno.890m.com/tcc/insert-adaptados.php?id="+idRecebido+"&tipoCarro="+nomeRecebido+"&d_adaptado="+execaoRecebido;
                     tabela = 1;
                     break;
 
@@ -120,10 +110,8 @@ public class BancoOnlineInsert {
                     dialogBaixando.dismiss();
                     Toast.makeText(context, "Dados inseridos com sucesso", Toast.LENGTH_LONG).show();
                     if (tabela == 0) {
-                        repositorioAcoes.InserirNovaExecao((int)execoes.getId(), execoes.getNome(), execoes.getTipoExecao());
                         ((ListaExecoes) context).InseridoBancoAposOnline();
                     }else if(tabela == 1) {
-                        repositorioAcoes.InserirNovoCarro((int) carros.getId(), carros.getTipoCarro(), carros.getAdaptado());
                         ((ListaAdaptados) context).InseridoBancoAposOnline();
                     }else if(tabela == 2){
                           //nada acontece aqui por enquanto

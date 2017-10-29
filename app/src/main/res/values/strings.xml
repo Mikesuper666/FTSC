@@ -8,6 +8,8 @@
         <item>Articulado</item>
         <item>Lotação/Micro</item>
         <item>Alongado</item>
+        <item>O500</item>
+        <item>Executivo</item>
     </string-array>
 
     <string-array name="adaptado_sn">
@@ -29,7 +31,10 @@
     </string-array>
 
     <string-array name="horario_array">
-        <item>6h</item>
         <item>7h20</item>
+        <item>3h</item>
+        <item>4h</item>
+        <item>5h</item>
+        <item>6h</item>
     </string-array>
 </resources>
