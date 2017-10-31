@@ -1,0 +1,302 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:orientation="vertical"
+    android:gravity="center_vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_margin="15dp"
+        android:background="@color/paleta_azul_4"
+        android:elevation="5dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:text="Remanejo de rotas!" />
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorBranco"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_marginRight="2dp"
+                android:layout_marginLeft="2dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/holo_red_dark"
+                android:text="Nº000000000"/>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/colorBranco"/>
+            <RadioGroup
+                android:gravity="center"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:checkedButton="@id/soul"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/soul"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Soul" />
+                <RadioButton
+                    android:id="@+id/val"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Val" />
+            </RadioGroup>
+
+
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorBranco"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:gravity="center_vertical">
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_weight="0.2"
+                android:layout_margin="5dp"
+                android:hint="Tabela"
+                android:inputType="number"
+                android:background="@color/colorBranco"
+                android:layout_height="wrap_content" />
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/colorBranco"/>
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_weight="0.3"
+                android:layout_margin="5dp"
+                android:hint="Destino"
+                android:inputType="textCapSentences"
+                android:background="@color/colorBranco"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/colorBranco"/>
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_weight="0.2"
+                android:layout_margin="5dp"
+                android:hint="Horário"
+                android:inputType="number"
+                android:background="@color/colorBranco"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/colorBranco"/>
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_weight="0.2"
+                android:layout_margin="5dp"
+                android:hint="Carro"
+                android:inputType="number"
+                android:background="@color/colorBranco"
+                android:layout_height="wrap_content" />
+
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorBranco"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:layout_weight="0.5"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Remanejado para:"/>
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_weight="0.1"
+                android:layout_height="wrap_content"
+                android:background="@drawable/d_cross_arrow"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorBranco"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:gravity="center_vertical">
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_weight="0.2"
+                android:layout_margin="5dp"
+                android:hint="Tabela"
+                android:inputType="number"
+                android:background="@color/colorBranco"
+                android:layout_height="wrap_content" />
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/colorBranco"/>
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_weight="0.3"
+                android:layout_margin="5dp"
+                android:hint="Destino"
+                android:background="@color/colorBranco"
+                android:inputType="textCapSentences"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/colorBranco"/>
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_weight="0.2"
+                android:layout_margin="5dp"
+                android:hint="Horário"
+                android:inputType="number"
+                android:background="@color/colorBranco"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/colorBranco"/>
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_weight="0.2"
+                android:layout_margin="5dp"
+                android:hint="Carro"
+                android:inputType="number"
+                android:background="@color/colorBranco"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorBranco"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/fragRemanejoCompartilhar"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_gravity="bottom|right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/d_compartilhar"/>
+
+            <LinearLayout
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:textAlignment="center"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:text="Informações do fiscal"/>
+
+                <TextView
+                    android:id="@+id/fragOcorrenciaNome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:text="Colaborador: Maico Ribeiro"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/fragOcorrenciaMatricula"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/black"
+                        android:text="Matrícula: 1313"/>
+
+                    <TextView
+                        android:id="@+id/fragOcorrenciaData"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/black"
+                        android:text="Data: 27/10/17"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/fragRemanejoSair"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_gravity="bottom|right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/d_arrow2"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

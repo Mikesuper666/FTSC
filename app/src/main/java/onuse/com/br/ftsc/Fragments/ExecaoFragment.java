@@ -60,12 +60,11 @@ public class ExecaoFragment  extends Fragment {
                 if(ConfirmarCadastro()){
                     BancoOnlineInsert bancoOnlineInsert = new BancoOnlineInsert(getActivity());
                     bancoOnlineInsert.conectarAobancoInsersao(0, codigo, nome, tipoExecao, funcao, horario);
+
                     /*BancoInterno bancoInterno = new BancoInterno(getActivity());
                     SQLiteDatabase conn = bancoInterno.getWritableDatabase();
                     RepositorioAcoes repositorioAcoes = new RepositorioAcoes(conn);
-                    repositorioAcoes.InserirNovaExecao(codigo,nome,tipoExecao);
-                    Toast.makeText(getActivity(), "Gravado com sucesso!", Toast.LENGTH_LONG).show();
-                    getActivity().finish();*/
+                    repositorioAcoes.InserirNovaExecao(codigo, nome, tipoExecao, funcao, horario);*/
                 }
             }
         });
@@ -118,7 +117,7 @@ public class ExecaoFragment  extends Fragment {
         tipoExecao = fragExecoesTipoExecao.getSelectedItemPosition();
         nome = fragExecoesNome.getText().toString();
         funcao = fragExecoesFuncao.getSelectedItemPosition();
-        horario = fragExecoesFuncao.getSelectedItemPosition();
+        horario = fragExecoesHorario.getSelectedItemPosition();
         if(nome.equals("") || nome == null){
             fragExecoesNome.setError("Porfavor digite um nome!");
             return false;
@@ -128,10 +127,10 @@ public class ExecaoFragment  extends Fragment {
         SQLiteDatabase conn;
         conn = bancoInterno.getWritableDatabase();
         RepositorioAcoes repositorioAcoes = new RepositorioAcoes(conn);
-        ArrayList<Execoes> carrosRecebido = new ArrayList<>();
-        carrosRecebido = repositorioAcoes.TodasExecoes();
-        for(int i = 0; i < carrosRecebido.size();){
-            if(codigo == carrosRecebido.get(i).getId()){
+        ArrayList<Execoes> execoesRecebidas = new ArrayList<>();
+        execoesRecebidas = repositorioAcoes.TodasExecoes();
+        for(int i = 0; i < execoesRecebidas.size();){
+            if(codigo == execoesRecebidas.get(i).getId()){
                 Toast.makeText(getActivity(), "Esta matrícula já foi cadastrado!", Toast.LENGTH_LONG).show();
                 return false;
             }

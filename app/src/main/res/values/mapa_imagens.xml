@@ -125,6 +125,7 @@
         <item>@drawable/d_articulado</item>
         <item>@drawable/d_toco</item>
         <item>@drawable/d_cmt</item>
+        <item>@drawable/d_articulado</item>
     </integer-array>
 
     <integer-array name="imagens_adaptado">

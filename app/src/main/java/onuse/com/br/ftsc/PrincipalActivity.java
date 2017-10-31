@@ -14,6 +14,8 @@ import android.net.Uri;
 import android.os.Build;
 import android.provider.MediaStore;
 import android.support.annotation.RequiresApi;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -33,7 +35,11 @@ import android.widget.Toast;
 import onuse.com.br.ftsc.BancoDados.BancoInterno;
 import onuse.com.br.ftsc.BancoDados.BancoOnlineSelect;
 import onuse.com.br.ftsc.BancoDados.RepositorioAcoes;
+import onuse.com.br.ftsc.Fragments.ExecaoFragment;
+import onuse.com.br.ftsc.Fragments.OcorrenciasFragment;
+import onuse.com.br.ftsc.Fragments.RemanejoFragment;
 import onuse.com.br.ftsc.Helper.Permissoes;
+import onuse.com.br.ftsc.Helper.Preferencias;
 import onuse.com.br.ftsc.Models.Linha;
 
 public class PrincipalActivity extends AppCompatActivity implements View.OnClickListener {
@@ -43,10 +49,12 @@ public class PrincipalActivity extends AppCompatActivity implements View.OnClick
     private TypedArray img;
     private String linhaString, codigoString;
     private int imagemAlvorada, imagemDestino;
-    private ImageButton btn_att_revelar, btn_execoes_revelar, btn_adaptados_revelar, btn_compartilhar_revelar;
+    private ImageButton btn_att_revelar, btn_execoes_revelar, btn_adaptados_revelar, btn_compartilhar_revelar, btnOcorrencias, btnRemanejo, btnIdVirtual;
     private Button navAlvorada, navDestino;
-    private LinearLayout revelar_itens;
+    private LinearLayout revelar_itens, revelar_itens_seLogado;
     private boolean esconder = true;
+    private boolean estaAberto = false;
+    private Preferencias preferencias;
 
     //variaiveis do bando de dados
     private BancoInterno bancoInterno;
@@ -71,7 +79,7 @@ public class PrincipalActivity extends AppCompatActivity implements View.OnClick
         bancoInterno = new BancoInterno(this);
         conn = bancoInterno.getWritableDatabase();
         repositorioAcoes = new RepositorioAcoes(conn);
-
+        preferencias = new Preferencias(this);
         ConfigurarAutoCompletarTexto();
         IniciarComponentes();
     }
@@ -80,8 +88,17 @@ public class PrincipalActivity extends AppCompatActivity implements View.OnClick
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        btnIdVirtual = (ImageButton) findViewById(R.id.btnIdVirtual);
+        btnRemanejo = (ImageButton) findViewById(R.id.btnRemanejo);
+        btnOcorrencias = (ImageButton) findViewById(R.id.btnOcorrencias);
         revelar_itens = (LinearLayout) findViewById(R.id.revelar_itens);
+        revelar_itens_seLogado = (LinearLayout) findViewById(R.id.revelar_itens_seLogado);
+        revelar_itens_seLogado.setVisibility(View.GONE);
         revelar_itens.setVisibility(View.GONE);
+        if(preferencias.getLogin() == 1)
+        {
+            revelar_itens_seLogado.setVisibility(View.VISIBLE);
+        }
 
         btn_att_revelar = (ImageButton) findViewById(R.id.btn_att_revelar);
         btn_execoes_revelar = (ImageButton) findViewById(R.id.btn_execoes_revelar);
@@ -104,6 +121,9 @@ public class PrincipalActivity extends AppCompatActivity implements View.OnClick
         navAlvorada.setOnClickListener(this);
         navDestino.setOnClickListener(this);
         revelar_itens.setOnClickListener(this);
+        btnOcorrencias.setOnClickListener(this);
+        btnRemanejo.setOnClickListener(this);
+        btnIdVirtual.setOnClickListener(this);
         imagemRota.setOnClickListener(this);
 
         //configurar a imagem inicial
@@ -163,7 +183,29 @@ public class PrincipalActivity extends AppCompatActivity implements View.OnClick
                 linha.setMapaImagem(bitmapDrawable);
                 startActivity(i);
                 break;
-
+            case R.id.btnOcorrencias:
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.add(R.id.conteudoPrincipal, new OcorrenciasFragment(), "OcorrenciasFragment");
+                transaction.addToBackStack(null);
+                if(!estaAberto) {
+                    estaAberto = true;
+                    transaction.commit();
+                }
+                break;
+            case R.id.btnRemanejo:
+                FragmentManager fragmentManager2 = getSupportFragmentManager();
+                FragmentTransaction transaction2 = fragmentManager2.beginTransaction();
+                transaction2.add(R.id.conteudoPrincipal, new RemanejoFragment(), "RemanejoFragment");
+                transaction2.addToBackStack(null); //Linha super importante para  o retorno do fragment
+                if(!estaAberto) {
+                    estaAberto = true;
+                    transaction2.commit();
+                }
+                break;
+            case R.id.btnIdVirtual:
+                Toast.makeText(PrincipalActivity.this, "Esta opção ainda não está ativada", Toast.LENGTH_LONG).show();
+                break;
         }
     }
 
@@ -220,7 +262,12 @@ public class PrincipalActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onBackPressed() {
-        if(esconder) {
+        if(estaAberto) {
+            getSupportFragmentManager()
+                    .beginTransaction().
+                    remove(getSupportFragmentManager().findFragmentById(R.id.conteudoPrincipal)).commit();
+            estaAberto = false;
+        }else if(esconder) {
             AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
             alertDialog.setTitle("Sair do aplicativo");
             alertDialog.setMessage("Você tem certeza que deseja sair?");
@@ -299,7 +346,7 @@ public class PrincipalActivity extends AppCompatActivity implements View.OnClick
         edtNomeLinha.setAdapter(adapter);
 
         ArrayAdapter<String> adapterCodigo = new ArrayAdapter<String>(this,
-                android.R.layout.simple_dropdown_item_1line, repositorioAcoes.TodasRequisicoes(3,"nome_linha"));
+                android.R.layout.simple_dropdown_item_1line, repositorioAcoes.TodasRequisicoes(4,"nome_linha"));
         edtCodigoLinha = (AutoCompleteTextView)
                 findViewById(R.id.edtCodigoLinha);
         edtCodigoLinha.setAdapter(adapterCodigo);

@@ -59,7 +59,7 @@ public class RepositorioAcoes{
     }
 
     public Linha Resultado(String id){
-        Cursor cursor = conn.query("nome_linha",new String[]{"_id", "linha","imagem", "codigos"}, "codigos=?", new String[]{id}, null, null, null);
+        Cursor cursor = conn.query("nome_linha",new String[]{"_id", "linha","imagem", "imagem_destino", "codigos"}, "codigos=?", new String[]{id}, null, null, null);
         Linha linha = new Linha();
         cursor.moveToFirst();
         //se encontrou
@@ -126,8 +126,14 @@ public class RepositorioAcoes{
         //adicionamos "%" porque quermos todas pesquisas
         a[0]       = codigo + '%';
         //adicionamosao nosso cursos o comando sql
-        Cursor   c = conn.rawQuery("SELECT * FROM d_execoes WHERE _id LIKE ?", a);
+        Cursor c = null;
 
+        //METODO PROVISÓRIO ONDE SE HOUVER ALGUM NUMERO BUSCO PELA ID SE NÃO BUSCO PELO NOME
+        if(a[0].contains("0")||a[0].contains("1")||a[0].contains("2")||a[0].contains("3")||a[0].contains("4")||a[0].contains("5")||
+                a[0].contains("6")||a[0].contains("7")||a[0].contains("8")||a[0].contains("9")) {
+             c = conn.rawQuery("SELECT * FROM d_execoes WHERE _id LIKE ?", a);}
+        else {
+             c = conn.rawQuery("SELECT * FROM d_execoes WHERE nome LIKE ?", a);}
         Execoes execoes = new Execoes();
         c.moveToFirst();
         //se encontrou
@@ -154,6 +160,29 @@ public class RepositorioAcoes{
         if (cursor.moveToFirst()) {
             do {
                 a[i] = cursor.getString(coluna);
+                i++;
+            } while (cursor.moveToNext());
+        }
+
+        return a;
+    }
+
+    public String[] ResultadoProcurarFuncionarios(String tabela){
+        /**
+         *Metodo que traz para o campo de texto todas requesicoes do banco de dados para um radido preenchimwnto
+         * Parametro string busca o nome da tabela
+         * paramentro inteiro coluna busca a posição da tabela
+         */
+
+        Cursor cursor = conn.rawQuery("SELECT * FROM "+tabela, null);
+        String[] a = new String[(cursor.getCount()*2)];
+
+        int i = 0;
+        if (cursor.moveToFirst()) {
+            do {
+                a[i] = cursor.getString(0);
+                i++;
+                a[i] = cursor.getString(1);
                 i++;
             } while (cursor.moveToNext());
         }
@@ -378,12 +407,14 @@ public class RepositorioAcoes{
         AtualizarQuantidadeOcorrenciasCarros(Integer.parseInt(codigo));
     }
 
-    public void InserirNovaExecao(int id, String nome, int tipoExecao)
+    public void InserirNovaExecao(int id, String nome, int tipoExecao, int funcao, int horario)
     {
         ContentValues values = new ContentValues();
         values.put("_id", id );
         values.put("nome", nome );
         values.put("tipo_execao", tipoExecao );
+        values.put("funcao", funcao );
+        values.put("horario", horario );
 
         conn.insertOrThrow("d_execoes",null , values);
     }

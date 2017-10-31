@@ -56,26 +56,12 @@ public class AdaptadosAdapter extends ArrayAdapter<Carros> {
             codigocarroAdaptado.setText(""+carro.getId());
             qtdeOcorrencias.setText(carro.getQtdeOcorrencias()+"");
 
-            if(carro.getTipoCarro() == 0){
-                //imageAdaptado.setImageResource(R.drawable.d_cmt);
-                nomeAdaptado.setText("CMT");
-            }else if(carro.getTipoCarro() == 1){
-                //imageAdaptado.setImageResource(R.drawable.d_4portas);
-                nomeAdaptado.setText("4 Portas");
-            }else if(carro.getTipoCarro() == 2){
-                //imageAdaptado.setImageResource(R.drawable.d_toco);
-                nomeAdaptado.setText("Toco");
-            }else if(carro.getTipoCarro() == 3){
-                //imageAdaptado.setImageResource(R.drawable.d_articulado);
-                nomeAdaptado.setText("Articulado");
-            }else if(carro.getTipoCarro() == 4){
-                //imageAdaptado.setImageResource(R.drawable.d_toco);
-                nomeAdaptado.setText("Lotação/Micro");
-            }else if(carro.getTipoCarro() == 5){
-                //imageAdaptado.setImageResource(R.drawable.d_articulado);
-                nomeAdaptado.setText("Alongado");
-            }
+            //declaração de arrays de xmls (se for cmt/articulado essas coisas)
+            String[] carros_arrays;
+            carros_arrays = context.getResources().getStringArray(R.array.tipos_carros);
+            nomeAdaptado.setText(carros_arrays[carro.getTipoCarro()]);
 
+            //Imagem se for adaptado ou não
             if(carro.getAdaptado() == 0){
                 imagemCarroAdaptado.setImageResource(R.drawable.d_arrow);
             }else if(carro.getAdaptado() == 1){
