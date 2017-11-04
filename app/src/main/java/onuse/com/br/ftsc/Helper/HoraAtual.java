@@ -43,4 +43,10 @@ public class HoraAtual {
 
         return  hora_atual;
     }
+
+    public static String Protocolo(int protocolo){
+        String zeros = "0000";
+        zeros += protocolo;
+        return zeros;
+    }
 }

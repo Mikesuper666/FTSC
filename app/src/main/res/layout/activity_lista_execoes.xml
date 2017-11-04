@@ -52,7 +52,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/d_border_circular"
             android:layout_marginRight="5dp"
-
+            android:visibility="gone"
             android:text="Deletar"/>
 
         <TextView
