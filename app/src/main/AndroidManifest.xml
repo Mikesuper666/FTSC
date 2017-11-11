@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="onuse.com.br.ftsc">
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:icon="@drawable/d_logo"
@@ -24,11 +24,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ListaAdaptados" android:screenOrientation="portrait" android:windowSoftInputMode="stateHidden"></activity>
-        <activity android:name=".ListaExecoes" android:screenOrientation="portrait" android:windowSoftInputMode="stateHidden"></activity>
-        <activity android:name=".RequisicaoWeb" android:screenOrientation="portrait"></activity>
-        <activity android:name=".MapaZoom" android:screenOrientation="portrait"></activity>
-        <activity android:name=".SplashScreen.SplashScreen" android:screenOrientation="landscape"></activity>
+        <activity android:name=".ListaAdaptados" android:screenOrientation="portrait" android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".ListaExecoes" android:screenOrientation="portrait" android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".OcorrenciaDiretas" android:screenOrientation="portrait" android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".RemanejoActivity" android:screenOrientation="portrait" android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".RequisicaoWeb" android:screenOrientation="portrait"/>
+        <activity android:name=".MapaZoom" android:screenOrientation="portrait"/>
+        <activity android:name=".SplashScreen.SplashScreen" android:screenOrientation="landscape"/>
     </application>
 
 </manifest>

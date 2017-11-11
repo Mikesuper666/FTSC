@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/conteudoRemanejo"
+    android:background="@color/paleta_azul_3">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            android:gravity="center|right"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp">
+            <Button
+                android:id="@+id/btnAdicionarRemanejo"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/d_pessoa" />
+
+            <AutoCompleteTextView
+                android:id="@+id/procurarMatriculaRemanejo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Mátricula - Nome"
+                android:textAlignment="center"
+                android:background="@drawable/d_border_edt"
+                android:maxLines="1"
+                android:inputType="textCapSentences"
+                android:maxLength="40"
+                android:textColorLink="@android:color/darker_gray"
+                android:textSize="13sp" />
+
+            <Button
+                android:id="@+id/btnProcurarRemanejo"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="-20dp"
+                android:background="@drawable/d_procurar" />
+
+            <TextView
+                android:id="@+id/btnRemanejoDeletarSelecionado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/d_border_circular"
+                android:layout_marginRight="5dp"
+                android:visibility="gone"
+                android:text="Deletar"/>
+
+            <TextView
+                android:id="@+id/btnRemanejoCompartilharSelecionado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/d_border_circular"
+                android:visibility="gone"
+                android:text="Compartilhar"/>
+        </LinearLayout>
+        <RadioGroup
+            android:id="@+id/radioGroupRemanejo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:alwaysDrawnWithCache="true"
+            android:checkedButton="@id/radioNome"
+            android:clickable="false"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radioDataRemanejo"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Data" />
+
+            <RadioButton
+                android:id="@+id/radioCarroRemanejo"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Carro" />
+
+            <RadioButton
+                android:id="@+id/radioMatriculaRemanejo"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Matrícula" />
+
+        </RadioGroup>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="20dp"
+                android:id="@+id/listaRemanejo"
+                android:background="@color/colorBranco"
+                android:divider="@null">
+            </ListView>
+            <ImageButton
+                android:layout_gravity="right|bottom"
+                android:id="@+id/btnAtalizarRemanejo"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/d_atualizar" />
+
+        </FrameLayout>
+    </LinearLayout>
+</FrameLayout>

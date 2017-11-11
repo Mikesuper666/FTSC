@@ -14,6 +14,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.provider.MediaStore;
 import android.support.annotation.RequiresApi;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
@@ -33,14 +34,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import onuse.com.br.ftsc.BancoDados.BancoInterno;
+import onuse.com.br.ftsc.BancoDados.BancoOcorrencias;
 import onuse.com.br.ftsc.BancoDados.BancoOnlineSelect;
 import onuse.com.br.ftsc.BancoDados.RepositorioAcoes;
+import onuse.com.br.ftsc.Fragments.ExecaoConsultaFragment;
 import onuse.com.br.ftsc.Fragments.ExecaoFragment;
 import onuse.com.br.ftsc.Fragments.OcorrenciasFragment;
 import onuse.com.br.ftsc.Fragments.RemanejoFragment;
 import onuse.com.br.ftsc.Helper.Permissoes;
 import onuse.com.br.ftsc.Helper.Preferencias;
 import onuse.com.br.ftsc.Models.Linha;
+import onuse.com.br.ftsc.Models.OcorrenciaDireta;
 
 public class PrincipalActivity extends AppCompatActivity implements View.OnClickListener {
     private Button btnNomeLinha, btnCodigoLinha;
@@ -184,27 +188,50 @@ public class PrincipalActivity extends AppCompatActivity implements View.OnClick
                 startActivity(i);
                 break;
             case R.id.btnOcorrencias:
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.add(R.id.conteudoPrincipal, new OcorrenciasFragment(), "OcorrenciasFragment");
-                transaction.addToBackStack(null);
-                if(!estaAberto) {
-                    estaAberto = true;
-                    transaction.commit();
-                }
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+                alertDialog.setTitle("Nova ocorrência");
+                alertDialog.setMessage("Você tem certeza que deseja gerar uma nova ocorrência?\nSerá gerado um novo protocolo para isso certifique-se que sua conexão está online.");
+                alertDialog.setPositiveButton("Gerar", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                     //Ativar o banco de dados
+                        BancoOcorrencias protocolo = new BancoOcorrencias(PrincipalActivity.this);
+                        protocolo.InsercaoOcorrenciasProtocolo(0);
+                    }
+                });
+                alertDialog.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+                AlertDialog alert = alertDialog.create();
+                alert.show();
                 break;
             case R.id.btnRemanejo:
-                FragmentManager fragmentManager2 = getSupportFragmentManager();
-                FragmentTransaction transaction2 = fragmentManager2.beginTransaction();
-                transaction2.add(R.id.conteudoPrincipal, new RemanejoFragment(), "RemanejoFragment");
-                transaction2.addToBackStack(null); //Linha super importante para  o retorno do fragment
-                if(!estaAberto) {
-                    estaAberto = true;
-                    transaction2.commit();
-                }
+                Intent ior = new Intent(PrincipalActivity.this, RemanejoActivity.class);
+                startActivity(ior);
+              /*  AlertDialog.Builder alertDialog2 = new AlertDialog.Builder(this);
+                alertDialog2.setTitle("Novo remanejo");
+                alertDialog2.setMessage("Você tem certeza que deseja gerar um novo remanejo?\nSerá gerado um novo protocolo para isso certifique-se que sua conexão está online.");
+                alertDialog2.setPositiveButton("Gerar", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        //Ativar o banco de dados
+                        BancoOcorrencias protocolo = new BancoOcorrencias(PrincipalActivity.this);
+                        protocolo.InsercaoOcorrenciasProtocolo(1);
+                    }
+                });
+                alertDialog2.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+                alertDialog2.show();*/
                 break;
             case R.id.btnIdVirtual:
                 Toast.makeText(PrincipalActivity.this, "Esta opção ainda não está ativada", Toast.LENGTH_LONG).show();
+                Intent iod = new Intent(PrincipalActivity.this, OcorrenciaDiretas.class);
+                startActivity(iod);
                 break;
         }
     }
@@ -315,28 +342,6 @@ public class PrincipalActivity extends AppCompatActivity implements View.OnClick
         crud.conectarAobanco(0);
     }
 
-    /**]
-     *PARA A ATUALIZAR ESTA VIEW ATRAVEZ DE UMA CLASSE NAO IMPLEMENTADA E UMA THREAD SECUNDARIA RODANDO ATRAVÉZ DELA
-     */
-    public void AtualizarLista(){
-        runOnUiThread(new PrincipalActivity.AtualizarTextView("Post"));
-    }
-
-    private class AtualizarTextView implements Runnable {
-
-        //Caso queiramos passar algum dado passe por aqui deixei isso para vc lembrar no futuro seu burro
-        private String text;
-
-        public AtualizarTextView(final String text) {
-            this.text = text;
-        }
-
-        @Override
-        public void run() {
-            ConfigurarAutoCompletarTexto();
-        }
-    }
-
     private void ConfigurarAutoCompletarTexto(){
         //Configuração do autoCompleteText
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
@@ -365,6 +370,81 @@ public class PrincipalActivity extends AppCompatActivity implements View.OnClick
             imagemRota.setImageResource(img.getResourceId(linha.getImagem(), -1));
         }else{
             Toast.makeText(PrincipalActivity.this,"LINHA NÃO ENCONTRADA!",Toast.LENGTH_LONG).show();
+        }
+    }
+
+    /*
+    Recebe os parametros apos ter gerado um protocolo no banco de dados
+    parametro protocolo >> recebido do bando de dados e enviado para cá
+    parametro tabela decidi qual dos fragmentos será aberto via tabela consultada conforme a tela escolhida
+     */
+    private void AbrirOcorrencias(int protocolo, int tabela){
+        if(tabela == 0) {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction transaction = fragmentManager.beginTransaction();
+            Fragment ocorrenciasFragment = new OcorrenciasFragment();
+            transaction.add(R.id.conteudoPrincipal, ocorrenciasFragment, "OcorrenciasFragment");
+            transaction.addToBackStack(null);
+            Bundle bundle = new Bundle();
+            bundle.putInt("PROTOCOLO", protocolo);
+            ocorrenciasFragment.setArguments(bundle);
+            if (!estaAberto) {
+                estaAberto = true;
+                transaction.commit();
+            }
+        }else if(tabela == 1){
+            FragmentManager fragmentManager2 = getSupportFragmentManager();
+            FragmentTransaction transaction2 = fragmentManager2.beginTransaction();
+            Fragment remanejoFragment = new RemanejoFragment();
+            transaction2.add(R.id.conteudoPrincipal, remanejoFragment, "RemanejoFragment");
+            transaction2.addToBackStack(null); //Linha super importante para  o retorno do fragment
+            Bundle bundle = new Bundle();
+            bundle.putInt("PROTOCOLO", protocolo);
+            remanejoFragment.setArguments(bundle);
+            if(!estaAberto) {
+                estaAberto = true;
+                transaction2.commit();
+            }
+        }
+    }
+
+    /**]
+     *PARA A ATUALIZAR ESTA VIEW ATRAVEZ DE UMA CLASSE NAO IMPLEMENTADA E UMA THREAD SECUNDARIA RODANDO ATRAVÉZ DELA
+     */
+    public void AtualizarLista(){
+            runOnUiThread(new PrincipalActivity.AtualizarTextView("Post"));
+    }
+
+    private class AtualizarTextView implements Runnable {
+
+        //Caso queiramos passar algum dado passe por aqui deixei isso para vc lembrar no futuro seu burro
+        private String text;
+        public AtualizarTextView(final String text) {
+            this.text = text;
+        }
+
+        @Override
+        public void run() {
+            ConfigurarAutoCompletarTexto();
+        }
+    }
+
+    public void RecebendoProtocolo(int protocolo, int tabela){
+        runOnUiThread(new PrincipalActivity.RecebendoProtocolo(protocolo, tabela));
+    }
+
+    private class RecebendoProtocolo implements Runnable {
+
+        //Caso queiramos passar algum dado passe por aqui deixei isso para vc lembrar no futuro seu burro
+        private int protocolo, tabela;
+        public RecebendoProtocolo(final int protocolo, final int tabela) {
+            this.protocolo = protocolo;
+            this.tabela = tabela;
+        }
+
+        @Override
+        public void run() {
+            AbrirOcorrencias(protocolo, tabela);
         }
     }
 }

@@ -3,10 +3,12 @@
     android:layout_height="match_parent"
     android:background="@android:color/transparent"
     android:orientation="vertical"
+    android:id="@+id/fragRemanejoCorpo"
     android:gravity="center_vertical">
 
 
     <LinearLayout
+        android:id="@+id/fragRemanejoCorpo2"
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:layout_margin="15dp"
@@ -36,6 +38,7 @@
             android:gravity="center_vertical">
 
             <TextView
+                android:id="@+id/fragRemanejoProtocolo"
                 android:layout_marginRight="2dp"
                 android:layout_marginLeft="2dp"
                 android:layout_width="0dp"
@@ -50,20 +53,21 @@
                 android:layout_height="match_parent"
                 android:background="@color/colorBranco"/>
             <RadioGroup
+                android:id="@+id/fragRemanejoEmpresa"
                 android:gravity="center"
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:checkedButton="@id/soul"
+                android:checkedButton="@id/fragRemanejoSoul"
                 android:orientation="horizontal"
                 android:layout_height="wrap_content">
 
                 <RadioButton
-                    android:id="@+id/soul"
+                    android:id="@+id/fragRemanejoSoul"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Soul" />
                 <RadioButton
-                    android:id="@+id/val"
+                    android:id="@+id/fragRemanejoVal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Val" />
@@ -84,10 +88,12 @@
             android:gravity="center_vertical">
 
             <EditText
+                android:id="@+id/fragRemanejoTabela"
                 android:layout_width="0dp"
                 android:layout_weight="0.2"
                 android:layout_margin="5dp"
                 android:hint="Tabela"
+                android:maxLength="5"
                 android:inputType="number"
                 android:background="@color/colorBranco"
                 android:layout_height="wrap_content" />
@@ -97,10 +103,12 @@
                 android:background="@color/colorBranco"/>
 
             <EditText
+                android:id="@+id/fragRemanejoDestino"
                 android:layout_width="0dp"
                 android:layout_weight="0.3"
                 android:layout_margin="5dp"
                 android:hint="Destino"
+                android:maxLength="50"
                 android:inputType="textCapSentences"
                 android:background="@color/colorBranco"
                 android:layout_height="wrap_content" />
@@ -111,6 +119,7 @@
                 android:background="@color/colorBranco"/>
 
             <EditText
+                android:id="@+id/fragRemanejoHorario"
                 android:layout_width="0dp"
                 android:layout_weight="0.2"
                 android:layout_margin="5dp"
@@ -125,9 +134,11 @@
                 android:background="@color/colorBranco"/>
 
             <EditText
+                android:id="@+id/fragRemanejoCarro"
                 android:layout_width="0dp"
                 android:layout_weight="0.2"
                 android:layout_margin="5dp"
+                android:maxLength="4"
                 android:hint="Carro"
                 android:inputType="number"
                 android:background="@color/colorBranco"
@@ -174,10 +185,12 @@
             android:gravity="center_vertical">
 
             <EditText
+                android:id="@+id/fragRemanejoTabela2"
                 android:layout_width="0dp"
                 android:layout_weight="0.2"
                 android:layout_margin="5dp"
                 android:hint="Tabela"
+                android:maxLength="5"
                 android:inputType="number"
                 android:background="@color/colorBranco"
                 android:layout_height="wrap_content" />
@@ -187,10 +200,12 @@
                 android:background="@color/colorBranco"/>
 
             <EditText
+                android:id="@+id/fragRemanejoDestino2"
                 android:layout_width="0dp"
                 android:layout_weight="0.3"
                 android:layout_margin="5dp"
                 android:hint="Destino"
+                android:maxLength="50"
                 android:background="@color/colorBranco"
                 android:inputType="textCapSentences"
                 android:layout_height="wrap_content" />
@@ -201,10 +216,12 @@
                 android:background="@color/colorBranco"/>
 
             <EditText
+                android:id="@+id/fragRemanejoHorario2"
                 android:layout_width="0dp"
                 android:layout_weight="0.2"
                 android:layout_margin="5dp"
                 android:hint="Horário"
+                android:maxLength="5"
                 android:inputType="number"
                 android:background="@color/colorBranco"
                 android:layout_height="wrap_content" />
@@ -215,10 +232,12 @@
                 android:background="@color/colorBranco"/>
 
             <EditText
+                android:id="@+id/fragRemanejoCarro2"
                 android:layout_width="0dp"
                 android:layout_weight="0.2"
                 android:layout_margin="5dp"
                 android:hint="Carro"
+                android:maxLength="4"
                 android:inputType="number"
                 android:background="@color/colorBranco"
                 android:layout_height="wrap_content" />
@@ -244,6 +263,15 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/d_compartilhar"/>
 
+            <ImageView
+                android:id="@+id/fragRemanejoSalvar"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_gravity="bottom|right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/d_save"/>
+
             <LinearLayout
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
@@ -261,7 +289,7 @@
                     android:text="Informações do fiscal"/>
 
                 <TextView
-                    android:id="@+id/fragOcorrenciaNome"
+                    android:id="@+id/fragRemanejoNomeFiscal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@android:color/black"
@@ -271,7 +299,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
                     <TextView
-                        android:id="@+id/fragOcorrenciaMatricula"
+                        android:id="@+id/fragRemanejoMatricula"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
@@ -279,7 +307,7 @@
                         android:text="Matrícula: 1313"/>
 
                     <TextView
-                        android:id="@+id/fragOcorrenciaData"
+                        android:id="@+id/fragRemanejoData"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"

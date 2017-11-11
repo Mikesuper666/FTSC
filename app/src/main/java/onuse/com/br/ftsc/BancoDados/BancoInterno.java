@@ -10,7 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 public class BancoInterno extends SQLiteOpenHelper {
     public BancoInterno(Context context){
-        super(context, "u726847299_tcc", null, 1);
+        super(context, "u726847299_tcc", null, 2);
         //contexto, nome do banco, cursor factoyry, versao do banco
     }
 
@@ -412,6 +412,10 @@ public class BancoInterno extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("drop table nome_linha;");
+        db.execSQL("drop table d_execoes;");
+        db.execSQL("drop table ocorrencias;");
+        db.execSQL("drop table tipo_carro;");
+        db.execSQL("drop table carro_ocorrencias;");
         onCreate(db);
     }
 }

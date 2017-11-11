@@ -17,6 +17,11 @@
         <item>Sim</item>
     </string-array>
 
+    <string-array name="empresa">
+        <item>SOUL</item>
+        <item>VAL</item>
+    </string-array>
+
     <string-array name="permissao_para">
         <item>Nenhuma</item>
         <item>Barba</item>
