@@ -6,9 +6,13 @@
           <option name="url" value="https://github.com/Mikesuper666/FTSC.git" />
           <option name="userName" value="" />
         </UrlAndUserName>
+        <UrlAndUserName>
+          <option name="url" value="git@github.com:Mikesuper666/DonaAnaApp.git" />
+          <option name="userName" value="" />
+        </UrlAndUserName>
       </list>
     </option>
-    <option name="cloneParentDir" value="C:\Users\Maico\AndroidS" />
+    <option name="cloneParentDir" value="C:\Users\Maico\AndroidStudioProjects\DonaAnaApp" />
   </component>
   <component name="Vcs.Log.App.Settings">
     <option name="MIGRATED" value="true" />
